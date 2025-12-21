@@ -1,0 +1,179 @@
+.profile-card{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  padding: 20px;
+  background-color: var(--box-bg);
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 40px;
+}
+
+.profile-card__image{
+  border-radius: inherit;
+}
+
+.profile-card__details{
+  display: flex;
+  flex-direction: column;
+  gap: 18px
+}
+
+.work-availability{
+  flex-wrap: nowrap;
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 13px;
+  height: min-content;
+  justify-content: center;
+  padding: 11px 20px;
+  position: relative;
+  margin-inline: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+}
+
+.work-availability__dot-status {
+  --dot-size: 8px;
+
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 30px;
+  background-color: rgb(255, 2, 2);
+  animation: not-active-pulse-vibrate 1.5s infinite ease-in-out;
+}
+
+.work-availability__dot-status.active {
+  background-color: rgb(2, 255, 39);
+  animation: active-pulse-vibrate 1.5s infinite ease-in-out;
+}
+
+.work-availability__label{
+  font-weight: 600;
+}
+
+
+/* =====================================
+ * Work Status Dot Pulse Animations
+ * ===================================== */
+@keyframes active-pulse-vibrate {
+  0%, 100% {
+    box-shadow: 0 0 2px 1px rgba(0, 255, 136, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 6px 4px rgba(0, 255, 136, 0.2);
+  }
+}
+
+@keyframes not-active-pulse-vibrate {
+  0%, 100% {
+    box-shadow: 0 0 2px 1px rgba(255, 77, 77, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 6px 4px rgba(255, 77, 77, 0.2);
+  }
+}
+
+
+.profile-card__name{
+  font-size: var(--name-txt-size);
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: -.04em;
+  line-height: 1.4em;
+}
+
+.profile-card__social-list{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.profile-card__social-list--img{
+  align-items: flex-start;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 0px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 11px 11px;
+}
+
+.profile-card__social-list--img-icon{
+  --size: 17.5px;
+
+  width: var(--size);
+  height: var(--size);
+}
+
+.profile-card__buttons-container{
+  display: flex;
+  justify-content: space-between;
+  gap: 7px;
+}
+
+.profile-card__btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 13px 14px;
+  width: 100%;
+}
+
+.profile-card__btn.download-cv-btn{
+  background-color: rgb(31, 31, 31);
+}
+
+.profile-card__btn.contact-me-btn{
+  background-color: var(--accent-color);
+}
+
+img.profile-card__btn--icon{
+  --size: 20px;
+
+  height: var(--size);
+  width: var(--size);
+  filter: brightness(0) saturate(100%);
+}
+
+.profile-card__btn--label{
+  font-size: var(--dlcb-and-contact-txt-size);
+  font-weight: 450;
+}
+
+
+@media(width >= 700px){
+  .profile-card{
+    flex-direction: row;
+  }
+
+  .profile-card__image{
+    --size: 230px;
+
+    width: var(--size);
+    height: var(--size);
+  }
+
+  .work-availability{
+    margin-inline: 0;
+    width: fit-content;
+  }
+
+  .profile-card__name{
+    text-align: left;
+  }
+
+  .profile-card__social-list{
+    justify-content: left;
+  }
+
+  .profile-card__btn{
+    width: fit-content;
+    padding: 13px 17px;
+  }
+}

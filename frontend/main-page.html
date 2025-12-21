@@ -4,14 +4,385 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/profile-card.css">
 
     <!-- Axios CDN -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+        
     <title>Editable Portfolio Website</title>
   </head>
   <body>
-    
+    <div class="main-wrapper">
+      <button class="edit-button">Edit</button>
+
+      <!-- Profile Card -->
+      <div class="profile-card">
+        <img class="profile-card__image" src="images-and-icons/meowish profile.jpeg" alt="profile-image">
+
+        <div class="profile-card__details">
+          <div class="work-availability">
+            <span class="work-availability__dot-status active"></span>
+            <p class="work-availability__label">Available for work</p>
+          </div>
+
+          <p class="profile-card__name">John Harvey</p>
+
+          <div class="profile-card__social-list">
+            <a href="#" class="profile-card__social-list--img">
+              <img class="profile-card__social-list--img-icon" src="images-and-icons/instagram.png" alt="instagram-img">
+            </a>
+            <a href="#" class="profile-card__social-list--img">
+              <img class="profile-card__social-list--img-icon" src="images-and-icons/tiktok.png" alt="tiktok-icon">
+            </a>
+            <a href="#" class="profile-card__social-list--img">
+              <img class="profile-card__social-list--img-icon" src="images-and-icons/youtube.png" alt="youtube-icon">
+            </a>
+            <a href="#" class="profile-card__social-list--img"> 
+              <img class="profile-card__social-list--img-icon" src="images-and-icons/facebook.png" alt="facebook-icon">
+            </a>
+          </div>
+
+          <div class="profile-card__buttons-container">
+            <div class="profile-card__btn download-cv-btn">
+              <i class="profile-card__btn--icon fas fa-download"></i>
+              <p class="profile-card__btn--label">Download CV</p>
+            </div>
+            <a href="#contact-section" class="profile-card__btn contact-me-btn">
+              <img class="profile-card__btn--icon" src="images-and-icons/contact-icon.png" alt="contact-icon">
+              <p class="profile-card__btn--label">Contact Me</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sections-container">
+        <!-- About Section -->
+        <section id="about-section">
+          <h2 class="about-section__greetings">I'm John Harvey,</h2>
+          <h3 class="about-section__skills">Web Developer</h3>
+          <h2 class="about-section__adress">From Philippines, Marinduque</h2>
+
+          <p class="about-section__about-me">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae nesciunt iure consectetur odit ut, necessitatibus exercitationem sint unde nostrum beatae eos voluptates mollitia cum eum voluptatum earum ducimus laudantium aut.
+          </p>
+
+          <div class="achievements-list">
+            <div class="achievements-list__achievement">
+              <h2 class="achivements-list__achievement--number">30<span>+</span></h2>
+              <p class="achivements-list__achivement--label">Completed Projects</p>
+            </div>
+            <div class="achievements-list__achievement">
+              <h2 class="achivements-list__achievement--number">8<span>+</span></h2>
+              <p class="achivements-list__achivement--label">Years of Experience</p>
+            </div>
+            <div class="achievements-list__achievement">
+              <h2 class="achivements-list__achievement--number">36<span>+</span></h2>
+              <p class="achivements-list__achivement--label">Happy Clients</p>
+            </div>
+            <div class="achievements-list__achievement">
+              <h2 class="achivements-list__achievement--number">30<span>+</span></h2>
+              <p class="achivements-list__achivement--label">Awards Recieved</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience-section">
+          <div class="section-label">
+            <img class="section-label--icon" src="images-and-icons/bag-icon.png" alt="experience-icon"></img>
+            <p class="section-label--txt">Experience</p>
+          </div>
+
+          <div class="experience-cards-list">
+            <div class="experience-card">
+              <div class="experince-card__top-area">
+                <img class="experience-card__icon" src="images-and-icons/content-creation-icon.png" alt="experience-icon">
+
+                <div class="experience-card__title-and-company">
+                  <p class="experience-card__title">Content Creator</p>
+                  <p class="experience-card__company">Tiktok and Youtube</p>
+                </div>
+                
+                <p class="experience-card__date-range">2023 - Present</p>
+              </div>
+
+              <div class="experience-card__line"></div>
+
+              <p class="experience-card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero distinctio sapiente illum minus ut ullam tempore assumenda dolor deserunt..</p>
+            </div>
+            <div class="experience-card">
+              <div class="experince-card__top-area">
+                <img class="experience-card__icon" src="images-and-icons/content-creation-icon.png" alt="experience-icon">
+
+                <div class="experience-card__title-and-company">
+                  <p class="experience-card__title">Content Creator</p>
+                  <p class="experience-card__company">Tiktok and Youtube</p>
+                </div>
+                
+                <p class="experience-card__date-range">2023 - Present</p>
+              </div>
+
+              <div class="experience-card__line"></div>
+
+              <p class="experience-card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero distinctio sapiente illum minus ut ullam tempore assumenda dolor deserunt..</p>
+            </div>
+            <div class="experience-card">
+              <div class="experince-card__top-area">
+                <img class="experience-card__icon" src="images-and-icons/content-creation-icon.png" alt="experience-icon">
+
+                <div class="experience-card__title-and-company">
+                  <p class="experience-card__title">Content Creator</p>
+                  <p class="experience-card__company">Tiktok and Youtube</p>
+                </div>
+                
+                <p class="experience-card__date-range">2023 - Present</p>
+              </div>
+
+              <div class="experience-card__line"></div>
+
+              <p class="experience-card__details">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero distinctio sapiente illum minus ut ullam tempore assumenda dolor deserunt..</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects-section">
+          <div class="section-label">
+            <img class="section-label--icon" src="images-and-icons/projects-icon.png" alt="experience-icon"></img>
+            <p class="section-label--txt">Projects</p>
+          </div>
+
+          <!-- Projects list container -->
+          <div class="projects-card-container">
+            <!-- projects list -->
+            <div class="project-list">
+              <a href="#" class="project-card">
+                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
+                <p class="project-card__title">Project Title 1</p>
+                <p class="project-card__about">Portfolio & Profile</p>
+
+                <p class="project-card__arrow">
+                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
+                </p>
+              </a>
+
+              <a href="#" class="project-card">
+                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
+                <p class="project-card__title">Project Title 1</p>
+                <p class="project-card__about">Portfolio & Profile</p>
+
+                <p class="project-card__arrow">
+                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
+                </p>
+              </a>
+
+              <a href="#" class="project-card">
+                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
+                <p class="project-card__title">Project Title 1</p>
+                <p class="project-card__about">Portfolio & Profile</p>
+
+                <p class="project-card__arrow">
+                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
+                </p>
+              </a>
+
+              <a href="#" class="project-card">
+                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
+                <p class="project-card__title">Project Title 1</p>
+                <p class="project-card__about">Portfolio & Profile</p>
+
+                <p class="project-card__arrow">
+                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
+                </p>
+              </a>
+            </div>
+
+            <button class="projects-card-container__load-more-btn">Load More</button>
+
+             <!-- more projects list -->
+            <div class="more-projects-list">
+              <a href="#" class="project-card">
+                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
+                <p class="project-card__title">Project Title 1</p>
+                <p class="project-card__about">Portfolio & Profile</p>
+
+                <p class="project-card__arrow">
+                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
+                </p>
+              </a>
+
+              <a href="#" class="project-card">
+                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
+                <p class="project-card__title">Project Title 1</p>
+                <p class="project-card__about">Portfolio & Profile</p>
+
+                <p class="project-card__arrow">
+                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
+                </p>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education-section">
+          <div class="section-label">
+            <img class="section-label--icon" src="images-and-icons/graduation-cap.png" alt="experience-icon"></img>
+            <p class="section-label--txt">Education</p>
+          </div>
+
+          <div class="education-card-list">
+            <div class="education-card">
+              <div class="education-card__top-area">
+                <h3 class="education-card__title">UI/UX Design Certification</h3>
+
+                <p class="education-card__institution">
+                  <span class="education-card__program">National University of Philippines,</span>
+                  <span class="education-card__context">Philippines</span>
+                </p>
+
+                <p class="education-card__date-range">2018-2019</p>
+              </div>
+
+              <div class="education-card__line"></div>
+
+              <p class="education-card__details">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis possimus esse tempora itaque porro. Delectus inventore quis suscipit repellat.
+              </p>
+            </div>
+
+            <div class="education-card">
+              <div class="education-card__top-area">
+                <h3 class="education-card__title">UI/UX Design Certification</h3>
+
+                <p class="education-card__institution">
+                  <span class="education-card__program">National University of Philippines,</span>
+                  <span class="education-card__context">Philippines</span>
+                </p>
+
+                <p class="education-card__date-range">2018-2019</p>
+              </div>
+
+              <div class="education-card__line"></div>
+
+              <p class="education-card__details">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis possimus esse tempora itaque porro. Delectus inventore quis suscipit repellat.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section id="tools-section">
+          <div class="section-label">
+            <img class="section-label--icon" src="images-and-icons/tools-icon.png" alt="experience-icon"></img>
+            <p class="section-label--txt">Tools</p>
+          </div>
+
+          <div class="tools-card-list">
+            <div class="tool-card">
+              <img src="images-and-icons/html.png" alt="tool-icon">
+              <div class="tool-card__details">
+                <p class="tool-card__name">HTML</p>
+                <p class="tool-card__about">Website Structure Language</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <img src="images-and-icons/html.png" alt="tool-icon">
+              <div class="tool-card__details">
+                <p class="tool-card__name">HTML</p>
+                <p class="tool-card__about">Website Structure Language</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <img src="images-and-icons/html.png" alt="tool-icon">
+              <div class="tool-card__details">
+                <p class="tool-card__name">HTML</p>
+                <p class="tool-card__about">Website Structure Language</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <img src="images-and-icons/html.png" alt="tool-icon">
+              <div class="tool-card__details">
+                <p class="tool-card__name">HTML</p>
+                <p class="tool-card__about">Website Structure Language</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <img src="images-and-icons/html.png" alt="tool-icon">
+              <div class="tool-card__details">
+                <p class="tool-card__name">HTML</p>
+                <p class="tool-card__about">Website Structure Language</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <img src="images-and-icons/html.png" alt="tool-icon">
+              <div class="tool-card__details">
+                <p class="tool-card__name">HTML</p>
+                <p class="tool-card__about">Website Structure Language</p>
+              </div>
+            </div>
+
+            <div class="tool-card">
+              <img src="images-and-icons/html.png" alt="tool-icon">
+              <div class="tool-card__details">
+                <p class="tool-card__name">HTML</p>
+                <p class="tool-card__about">Website Structure Language</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact-section">
+          <div class="section-label">
+            <img class="section-label--icon" src="images-and-icons/contact-icon.png" alt="experience-icon"></img>
+            <p class="section-label--txt">Contact</p>
+          </div>
+
+          <div class="contact-section-content">
+            <div class="contact-card-list">
+              <div class="contact-card">
+                <i class="contact-card-icon bi bi-telephone"></i>
+                <p class="contact-card__label">Contact No.</p>
+                <p class="contact-card__value">09852558351</p>
+              </div>
+              <div class="contact-card">
+                <i class="contact-card-icon bi bi-telephone"></i>
+                <p class="contact-card__label">Email</p>
+                <p class="contact-card__value">meowish@gmail.com</p>
+              </div>
+              <div class="contact-card">
+                <i class="contact-card-icon bi bi-telephone"></i>
+                <p class="contact-card__label">Address</p>
+                <p class="contact-card__value">Maligaya Boac Marinduque</p>
+              </div>
+            </div>
+
+            <form d="email-form">
+              <input type="text" placeholder="Full Name" required>
+              <input type="email" placeholder="Email" required>
+              <textarea name="message" id="email-form" placeholder="Message"></textarea>
+              <button id="email-form__submit-btn" type="submit">Send Message</button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </div>
   </body>
 </html>

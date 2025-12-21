@@ -7,15 +7,15 @@
   --text-color-2: rgb(194, 194, 194);
 
   --available-txt-size: 16px;
-  --name-txt-size: clamp(24px, 20vw, 28px);
+  --name-txt-size: clamp(24px, 7vw, 28px);
   --dlcb-and-contact-txt-size: 14px;
 
-  --section-label-txt-size: clamp(18px, 10vw, 24px);
+  --section-label-txt-size: clamp(18px, 5vw, 24px);
   --greetings-and-adress-txt-size: clamp(30px, 30vw, 52px);
   --skill-txt-size: 30px;
   --about-me-txt-size: 16px;
 
-  --achivement-year-txt: 30px;
+  --achivement-number-txt: 30px;
   --achivement-label-txt: 16px;
 
   --experience-title-txt: clamp(18px, 10vw, 20px);
@@ -54,8 +54,8 @@ img{
 
 a{
   text-decoration: none;
-  color: black;
   cursor: pointer;
+  color: black;
 }
 
 button{
@@ -63,7 +63,53 @@ button{
 }
 
 body{
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Space Grotesk", "Space Grotesk Placeholder", sans-serif;
   background-color: var(--bg-color);
   transition: 0.3s;
+  color: var(--text-color);
+}
+
+.main-wrapper{
+  --wrapper-max-width: 1355px;
+  --wrapper-padding: 40px;
+
+  position: relative;
+  width: min(var(--wrapper-max-width), 100% - var(--wrapper-padding));
+  min-height: 100%;
+  margin-inline: auto;
+  padding-top: 20px;
+}
+
+.edit-button{
+  width: fit-content;
+  display: block;
+  padding: 4px 22px;
+  margin-left: auto;
+  margin-bottom: 25px;
+  border-radius: 5px;
+  border: none;
+  background-color:var(--accent-color);
+}
+
+section{
+  margin-bottom: 80px;
+}
+
+.section-label{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+.section-label--icon{
+  --size: 24px;
+
+  height: var(--size);
+  width: var(--size);
+}
+
+.section-label--txt{
+  font-size: var(--section-label-txt-size);
 }
