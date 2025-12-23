@@ -87,6 +87,7 @@ textarea{
   height: 40px;
   font-size: var(--form-btn-txt);
   border-radius: 12px;
+  font-weight: 500;
 }
 
 @media(width >= 810px){

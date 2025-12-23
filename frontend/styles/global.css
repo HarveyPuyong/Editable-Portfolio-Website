@@ -63,6 +63,10 @@ button{
   cursor: pointer;
 }
 
+html{
+  height: fit-content;
+}
+
 body{
   font-family: "Space Grotesk", "Space Grotesk Placeholder", sans-serif;
   background-color: var(--bg-color);

@@ -1,3 +1,9 @@
+.projects-card-container{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .project-list,
 .more-projects-list{
   display: grid;
@@ -83,10 +89,6 @@
   left: 50%;
 }
 
-@keyframes arrow-animation{
-
-}
-
 .projects-card-container__load-more-btn{
   margin-top: 30px;
   margin-inline: auto;
@@ -99,6 +101,10 @@
   font-size: 14px;
   text-align: center;
   border: none;
+}
+
+.projects-card-container__load-more-btn.hide{
+  display: none;
 }
 
 @media(width >= 700px){

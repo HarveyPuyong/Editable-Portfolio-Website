@@ -11,6 +11,22 @@
   margin: 3px 0;
 }
 
+/* Typing cursor */
+.about-section__skills::after{
+  content: "|";
+  display: inline-block;
+  margin-left: 6px;
+  color: var(--accent-color);
+  animation: blink 1s steps(1, start) infinite;
+  color: white;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+
+@keyframes blink{
+  50%{ opacity: 0; }
+}
+
 .about-section__adress{
   margin-bottom: 20px;
 }
