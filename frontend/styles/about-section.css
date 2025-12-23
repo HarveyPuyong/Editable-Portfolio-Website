@@ -1,0 +1,66 @@
+.about-section__greetings,
+.about-section__adress{
+  font-size: var(--greetings-and-adress-txt-size);
+  font-weight: 500;
+}
+
+.about-section__skills{
+  font-size: var(--skill-txt-size);
+  color: var(--accent-color);
+  font-weight: 500;
+  margin: 3px 0;
+}
+
+.about-section__adress{
+  margin-bottom: 20px;
+}
+
+.about-section__about-me{
+  font-size: var(--about-me-txt-size);
+  margin-bottom: 33px;
+  font-weight: 500;
+  line-height: 1.6em;
+}
+
+.achievements-list{
+  align-content: unset;
+  align-items: unset;
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+}
+
+.achievements-list__achievement{
+  text-align: center;
+  width: fit-content;
+}
+
+.achivements-list__achievement--number{
+  font-size: var(--achivement-number-txt);
+  margin-bottom: 12px;
+}
+
+.achivements-list__achivement--label{
+  font-size: var(--achivement-label-txt);
+  color: var(--text-color-2);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+@media(width >= 800px){
+  .achievements-list{
+    align-content: unset;
+    align-items: unset;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+  }
+}
+
+@media(width >= 1200px){
+  .achievements-list{
+    width: fit-content;
+  }
+}

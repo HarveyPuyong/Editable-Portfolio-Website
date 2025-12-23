@@ -1,0 +1,58 @@
+.education-card-list{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.education-card{
+  background-color: var(--box-bg);
+  border: 1px solid var(--box-border-clr);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.education-card__top-area{
+  display: flex;
+  justify-content: space-between;
+}
+
+.education-card__title{
+  font-size: var(--experience-title-txt);
+  letter-spacing: -.02em;
+  line-height: 1.5em;
+  margin-bottom: 5px;
+}
+
+.education-card__institution{
+  font-size: var(--experience-company-txt);
+  line-height: 1.5em;
+  color: var(--text-color-2);
+  font-weight: 500;
+}
+
+.education-card__date-range{
+  background-color: rgb(31, 31, 31);
+  border: 1px solid var(--box-border-clr);
+  border-radius: 4px;
+  padding: 6px 12px;
+  word-wrap: nowrap;
+  text-wrap: nowrap;
+  white-space: nowrap;
+  font-weight: 500;
+  font-size: var(--education-details-and-year-txt);
+  height: fit-content;
+}
+
+.education-card__line{
+  height: 1px;
+  width: 100%;
+  background-color: var(--box-border-clr);
+  margin: 10px 0;
+}
+
+.education-card__details{
+  font-size: var(--education-details-and-year-txt);
+  font-weight: 500;
+  color: var(--text-color-2);
+  line-height: 1.6em;
+}

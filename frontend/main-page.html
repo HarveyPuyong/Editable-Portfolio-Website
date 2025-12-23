@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/profile-card.css">
-
     <!-- Axios CDN -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -19,6 +15,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
         
+    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/profile-card.css">
+    <link rel="stylesheet" href="styles/about-section.css">
+    <link rel="stylesheet" href="styles/experience-section.css">
+    <link rel="stylesheet" href="styles/project-section.css">
+    <link rel="stylesheet" href="styles/education-section.css">
+    <link rel="stylesheet" href="styles/tools-section.css">
+    <link rel="stylesheet" href="styles/contact-section.css">
+
     <title>Editable Portfolio Website</title>
   </head>
   <body>
@@ -106,11 +112,13 @@
           <div class="experience-cards-list">
             <div class="experience-card">
               <div class="experince-card__top-area">
-                <img class="experience-card__icon" src="images-and-icons/content-creation-icon.png" alt="experience-icon">
+                <div class="experince-card__img-title-container">
+                  <img class="experience-card__icon" src="images-and-icons/content-creation-icon.png" alt="experience-icon">
 
-                <div class="experience-card__title-and-company">
-                  <p class="experience-card__title">Content Creator</p>
-                  <p class="experience-card__company">Tiktok and Youtube</p>
+                  <div class="experience-card__title-and-company">
+                    <p class="experience-card__title">Content Creator</p>
+                    <p class="experience-card__company">Tiktok and Youtube</p>
+                  </div>
                 </div>
                 
                 <p class="experience-card__date-range">2023 - Present</p>
@@ -122,11 +130,13 @@
             </div>
             <div class="experience-card">
               <div class="experince-card__top-area">
-                <img class="experience-card__icon" src="images-and-icons/content-creation-icon.png" alt="experience-icon">
+                <div class="experince-card__img-title-container">
+                  <img class="experience-card__icon" src="images-and-icons/content-creation-icon.png" alt="experience-icon">
 
-                <div class="experience-card__title-and-company">
-                  <p class="experience-card__title">Content Creator</p>
-                  <p class="experience-card__company">Tiktok and Youtube</p>
+                  <div class="experience-card__title-and-company">
+                    <p class="experience-card__title">Content Creator</p>
+                    <p class="experience-card__company">Tiktok and Youtube</p>
+                  </div>
                 </div>
                 
                 <p class="experience-card__date-range">2023 - Present</p>
@@ -138,11 +148,13 @@
             </div>
             <div class="experience-card">
               <div class="experince-card__top-area">
-                <img class="experience-card__icon" src="images-and-icons/content-creation-icon.png" alt="experience-icon">
+                <div class="experince-card__img-title-container">
+                  <img class="experience-card__icon" src="images-and-icons/content-creation-icon.png" alt="experience-icon">
 
-                <div class="experience-card__title-and-company">
-                  <p class="experience-card__title">Content Creator</p>
-                  <p class="experience-card__company">Tiktok and Youtube</p>
+                  <div class="experience-card__title-and-company">
+                    <p class="experience-card__title">Content Creator</p>
+                    <p class="experience-card__company">Tiktok and Youtube</p>
+                  </div>
                 </div>
                 
                 <p class="experience-card__date-range">2023 - Present</p>
@@ -167,68 +179,104 @@
             <!-- projects list -->
             <div class="project-list">
               <a href="#" class="project-card">
-                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
-                <p class="project-card__title">Project Title 1</p>
-                <p class="project-card__about">Portfolio & Profile</p>
+                <img class="project-card__img" src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" >
 
-                <p class="project-card__arrow">
-                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
-                </p>
+                <div class="project-card__details">
+                  <div class="project-card__details--name-and-about">
+                    <p class="project-card__title">Project Title 1</p>
+                    <p class="project-card__about">Portfolio & Profile</p>
+                  </div>
+
+                  <div class="project-card__arrow">
+                    <i class="project-card__arrow--icon one bi bi-arrow-up-right"></i>
+                    <i class="project-card__arrow--icon two bi bi-arrow-up-right"></i>
+                  </div>
+                </div>
               </a>
 
               <a href="#" class="project-card">
-                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
-                <p class="project-card__title">Project Title 1</p>
-                <p class="project-card__about">Portfolio & Profile</p>
+                <img class="project-card__img" src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" >
 
-                <p class="project-card__arrow">
-                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
-                </p>
+                <div class="project-card__details">
+                  <div class="project-card__details--name-and-about">
+                    <p class="project-card__title">Project Title 1</p>
+                    <p class="project-card__about">Portfolio & Profile</p>
+                  </div>
+
+                  <div class="project-card__arrow">
+                    <i class="project-card__arrow--icon one bi bi-arrow-up-right"></i>
+                    <i class="project-card__arrow--icon two bi bi-arrow-up-right"></i>
+                  </div>
+                </div>
               </a>
 
               <a href="#" class="project-card">
-                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
-                <p class="project-card__title">Project Title 1</p>
-                <p class="project-card__about">Portfolio & Profile</p>
+                <img class="project-card__img" src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" >
 
-                <p class="project-card__arrow">
-                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
-                </p>
+                <div class="project-card__details">
+                  <div class="project-card__details--name-and-about">
+                    <p class="project-card__title">Project Title 1</p>
+                    <p class="project-card__about">Portfolio & Profile</p>
+                  </div>
+
+                  <div class="project-card__arrow">
+                    <i class="project-card__arrow--icon one bi bi-arrow-up-right"></i>
+                    <i class="project-card__arrow--icon two bi bi-arrow-up-right"></i>
+                  </div>
+                </div>
               </a>
 
               <a href="#" class="project-card">
-                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
-                <p class="project-card__title">Project Title 1</p>
-                <p class="project-card__about">Portfolio & Profile</p>
+                <img class="project-card__img" src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" >
 
-                <p class="project-card__arrow">
-                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
-                </p>
+                <div class="project-card__details">
+                  <div class="project-card__details--name-and-about">
+                    <p class="project-card__title">Project Title 1</p>
+                    <p class="project-card__about">Portfolio & Profile</p>
+                  </div>
+
+                  <div class="project-card__arrow">
+                    <i class="project-card__arrow--icon one bi bi-arrow-up-right"></i>
+                    <i class="project-card__arrow--icon two bi bi-arrow-up-right"></i>
+                  </div>
+                </div>
               </a>
             </div>
 
             <button class="projects-card-container__load-more-btn">Load More</button>
 
              <!-- more projects list -->
-            <div class="more-projects-list">
+            <div class="more-projects-list hide">
               <a href="#" class="project-card">
-                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
-                <p class="project-card__title">Project Title 1</p>
-                <p class="project-card__about">Portfolio & Profile</p>
+                <img class="project-card__img" src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" >
 
-                <p class="project-card__arrow">
-                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
-                </p>
+                <div class="project-card__details">
+                  <div class="project-card__details--name-and-about">
+                    <p class="project-card__title">Project Title 1</p>
+                    <p class="project-card__about">Portfolio & Profile</p>
+                  </div>
+
+                  <div class="project-card__arrow">
+                    <i class="project-card__arrow--icon one bi bi-arrow-up-right"></i>
+                    <i class="project-card__arrow--icon two bi bi-arrow-up-right"></i>
+                  </div>
+                </div>
               </a>
 
               <a href="#" class="project-card">
-                <img src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" class="project-card__img">
-                <p class="project-card__title">Project Title 1</p>
-                <p class="project-card__about">Portfolio & Profile</p>
+                <img class="project-card__img" src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" >
 
-                <p class="project-card__arrow">
-                  <i class="project-card__arrow--icon bi bi-arrow-up-right"></i>
-                </p>
+                <div class="project-card__details">
+                  <div class="project-card__details--name-and-about">
+                    <p class="project-card__title">Project Title 1</p>
+                    <p class="project-card__about">Portfolio & Profile</p>
+                  </div>
+
+                  <div class="project-card__arrow">
+                    <i class="project-card__arrow--icon one bi bi-arrow-up-right"></i>
+                    <i class="project-card__arrow--icon two bi bi-arrow-up-right"></i>
+                  </div>
+                </div>
               </a>
             </div>
           </div>
@@ -244,12 +292,13 @@
           <div class="education-card-list">
             <div class="education-card">
               <div class="education-card__top-area">
-                <h3 class="education-card__title">UI/UX Design Certification</h3>
-
-                <p class="education-card__institution">
-                  <span class="education-card__program">National University of Philippines,</span>
-                  <span class="education-card__context">Philippines</span>
-                </p>
+                <div class="education-card__title-and-institution">
+                  <h3 class="education-card__title">UI/UX Design Certification</h3>
+                  <p class="education-card__institution">
+                    <span class="education-card__program">National University of Philippines,</span>
+                    <span class="education-card__context">Philippines</span>
+                  </p>
+                </div>
 
                 <p class="education-card__date-range">2018-2019</p>
               </div>
@@ -263,12 +312,13 @@
 
             <div class="education-card">
               <div class="education-card__top-area">
-                <h3 class="education-card__title">UI/UX Design Certification</h3>
-
-                <p class="education-card__institution">
-                  <span class="education-card__program">National University of Philippines,</span>
-                  <span class="education-card__context">Philippines</span>
-                </p>
+                <div class="education-card__title-and-institution">
+                  <h3 class="education-card__title">UI/UX Design Certification</h3>
+                  <p class="education-card__institution">
+                    <span class="education-card__program">National University of Philippines,</span>
+                    <span class="education-card__context">Philippines</span>
+                  </p>
+                </div>
 
                 <p class="education-card__date-range">2018-2019</p>
               </div>
@@ -291,55 +341,35 @@
 
           <div class="tools-card-list">
             <div class="tool-card">
-              <img src="images-and-icons/html.png" alt="tool-icon">
+              <img class="tool-card__icon" src="images-and-icons/html.png" alt="tool-icon">
               <div class="tool-card__details">
                 <p class="tool-card__name">HTML</p>
                 <p class="tool-card__about">Website Structure Language</p>
               </div>
             </div>
-
             <div class="tool-card">
-              <img src="images-and-icons/html.png" alt="tool-icon">
+              <img class="tool-card__icon" src="images-and-icons/html.png" alt="tool-icon">
               <div class="tool-card__details">
                 <p class="tool-card__name">HTML</p>
                 <p class="tool-card__about">Website Structure Language</p>
               </div>
             </div>
-
             <div class="tool-card">
-              <img src="images-and-icons/html.png" alt="tool-icon">
+              <img class="tool-card__icon" src="images-and-icons/html.png" alt="tool-icon">
               <div class="tool-card__details">
                 <p class="tool-card__name">HTML</p>
                 <p class="tool-card__about">Website Structure Language</p>
               </div>
             </div>
-
             <div class="tool-card">
-              <img src="images-and-icons/html.png" alt="tool-icon">
+              <img class="tool-card__icon" src="images-and-icons/html.png" alt="tool-icon">
               <div class="tool-card__details">
                 <p class="tool-card__name">HTML</p>
                 <p class="tool-card__about">Website Structure Language</p>
               </div>
             </div>
-
             <div class="tool-card">
-              <img src="images-and-icons/html.png" alt="tool-icon">
-              <div class="tool-card__details">
-                <p class="tool-card__name">HTML</p>
-                <p class="tool-card__about">Website Structure Language</p>
-              </div>
-            </div>
-
-            <div class="tool-card">
-              <img src="images-and-icons/html.png" alt="tool-icon">
-              <div class="tool-card__details">
-                <p class="tool-card__name">HTML</p>
-                <p class="tool-card__about">Website Structure Language</p>
-              </div>
-            </div>
-
-            <div class="tool-card">
-              <img src="images-and-icons/html.png" alt="tool-icon">
+              <img class="tool-card__icon" src="images-and-icons/html.png" alt="tool-icon">
               <div class="tool-card__details">
                 <p class="tool-card__name">HTML</p>
                 <p class="tool-card__about">Website Structure Language</p>
@@ -359,22 +389,30 @@
             <div class="contact-card-list">
               <div class="contact-card">
                 <i class="contact-card-icon bi bi-telephone"></i>
-                <p class="contact-card__label">Contact No.</p>
-                <p class="contact-card__value">09852558351</p>
+                <div class="contact-card__details">
+                  <p class="contact-card__label">Contact No.</p>
+                  <p class="contact-card__value">09852558351</p>
+                </div>
               </div>
               <div class="contact-card">
                 <i class="contact-card-icon bi bi-telephone"></i>
-                <p class="contact-card__label">Email</p>
-                <p class="contact-card__value">meowish@gmail.com</p>
+                <div class="contact-card__details">
+                  <p class="contact-card__label">Email</p>
+                  <p class="contact-card__value">meowish@gmail.com</p>
+                </div>
+
               </div>
               <div class="contact-card">
                 <i class="contact-card-icon bi bi-telephone"></i>
-                <p class="contact-card__label">Address</p>
-                <p class="contact-card__value">Maligaya Boac Marinduque</p>
+                <div class="contact-card__details">
+                  <p class="contact-card__label">Address</p>
+                  <p class="contact-card__value">Maligaya Boac Marinduque</p>
+                </div>
+
               </div>
             </div>
 
-            <form d="email-form">
+            <form id="email-form">
               <input type="text" placeholder="Full Name" required>
               <input type="email" placeholder="Email" required>
               <textarea name="message" id="email-form" placeholder="Message"></textarea>
@@ -384,5 +422,7 @@
         </section>
       </div>
     </div>
+
+    <script type="module" src="scripts/main-page.js"></script>
   </body>
 </html>

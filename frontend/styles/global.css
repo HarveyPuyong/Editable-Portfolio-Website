@@ -4,38 +4,39 @@
   --box-bg: rgb(16, 16, 16);
   --box-border-clr: rgb(48, 48, 48);
   --text-color: white;
-  --text-color-2: rgb(194, 194, 194);
+  --text-color-2: rgb(190, 190, 190);
 
   --available-txt-size: 16px;
   --name-txt-size: clamp(24px, 7vw, 28px);
   --dlcb-and-contact-txt-size: 14px;
 
   --section-label-txt-size: clamp(18px, 5vw, 24px);
-  --greetings-and-adress-txt-size: clamp(30px, 30vw, 52px);
-  --skill-txt-size: 30px;
-  --about-me-txt-size: 16px;
+  --greetings-and-adress-txt-size: clamp(30px, 5vw, 52px);
+  --skill-txt-size: clamp(30px, 4.7vw, 48px);
+  --about-me-txt-size: 1rem;
 
   --achivement-number-txt: 30px;
-  --achivement-label-txt: 16px;
+  --achivement-label-txt: clamp(14px, 4vw, 16px);
 
-  --experience-title-txt: clamp(18px, 10vw, 20px);
-  --experience-company-txt: clamp(13px, 10vw, 14px);
+  --experience-title-txt: clamp(18px, 4vw, 20px);
+  --experience-company-txt: clamp(13px, 3vw, 14px);
   --experience-details-and-year-txt: 16px;
 
-  --project-title-txt: clamp(18px, 10vw, 24px);
-  --project-details-txt: clamp(13px, 10vw, 14px);
+  --project-title-txt: clamp(18px, 4.5vw, 24px);
+  --project-details-txt: clamp(13px, 3vw, 14px);
 
   --education-title-txt: clamp(18px, 10vw, 20px);
   --education-school-txt: clamp(13px, 10vw, 14px);
   --education-details-and-year-txt: 16px;
 
-  --tools-name-txt: clamp(18px, 10vw, 24px);
-  --tools-about-txt: clamp(13px, 10vw, 14px);
+  --tools-name-txt: clamp(18px, 2vw, 20px);
+  --tools-about-txt: clamp(13px, 2vw, 14px);
 
   --gets-in-touch-txt-size: clamp(24px, 20vw, 28px);
-  --contact-label-txt-size: clamp(13px, 10vw, 14px);
+  --contact-label-txt-size: clamp(13px, 2vw, 14px);
   --contact-value-txt-size: 16px;
   --contact-input-txt-size: 16px;
+  --form-btn-txt: clamp(13px, 2vw, 14px);
 }
 
 *{
@@ -77,22 +78,23 @@ body{
   width: min(var(--wrapper-max-width), 100% - var(--wrapper-padding));
   min-height: 100%;
   margin-inline: auto;
-  padding-top: 20px;
+  padding-top: 70px;
 }
 
 .edit-button{
+  position: absolute;
+  top: 20px;
+  right: 0;
   width: fit-content;
   display: block;
-  padding: 4px 22px;
-  margin-left: auto;
-  margin-bottom: 25px;
+  padding: 5px 23px;
   border-radius: 5px;
   border: none;
   background-color:var(--accent-color);
 }
 
 section{
-  margin-bottom: 80px;
+  margin-bottom: 85px;
 }
 
 .section-label{
@@ -100,7 +102,8 @@ section{
   gap: 12px;
   align-items: center;
   width: fit-content;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+  font-weight: 500;
 }
 
 .section-label--icon{
@@ -112,4 +115,12 @@ section{
 
 .section-label--txt{
   font-size: var(--section-label-txt-size);
+}
+
+
+@media(width >= 1200px){
+  .main-wrapper{
+    display: flex;
+    gap: 70px;
+  }
 }

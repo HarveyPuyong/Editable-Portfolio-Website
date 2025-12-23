@@ -11,7 +11,9 @@
 }
 
 .profile-card__image{
+  width: 100%;
   border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .profile-card__details{
@@ -159,6 +161,10 @@ img.profile-card__btn--icon{
     height: var(--size);
   }
 
+   .profile-card__details{
+    align-items: flex-start;
+  }
+  
   .work-availability{
     margin-inline: 0;
     width: fit-content;
@@ -175,5 +181,26 @@ img.profile-card__btn--icon{
   .profile-card__btn{
     width: fit-content;
     padding: 13px 17px;
+  }
+}
+
+@media(width >= 1200px){
+  .profile-card{
+    position: sticky;
+    top: 60px;
+    flex-direction: column;
+    width: 608px;
+    height: fit-content;
+  }
+
+  .profile-card__details{
+    align-items: center;
+  }
+
+  .profile-card__image{
+    --size: 320px;
+
+    width: var(--size);
+    height: var(--size);
   }
 }
