@@ -1,4 +1,9 @@
+import AnimationMainFunction from "./animation.js"
+
+
+// ================================
 // SHOW MORE PROJECTS
+// ================================
 const showMoreProjects = () => {
   const showMoreBTN = document.querySelector('.projects-card-container__load-more-btn');
   const moreProjectsContainer = document.querySelector('.more-projects-list');
@@ -8,11 +13,16 @@ const showMoreProjects = () => {
   showMoreBTN.addEventListener('click', () => {
     moreProjectsContainer.classList.remove('hide');
     showMoreBTN.classList.add('hide');
+    // initialize animations for newly revealed project cards
+    AnimationMainFunction();
+    if (window.ScrollTrigger && typeof ScrollTrigger.refresh === 'function') ScrollTrigger.refresh();
   });
 }
 
 
-// CHANGE SKILLS CONTENT
+// ================================
+// CHANGE SKILLS TEXT CONTENT
+// ================================
 const changeSkillsContent = () => {
   const displaySkills = document.querySelector('.about-section__skills');
   if (!displaySkills) return;
@@ -47,10 +57,13 @@ const changeSkillsContent = () => {
 }
 
 
+// ================================
 // MAIN PAGE FUNCTION
+// ================================
 function MainPageFunction() {
   showMoreProjects();
   changeSkillsContent();
+  AnimationMainFunction();
 } 
 
 MainPageFunction();

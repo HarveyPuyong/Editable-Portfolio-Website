@@ -14,16 +14,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
         
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/global.css">
-    <link rel="stylesheet" href="styles/profile-card.css">
-    <link rel="stylesheet" href="styles/about-section.css">
-    <link rel="stylesheet" href="styles/experience-section.css">
-    <link rel="stylesheet" href="styles/project-section.css">
-    <link rel="stylesheet" href="styles/education-section.css">
-    <link rel="stylesheet" href="styles/tools-section.css">
-    <link rel="stylesheet" href="styles/contact-section.css">
+    <link rel="stylesheet" href="styles/main-page-style/profile-card.css">
+    <link rel="stylesheet" href="styles/main-page-style/about-section.css">
+    <link rel="stylesheet" href="styles/main-page-style/experience-section.css">
+    <link rel="stylesheet" href="styles/main-page-style/project-section.css">
+    <link rel="stylesheet" href="styles/main-page-style/education-section.css">
+    <link rel="stylesheet" href="styles/main-page-style/tools-section.css">
+    <link rel="stylesheet" href="styles/main-page-style/contact-section.css">
 
     <title>Editable Portfolio Website</title>
   </head>
@@ -31,7 +35,9 @@
     <div class="main-wrapper">
       <button class="edit-button">Edit</button>
 
-      <!-- Profile Card -->
+      <!-- ================================ -->
+      <!-- PROFILE CARD -->
+      <!-- ================================ -->
       <div class="profile-card">
         <img class="profile-card__image" src="images-and-icons/meowish profile.jpeg" alt="profile-image">
 
@@ -72,7 +78,9 @@
       </div>
 
       <div class="sections-container">
-        <!-- About Section -->
+        <!-- ================================ -->
+        <!-- ABOUT SECTION -->
+        <!-- ================================ -->
         <section id="about-section">
           <h2 class="about-section__greetings">I'm John Harvey,</h2>
           <h3 class="about-section__skills">Web Developer</h3>
@@ -103,7 +111,9 @@
           </div>
         </section>
 
-        <!-- Experience Section -->
+        <!-- ================================ -->
+        <!-- EXPERIENCE SECTION -->
+        <!-- ================================ -->
         <section id="experience-section">
           <div class="section-label">
             <img class="section-label--icon" src="images-and-icons/bag-icon.png" alt="experience-icon"></img>
@@ -168,7 +178,9 @@
           </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- ================================ -->
+        <!-- PROJECTS SECTION -->
+        <!-- ================================ -->
         <section id="projects-section">
           <div class="section-label">
             <img class="section-label--icon" src="images-and-icons/projects-icon.png" alt="experience-icon"></img>
@@ -283,7 +295,9 @@
           </div>
         </section>
 
-        <!-- Education Section -->
+        <!-- ================================ -->
+        <!-- EDUCATION SECTION -->
+        <!-- ================================ -->
         <section id="education-section">
           <div class="section-label">
             <img class="section-label--icon" src="images-and-icons/graduation-cap.png" alt="experience-icon"></img>
@@ -333,7 +347,9 @@
           </div>
         </section>
 
-        <!-- Tools Section -->
+        <!-- ================================ -->
+        <!-- TOOLS SECTION -->
+        <!-- ================================ -->
         <section id="tools-section">
           <div class="section-label">
             <img class="section-label--icon" src="images-and-icons/tools-icon.png" alt="experience-icon"></img>
@@ -379,7 +395,9 @@
           </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- ================================ -->
+        <!-- CONTACT SECTION -->
+        <!-- ================================ -->
         <section id="contact-section">
           <div class="section-label">
             <img class="section-label--icon" src="images-and-icons/contact-icon.png" alt="experience-icon"></img>
@@ -416,7 +434,7 @@
             <form id="email-form">
               <input type="text" placeholder="Full Name" required>
               <input type="email" placeholder="Email" required>
-              <textarea name="message" id="email-form" placeholder="Message"></textarea>
+              <textarea name="message" placeholder="Message"></textarea>
               <button id="email-form__submit-btn" type="submit">Send Message</button>
             </form>
           </div>
