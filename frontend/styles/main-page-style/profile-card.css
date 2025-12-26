@@ -9,7 +9,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 40px;
   opacity: 0;
-  transform: translateY(70px);
+  transform: translateY(60px);
   animation: profile-card-animation 1.2s forwards;
   animation-delay: 0.6s;
 }
@@ -202,6 +202,7 @@ img.profile-card__btn--icon{
     top: 70px;
     flex-direction: column;
     width: 608px;
+    max-width: 608px;
     height: fit-content;
   }
 
