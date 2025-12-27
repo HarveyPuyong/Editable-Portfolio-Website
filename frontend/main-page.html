@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="styles/main-page-style/education-section.css">
     <link rel="stylesheet" href="styles/main-page-style/tools-section.css">
     <link rel="stylesheet" href="styles/main-page-style/contact-section.css">
+    <link rel="stylesheet" href="styles/main-page-style/form.css">
 
     <title>Editable Portfolio Website</title>
   </head>
@@ -65,10 +66,11 @@
           </div>
 
           <div class="profile-card__buttons-container">
-            <div class="profile-card__btn download-cv-btn">
+            <a href="images-and-icons/contact-icon.png" download class="profile-card__btn download-cv-btn">
               <i class="profile-card__btn--icon fas fa-download"></i>
               <p class="profile-card__btn--label">Download CV</p>
-            </div>
+            </a>
+            
             <a href="#contact-section" class="profile-card__btn contact-me-btn">
               <img class="profile-card__btn--icon" src="images-and-icons/contact-icon.png" alt="contact-icon">
               <p class="profile-card__btn--label">Contact Me</p>
@@ -432,15 +434,87 @@
             </div>
 
             <form id="email-form">
-              <input type="text" placeholder="Full Name" required>
-              <input type="email" placeholder="Email" required>
-              <textarea name="message" placeholder="Message"></textarea>
+              <input class="email-form__input" type="text" placeholder="Full Name" required>
+              <input class="email-form__input" type="email" placeholder="Email" required>
+              <textarea class="email-form__input" name="message" placeholder="Message"></textarea>
               <button id="email-form__submit-btn" type="submit">Send Message</button>
             </form>
           </div>
         </section>
       </div>
     </div>
+
+    <!-- ===== Blur Background===== -->
+    <div class="blur-bg hide"></div>
+
+    <!-- ===== LOGIN FORM ===== -->
+    <form class="login-form auth-form hide" id="login-form">
+      <i class="form__cancel-btn fa-solid fa-xmark"></i>
+      <h1 class="login-form__heading form-heading">Login to Edit</h1>
+
+      <div class="login-form__email">
+        <label class="login-form__input-label form__input-label">Email</label>
+        <input type="email" id="email-input" required>
+      </div>
+      <div class="login-form__password">
+        <label class="login-form__input-label form__input-label">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password-input" required>
+            <i class="toggle-password-icon fa-solid fa-eye"></i>
+          </div>
+      </div>
+      <button id="login-form__submit-btn" type="submit">Submit</button>
+      
+      <p class="login-form__forgot-password"> <u>Forgot Password?</u></p>
+    </form>
+
+    <!-- ===== OTP FORM ===== -->
+    <form class="otp-form auth-form hide" id="otp-form">
+      <i class="form__cancel-btn fa-solid fa-xmark"></i>
+      <h1 class="otp-form__heading form-heading">Please enter the OTP we sent to your email</h1>
+
+      <div class="otp-form__inputs">
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-form__input" required>
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-form__input" required>
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-form__input" required>
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-form__input" required>
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-form__input" required>
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-form__input" required>
+      </div>
+
+      <button type="submit" class="otp-form__submit-btn">Submit</button>
+
+      <p class="otp-form__resend">
+        Didn’t get the code? <u class="otp-form__resend-otp">Resend OTP</u>
+      </p>
+    </form>
+
+    <!-- ===== RESET PASSWORD FORM ===== -->
+    <form class="reset-password-form auth-form hide" id="reset-password-form">
+      <h1 class="reset-password-form__heading form-heading">Reset Password</h1>
+
+      <div class="reset-password-form__new-password">
+        <label class="reset-password-form__input-label form__input-label">New Password</label>
+        <div class="password-wrapper">
+            <input type="password" id="new-password-input" required>
+            <i class="toggle-password-icon fa-solid fa-eye"></i>
+        </div>
+      </div>
+
+      <div class="reset-password-form__re-enter-password">
+        <label class="reset-password-form__input-label form__input-label">New Password</label>
+        <div class="password-wrapper">
+          <input type="password" id="re-enter-password" required>
+          <i class="toggle-password-icon fa-solid fa-eye"></i>
+        </div>
+      </div>
+
+      <button id="reset-password-form__submit-btn">Submit</button>
+      <p class="reset-password-form__back-to-login-form">
+        <i class="fa fa-long-arrow-left"></i> 
+        Back to login?
+      </p>
+    </form>
 
     <script type="module" src="scripts/main-page.js"></script>
   </body>

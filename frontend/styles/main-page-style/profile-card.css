@@ -156,7 +156,7 @@ img.profile-card__btn--icon{
 }
 
 .profile-card__btn--label{
-  font-size: var(--dlcb-and-contact-txt-size);
+  font-size: var(--dlcv-and-contact-txt-size);
   font-weight: 450;
 }
 
@@ -204,6 +204,13 @@ img.profile-card__btn--icon{
     width: 608px;
     max-width: 608px;
     height: fit-content;
+  }
+
+  @keyframes profile-card-animation{
+    to{
+      opacity: 1;
+      transform: translateY(-30px);
+    }
   }
 
   .profile-card__details{

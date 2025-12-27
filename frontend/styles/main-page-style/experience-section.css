@@ -1,3 +1,7 @@
+#experience-section {
+  padding-top: 10px;
+}
+
 .experience-cards-list{
   display: flex;
   flex-direction: column;

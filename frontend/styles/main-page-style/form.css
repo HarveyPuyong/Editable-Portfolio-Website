@@ -1,0 +1,195 @@
+.auth-form{
+  --txt-color: white;
+
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(8, 158, 85);
+  border-radius: 5px;
+  width: 90%;
+  max-width: 550px;
+  padding: 20px 5%;
+  z-index: 100;
+  opacity: 0;
+  animation: fade-in-form 0.15s forwards ease-in-out;
+}
+
+@keyframes fade-in-form{
+  100%{
+    top: 50%;
+    opacity: 1;
+  }
+}
+
+.auth-form.hide{
+  display: none;
+}
+
+.form__cancel-btn{
+  position: absolute;
+  right: 4%;
+  top: 8px;
+  font-size: clamp(2rem, 5vw, 2.3rem);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.form-heading{
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--txt-color);
+  font-size: clamp(2rem, 7vw, 2.4rem);
+  margin-top: 40px;
+}
+
+.form__input-label{
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  /* opacity: 0.8; */
+}
+
+.auth-form input{
+  position: relative;
+  width: 100%;
+  /* border: 2px solid white; */
+  border-radius: 2px;
+  z-index: 10;
+  pointer-events: auto;
+  color: rgba(255, 255, 255, 0.683);
+  font-size: 1.05rem;
+  padding: 10px 10px;
+}
+
+.auth-form button{
+  width: 100%;
+  padding: 13px;
+  font-weight: 600;
+  color: var(--accent-color);
+  background-color:  var(--bg-color);
+  border: none;
+  border-radius: 4px;
+  font-size: clamp(1.1rem, 4vw, 1.2rem);
+  margin-top: 30px;
+  margin-bottom: 7px;
+}
+
+.login-form__forgot-password,
+.otp-form__resend,
+.reset-password-form__back-to-login-form{
+  color: var(--bg-color);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 4px;
+}
+
+
+/* Login Form */
+.login-form__password,
+.login-form__email{
+  margin-bottom: 12px;
+  color: var(--txt-color);
+  pointer-events: none;
+}
+
+/* Reset Password Form */
+.reset-password-form{
+  background-color: #0164b5;
+}
+
+.reset-password-form .form-heading{
+  margin-top: 20px;
+}
+
+.reset-password-form__new-password,
+.reset-password-form__re-enter-password{
+  margin-bottom: 16px;
+  color: var(--txt-color);
+  pointer-events: none;
+}
+
+.reset-password-form button{
+  color: #1293fc;
+}
+
+.reset-password-form__back-to-login-form{
+  text-align: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.reset-password-form__back-to-login-form i{
+  font-size: 0.8rem;
+}
+
+/* OTP Form */
+.otp-form .form-heading{
+  margin-bottom: 25px;
+  font-size: clamp(1.8rem, 5vw, 2.3rem);
+}
+
+.otp-form__sub-heading{
+  margin-bottom: 50px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.71);
+  font-weight: normal;
+}
+
+.otp-form__inputs{
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+.otp-form__inputs input{
+  text-align: center;
+  height: 50px;
+  font-size: 1.1rem;
+}
+
+.otp-form__resend{
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 4px;
+  color: var(--bg-color);
+}
+
+.otp-form__resend-otp{
+  cursor: pointer;
+  z-index: 10;
+}
+
+.password-wrapper{
+  position: relative;
+}
+
+.toggle-password-icon{
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  z-index: 10000;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* .password-wrapper-slash{
+  position: absolute;
+  height: 2.5px;
+  width: 20px;
+  rotate: 45deg;
+  right: 10px;
+  top: 46%;
+  transform: translateY(-50%);
+  background-color: black;
+  z-index: 10000;
+}
+
+.password-wrapper-slash.hide{
+  display: none;
+} */

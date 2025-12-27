@@ -8,7 +8,7 @@
 
   --available-txt-size: 16px;
   --name-txt-size: clamp(24px, 7vw, 28px);
-  --dlcb-and-contact-txt-size: 14px;
+  --dlcv-and-contact-txt-size: clamp(13px, 3.5vw, 14px);
 
   --section-label-txt-size: clamp(18px, 5vw, 24px);
   --greetings-and-adress-txt-size: clamp(30px, 5vw, 52px);
@@ -66,13 +66,26 @@ button{
 html{
   height: fit-content;
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
 }
 body{
   font-family: "Space Grotesk", "Space Grotesk Placeholder", sans-serif;
   background-color: var(--bg-color);
   transition: 0.3s;
   color: var(--text-color);
+}
+
+.blur-bg{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 10;
+}
+
+.blur-bg.hide{
+  display: none;
 }
 
 .main-wrapper{

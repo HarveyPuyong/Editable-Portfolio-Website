@@ -12,9 +12,8 @@ const TARGET_SELECTORS = [
   '.education-card',
   '.tool-card',
   '.contact-card',
-  'input',
-  'textarea',
-  'button'
+  '.email-form__input',
+  '#email-form__submit-btn'
 ];
 
 const scrollElementsFadeIn = () => {
@@ -26,11 +25,11 @@ const scrollElementsFadeIn = () => {
       y: 70,
       scrollTrigger: {
         trigger: el,
-        start: "top 93%",
+        start: "top 92.6%",
         toggleActions: "play none none reset",
       },
       opacity: 0,
-      duration: 1,
+      duration: 0.95,
       ease: "power2.out"
     });
     // mark element as initialized so we don't attach another animation later

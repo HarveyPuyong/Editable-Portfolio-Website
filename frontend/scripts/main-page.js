@@ -57,12 +57,111 @@ const changeSkillsContent = () => {
 }
 
 
+/* ==========================================================================
+   TOGGLE LOGIN FORM
+   ========================================================================== */
+const toggleLoginForm = () => {
+    const loginForm = document.querySelector('#login-form');
+    const blurBG = document.querySelector('.blur-bg');
+
+    document.querySelector('.edit-button').addEventListener('click', () => {
+      loginForm.classList.remove('hide');
+      blurBG.classList.remove('hide');
+    });
+
+    document.querySelector('#login-form .form__cancel-btn').addEventListener('click', () => {
+      loginForm.classList.add('hide');
+      blurBG.classList.add('hide');
+    });
+}
+
+
+/* ==========================================================================
+   TOGGLE OTP FORM
+   ========================================================================== */
+const toggleOTPForm = () => {
+  const loginForm = document.querySelector('#login-form');
+  const OTPForm = document.querySelector('#otp-form');
+
+  document.querySelector('.login-form__forgot-password').
+    addEventListener('click', () => {
+      loginForm.classList.add('hide');
+      OTPForm.classList.remove('hide');
+    });
+
+  document.querySelector('#otp-form .form__cancel-btn').
+    addEventListener('click', () => {
+      loginForm.classList.remove('hide');
+      OTPForm.classList.add('hide');
+    });
+}
+
+
+/* ==========================================================================
+   TOGGLE PASSWORD VISIBILITY
+   ========================================================================== */
+const togglePasswordVisibility = () => {
+  document.querySelectorAll(".password-wrapper").forEach(wrapper => {
+    const passwordInput = wrapper.querySelector("input[type='password'], input[type='text']");
+    const eyeIcon = wrapper.querySelector(".toggle-password-icon");
+
+    if (!passwordInput || !eyeIcon) return; 
+
+    eyeIcon.addEventListener("click", () => {
+      const isHidden = passwordInput.type === "password";
+
+      // Toggle visibility
+      passwordInput.type = isHidden ? "text" : "password";
+
+      // Toggle icons
+      eyeIcon.classList.toggle("fa-eye");
+      eyeIcon.classList.toggle("fa-eye-slash");
+    });
+  });
+};
+
+
+// ===============================
+// OTP AUTO NEXT/PREV INPUTS
+// ===============================
+const otpAutoNextPrevInput = () => {
+  const otpForm = document.querySelector('#otp-form');
+  const otpInputs = document.querySelectorAll('.otp-form__input');
+
+  otpInputs.forEach((input, index) => {
+    input.addEventListener('input', e => {
+      const value = e.target.value;
+      if (/^\d$/.test(value)) {
+        e.target.value = value;
+        if (index < otpInputs.length - 1) otpInputs[index + 1].focus();
+      } else {
+        e.target.value = '';
+      }
+
+      // Auto-submit if all fields are filled
+      const allFilled = Array.from(otpInputs).every(inp => inp.value !== '');
+      if (allFilled) otpForm.requestSubmit();
+    });
+
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Backspace' && !input.value && index > 0) {
+        otpInputs[index - 1].focus();
+      }
+    });
+  });
+}
+
+
 // ================================
 // MAIN PAGE FUNCTION
 // ================================
 function MainPageFunction() {
   showMoreProjects();
   changeSkillsContent();
+  toggleLoginForm();
+  toggleOTPForm();
+  togglePasswordVisibility();
+  otpAutoNextPrevInput();
   AnimationMainFunction();
 } 
 
