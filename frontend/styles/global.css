@@ -99,7 +99,8 @@ body{
   padding-top: 70px;
 }
 
-.edit-button{
+.button-enable-edit,
+.save-btn{
   position: absolute;
   top: 20px;
   right: 0;
@@ -113,6 +114,17 @@ body{
   opacity: 0;
   animation: edit-btn-fade-in 1s forwards;
   animation-delay: 1.4s;
+}
+
+.main-wrapper.edit-mode .save-btn,
+.main-wrapper.edit-mode .button-enable-edit{
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+.button-enable-edit.hide,
+.save-btn.hide{
+  display: none;
 }
 
 @keyframes edit-btn-fade-in{

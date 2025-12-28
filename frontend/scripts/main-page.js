@@ -64,7 +64,7 @@ const toggleLoginForm = () => {
     const loginForm = document.querySelector('#login-form');
     const blurBG = document.querySelector('.blur-bg');
 
-    document.querySelector('.edit-button').addEventListener('click', () => {
+    document.querySelector('.button-enable-edit').addEventListener('click', () => {
       loginForm.classList.remove('hide');
       blurBG.classList.remove('hide');
     });
@@ -152,17 +152,65 @@ const otpAutoNextPrevInput = () => {
 }
 
 
+// ===============================
+// SWITCH TO EDIT MDOE
+// ===============================
+const switchToEditMode = () => {
+  const saveBtn = document.querySelector(".save-btn");
+  const editBtn = document.querySelector(".button-enable-edit");
+  const wrapper = document.querySelector(".main-wrapper");
+
+  editBtn.addEventListener("click", () => {
+    if (wrapper.tagName && wrapper.tagName.toLowerCase() === 'form') return;
+
+    // create a form and copy attributes
+    const form = document.createElement('form');
+    form.id = 'edit-content-form';
+
+    for (const attr of Array.from(wrapper.attributes)) {
+      form.setAttribute(attr.name, attr.value);
+    }
+
+    // move children into the new form
+    while (wrapper.firstChild) form.appendChild(wrapper.firstChild);
+    
+    // replace in DOM
+    wrapper.parentNode.replaceChild(form, wrapper);
+
+    form.classList.remove('view-mode');
+    form.classList.add('edit-mode');
+
+    editBtn.classList.add('hide');
+    saveBtn.classList.remove('hide');
+
+    document.dispatchEvent(new Event("edit-mode"));
+  });
+}
+
+
+// document.addEventListener('edit-mode', () => {
+//   const editForm = document.querySelector('#edit-content-form');
+
+//   editForm.addEventListener('submit', (e) => {
+//     e.preventDefault();
+
+//     window.location.reload();
+//   })
+// });
+
+
 // ================================
 // MAIN PAGE FUNCTION
 // ================================
 function MainPageFunction() {
   showMoreProjects();
   changeSkillsContent();
-  toggleLoginForm();
+  // toggleLoginForm();
   toggleOTPForm();
   togglePasswordVisibility();
   otpAutoNextPrevInput();
   AnimationMainFunction();
+  switchToEditMode();
 } 
 
 MainPageFunction();
