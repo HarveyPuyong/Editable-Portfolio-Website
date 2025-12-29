@@ -188,15 +188,15 @@ const switchToEditMode = () => {
 }
 
 
-// document.addEventListener('edit-mode', () => {
-//   const editForm = document.querySelector('#edit-content-form');
+document.addEventListener('edit-mode', () => {
+  const editForm = document.querySelector('#edit-content-form');
 
-//   editForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
+  editForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-//     window.location.reload();
-//   })
-// });
+    window.location.reload();
+  })
+});
 
 
 // ================================

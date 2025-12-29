@@ -14,13 +14,6 @@
   animation-delay: 0.6s;
 }
 
-.main-wrapper.edit-mode .profile-card,
-.main-wrapper.edit-mode .profile-card {
-  animation: none !important;
-  transform: none !important;
-  opacity: 1 !important;
-}
-
 @keyframes profile-card-animation{
   to{
     opacity: 1;
@@ -28,9 +21,17 @@
   }
 }
 
+.profile-card__img-container{
+  position: relative;
+}
+
+.view-mode .profile-card__img-container--input-icon{
+  display: none;
+}
+
 .profile-card__image{
   width: 100%;
-  border-radius: inherit;
+  border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -38,6 +39,10 @@
   display: flex;
   flex-direction: column;
   gap: 18px
+}
+
+.view-mode #select-work-availability{
+  display: none;
 }
 
 .work-availability{
@@ -96,13 +101,22 @@
   }
 }
 
-
 .profile-card__name{
   font-size: var(--name-txt-size);
   text-align: center;
   font-weight: 600;
   letter-spacing: -.04em;
   line-height: 1.4em;
+}
+
+.view-mode .profile-card__name{
+  pointer-events: none;
+  border: none;
+  padding: 0;
+}
+
+.view-mode .social-list-inputs{
+  display: none;
 }
 
 .profile-card__social-list{
@@ -145,6 +159,10 @@
   width: 100%;
 }
 
+.view-mode .upload-cv-btn{
+  display: none
+}
+
 .profile-card__btn.download-cv-btn{
   background-color: rgb(31, 31, 31);
   color: var(--text-color-2);
@@ -165,6 +183,91 @@ img.profile-card__btn--icon{
 .profile-card__btn--label{
   font-size: var(--dlcv-and-contact-txt-size);
   font-weight: 450;
+}
+
+
+/* ================================
+   EDIT MODE
+  ================================ */
+
+.main-wrapper.edit-mode .profile-card,
+.main-wrapper.edit-mode .profile-card {
+  animation: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+  padding-top: 27px;
+}
+
+.edit-mode .profile-card__img-container--input-icon{
+  position: absolute;
+  display: inline-block;
+  margin-left: auto;
+  top: -17px;
+  right: 0;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.edit-mode .work-availability{
+  display: none;
+}
+
+.edit-mode #select-work-availability{
+  background-color: var(--box-bg);
+  border: 1px solid var(--box-border-clr);
+  padding: 10px 6px;
+  /* color: var(--text-color); */
+  text-align: center;
+  border-radius: 5px;
+  background-color: var(--accent-color);
+  font-weight: 500;
+
+  appearance: none; 
+  -webkit-appearance: none; 
+  -moz-appearance: none; 
+
+  /* Custom dropdown icon */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23000000" d="M7 10l5 5 5-5H7z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 3px center;
+  background-size: 32px;
+}
+
+.edit-mode #select-work-availability:focus{
+  outline: none;
+  border: none;
+}
+
+.edit-mode .profile-card__name{
+  pointer-events: auto;
+  border: 1px solid var(--box-border-clr);
+  padding: 5px 10px;
+}
+
+.edit-mode .social-list-inputs{
+  display: grid;
+  gap: 10px
+}
+
+.edit-mode .profile-card__social-list{
+  display: none
+}
+
+.edit-mode .download-cv-btn{
+  display: none;
+}
+
+.edit-mode .upload-cv-btn{
+  position: relative;
+  background-color: rgb(31, 31, 31);
+  color: var(--text-color-2);
+  cursor: pointer;
+}
+
+.edit-mode .profile-card__upload-cv-btn--input-icon{
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 
@@ -193,6 +296,10 @@ img.profile-card__btn--icon{
     text-align: left;
   }
 
+  .edit-mode .profile-card__name{
+    text-align: left;
+  }
+
   .profile-card__social-list{
     justify-content: left;
   }
@@ -200,6 +307,18 @@ img.profile-card__btn--icon{
   .profile-card__btn{
     width: fit-content;
     padding: 13px 17px;
+  }
+
+  .edit-mode #select-work-availability{
+    padding: 10px 25px;
+    padding-left: 12px;
+    background-position: right -3px center;
+  }
+}
+
+@media(width >= 750px){
+  .edit-mode .social-list-inputs{
+    grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -216,7 +335,7 @@ img.profile-card__btn--icon{
   @keyframes profile-card-animation{
     to{
       opacity: 1;
-      transform: translateY(-30px);
+      transform: translateY(-20px);
     }
   }
 
@@ -229,5 +348,30 @@ img.profile-card__btn--icon{
 
     width: var(--size);
     height: var(--size);
+  }
+
+  .edit-mode .profile-card{
+    top: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 620px;
+    width: 660px;
+    scrollbar-width: thin;
+  }
+
+  .edit-mode .profile-card__image{
+    --size: clamp(290px, 22vw, 320px);
+
+    width: var(--size);
+    height: var(--size);
+  }
+
+  .edit-mode .profile-card__name{
+    text-align: center;
+  }
+
+  .edit-mode .social-list-inputs{
+    grid-template-columns: 1fr;
+    width: 100%;
   }
 }

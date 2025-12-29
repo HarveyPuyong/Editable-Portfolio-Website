@@ -42,15 +42,36 @@
       <!-- PROFILE CARD -->
       <!-- ================================ -->
       <div class="profile-card">
-        <img class="profile-card__image" src="images-and-icons/meowish profile.jpeg" alt="profile-image">
+        <div class="profile-card__img-container">
+          <input type="file" id="profileImageInput" accept="image/*" hidden>
+          <label for="profileImageInput" class="profile-card__img-container--input-icon" title="Upload-Image">
+            <i class="fa-solid fa-camera"></i>
+          </label>
 
+          <img class="profile-card__image" src="images-and-icons/meowish profile.jpeg" alt="profile-image">
+        </div>
+        
         <div class="profile-card__details">
+          <select name="select-work-availability" id="select-work-availability">
+            <option value="">Select Work Availabilty</option>
+            <option value="available">Available for work</option>
+            <option value="unavailable">Unavailable for work</option>
+          </select>
+
           <div class="work-availability">
             <span class="work-availability__dot-status active"></span>
             <p class="work-availability__label">Available for work</p>
           </div>
 
-          <p class="profile-card__name">John Harvey</p>
+          <input class="profile-card__name" value="John Harvey" />
+          <!-- <p class="profile-card__name">John Harvey</p> -->
+
+          <div class="social-list-inputs">
+            <input class="instagram-input-link" type="text" placeholder="Enter instagram link">
+            <input class="tiktok-input-link" type="text" placeholder="Enter tiktok link">
+            <input class="youtube-input-link" type="text" placeholder="Enter youtube link">
+            <input class="facebook-input-link" type="text" placeholder="Enter facebook link">
+          </div>
 
           <div class="profile-card__social-list">
             <a href="#" class="profile-card__social-list--img">
@@ -68,6 +89,13 @@
           </div>
 
           <div class="profile-card__buttons-container">
+              <input id="CV-upload" type="file" type="file" accept=".pdf,.doc,.docx" hidden>
+              <label for="CV-upload" class="profile-card__btn upload-cv-btn" title="Upload-CV">
+                <i class="fa-solid fa-upload"></i>
+                <span class="profile-card__btn--label">Upload CV</span>
+              </label>
+              
+            
             <a href="images-and-icons/contact-icon.png" download class="profile-card__btn download-cv-btn">
               <i class="profile-card__btn--icon fas fa-download"></i>
               <p class="profile-card__btn--label">Download CV</p>

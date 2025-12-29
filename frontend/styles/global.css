@@ -162,5 +162,6 @@ section{
   .main-wrapper{
     display: flex;
     gap: 70px;
+    padding-top: 50px;
   }
 }
