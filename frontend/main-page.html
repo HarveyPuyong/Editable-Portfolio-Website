@@ -63,8 +63,8 @@
             <p class="work-availability__label">Available for work</p>
           </div>
 
-          <input class="profile-card__name" value="John Harvey" />
-          <!-- <p class="profile-card__name">John Harvey</p> -->
+          <div class="profile-card__name editable-text" data-target="name-input"> John Harvey </div>
+          <input type="hidden" name="name-input" id="name-input">
 
           <div class="social-list-inputs">
             <input class="instagram-input-link" type="text" placeholder="Enter instagram link">
@@ -95,7 +95,6 @@
                 <span class="profile-card__btn--label">Upload CV</span>
               </label>
               
-            
             <a href="images-and-icons/contact-icon.png" download class="profile-card__btn download-cv-btn">
               <i class="profile-card__btn--icon fas fa-download"></i>
               <p class="profile-card__btn--label">Download CV</p>
@@ -116,30 +115,82 @@
         <section id="about-section">
           <h2 class="about-section__greetings">I'm John Harvey,</h2>
           <h3 class="about-section__skills">Web Developer</h3>
-          <h2 class="about-section__adress">From Philippines, Marinduque</h2>
-          <span></span>
 
-          <p class="about-section__about-me">
+          <!-- skill input list -->
+          <div class="about-section__skills-inputs-list">
+            <div class="about-section__skill-input">
+              <input type="text" value="Enter your skill" placeholder="Enter your skill">
+              <button class="about-section__skill-input--delete-btn delete-button" type="button" aria-label="Delete">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div class="about-section__skill-input">
+              <input type="text" value="Enter your skill" placeholder="Enter your skill">
+              <button class="about-section__skill-input--delete-btn delete-button" type="button" aria-label="Delete">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div class="about-section__skill-input">
+              <input type="text" value="Enter your skill" placeholder="Enter your skill">
+              <button class="about-section__skill-input--delete-btn delete-button" type="button" aria-label="Delete">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <button class="about-section__add-skill-btn add-content-btn" type="button">Add Skill</button>
+          </div>
+
+          <!-- adress input -->
+          <div class="about-section__adress">
+            <span>From</span> 
+            <p class="editable-text about-section__adress-input" data-target="adress-input">Philippines, Marinduque</p>
+            <input type="hidden" name="adress-input" id="adress-input">
+          </div>
+
+          <!-- about me input -->
+          <div class="editable-text about-section__about-me" data-target="about-input">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae nesciunt iure consectetur odit ut, necessitatibus exercitationem sint unde nostrum beatae eos voluptates mollitia cum eum voluptatum earum ducimus laudantium aut.
-          </p>
+          </div>
 
+          <input type="hidden" name="about-input" id="about-input">
+
+          <!-- achievement list -->
           <div class="achievements-list">
             <div class="achievements-list__achievement">
-              <h2 class="achivements-list__achievement--number">30<span>+</span></h2>
-              <p class="achivements-list__achivement--label">Completed Projects</p>
+              <button class="achievements-list__achievement--delete-btn delete-button" type="button" aria-label="Delete">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+
+              <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">30<span>+</span></div>
+              <input type="hidden" name="achievement-number-input" id="achievement-number-input">
+
+              <div class="editable-text achivements-list__achivement--label" data-target="achievement-label-input">Completed Projects</div>
+              <input type="hidden" name="achievement-label-input" id="achievement-label-input">
             </div>
             <div class="achievements-list__achievement">
-              <h2 class="achivements-list__achievement--number">8<span>+</span></h2>
-              <p class="achivements-list__achivement--label">Years of Experience</p>
+              <button class="achievements-list__achievement--delete-btn delete-button" type="button" aria-label="Delete">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+
+              <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">30<span>+</span></div>
+              <input type="hidden" name="achievement-number-input" id="achievement-number-input">
+
+              <div class="editable-text achivements-list__achivement--label" data-target="achievement-label-input">Completed Projects</div>
+              <input type="hidden" name="achievement-label-input" id="achievement-label-input">
             </div>
             <div class="achievements-list__achievement">
-              <h2 class="achivements-list__achievement--number">36<span>+</span></h2>
-              <p class="achivements-list__achivement--label">Happy Clients</p>
+              <button class="achievements-list__achievement--delete-btn delete-button" type="button" aria-label="Delete">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+
+              <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">30<span>+</span></div>
+              <input type="hidden" name="achievement-number-input" id="achievement-number-input">
+
+              <div class="editable-text achivements-list__achivement--label" data-target="achievement-label-input">Completed Projects</div>
+              <input type="hidden" name="achievement-label-input" id="achievement-label-input">
             </div>
-            <div class="achievements-list__achievement">
-              <h2 class="achivements-list__achievement--number">30<span>+</span></h2>
-              <p class="achivements-list__achivement--label">Awards Recieved</p>
-            </div>
+            
+            <button class="achievements-list__add-btn add-content-btn" type="button">Add Achievement</button>
           </div>
         </section>
 

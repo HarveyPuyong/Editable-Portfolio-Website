@@ -99,6 +99,10 @@ body{
   padding-top: 70px;
 }
 
+.sections-container{
+  max-width: fit-content;
+}
+
 .button-enable-edit,
 .save-btn{
   position: absolute;
@@ -116,6 +120,12 @@ body{
   animation-delay: 1.4s;
 }
 
+@keyframes edit-btn-fade-in{
+  to{
+    opacity: 1;
+  }
+}
+
 .main-wrapper.edit-mode .save-btn,
 .main-wrapper.edit-mode .button-enable-edit{
   animation: none !important;
@@ -127,11 +137,10 @@ body{
   display: none;
 }
 
-@keyframes edit-btn-fade-in{
-  to{
-    opacity: 1;
-  }
-}
+/* .view-mode input:not(.email-form__input),
+.view-mode textarea:not(.email-form__input){
+  pointer-events: none;
+} */
 
 section{
   margin-bottom: 85px;
@@ -157,6 +166,34 @@ section{
   font-size: var(--section-label-txt-size);
 }
 
+.editable-text{
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.edit-mode .editable-text{
+  border: 1px solid var(--box-border-clr);
+  border-radius: 7px;
+  padding: 3px 10px;
+}
+
+.edit-mode .editable-text:focus{
+  border: 1px solid var(--accent-color);
+  outline: 1px solid var(--accent-color);
+}
+
+.delete-button{
+  cursor: pointer;
+  color: rgba(255, 0, 0, 0.702);
+}
+
+.add-content-btn{
+  background-color: var(--accent-color);
+  font-weight: 600;
+  border: none;
+}
 
 @media(width >= 1200px){
   .main-wrapper{

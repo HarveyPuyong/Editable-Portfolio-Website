@@ -11,6 +11,18 @@
   margin: 3px 0;
 }
 
+.view-mode .about-section__skills-inputs-list{
+  display: none;
+}
+
+.view-mode .about-section__skill-input--delete-btn{
+  display: none;
+}
+
+.view-mode .about-section__add-skill-btn{
+  display: none;
+}
+
 /* Typing cursor */
 .about-section__skills::after{
   content: "|";
@@ -31,11 +43,22 @@
   margin-bottom: 20px;
 }
 
+.about-section__adress .editable-text{
+  max-width: fit-content;
+  display: inline;
+}
+
 .about-section__about-me{
   font-size: var(--about-me-txt-size);
   margin-bottom: 33px;
   font-weight: 500;
   line-height: 1.6em;
+  text-align: left;
+  scrollbar-width: none;
+}
+
+.view-mode .about-section__about-me-input{
+  display: none;
 }
 
 .achievements-list{
@@ -48,8 +71,17 @@
 }
 
 .achievements-list__achievement{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   width: fit-content;
+  width: 100%;
+}
+
+.view-mode .achievements-list__achievement--delete-btn{
+  display: none;
 }
 
 .achivements-list__achievement--number{
@@ -62,6 +94,88 @@
   color: var(--text-color-2);
   font-weight: 500;
   white-space: nowrap;
+}
+
+.view-mode .achievements-list__add-btn{
+  display: none;
+}
+
+/* ============================================================================
+                                 EDIT MODE
+  ============================================================================= */
+.edit-mode .about-section__skills{
+  display: none;
+}
+
+.edit-mode .about-section__skills-inputs-list{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 350px));
+  gap: 16px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+}
+
+.edit-mode .about-section__skill-input{
+  position: relative;
+}
+
+.edit-mode .about-section__skill-input input{
+  height: 100%;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.556);
+}
+
+.edit-mode .about-section__skill-input--delete-btn{
+  font-size: 1.1rem;
+  position: absolute;
+  z-index: 10;
+  top: 0%;
+  right: -10px;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+}
+
+.edit-mode .about-section__add-skill-btn{
+  padding: 8px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.edit-mode .about-section__adress-input{
+  line-height: 1.5em;
+}
+
+.edit-mode .achievements-list{
+  gap: 25px;
+}
+
+.edit-mode .achievements-list__achievement{
+  background-color: rgb(13, 13, 13);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.edit-mode .achievements-list__achievement--delete-btn{
+  font-size: 1.3rem;
+  position: absolute;
+  background: transparent;
+  border: none;
+  top: 2px; 
+  right: -13px;
+  transform: translate(-50%, -50%);
+}
+
+.edit-mode .achivements-list__achivement--label{
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.edit-mode .achievements-list__add-btn{
+  border-radius: 7px;
+  cursor: pointer;
 }
 
 @media(width >= 800px){
