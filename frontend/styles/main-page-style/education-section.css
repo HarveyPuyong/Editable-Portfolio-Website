@@ -5,10 +5,15 @@
 }
 
 .education-card{
+  position: relative;
   background-color: var(--box-bg);
   border: 1px solid var(--box-border-clr);
   padding: 20px;
   border-radius: 12px;
+}
+
+.view-mode .education-card__delete-btn{
+  display: none;
 }
 
 .education-card__top-area{
@@ -55,4 +60,54 @@
   font-weight: 500;
   color: var(--text-color-2);
   line-height: 1.6em;
+}
+
+.view-mode .education-card-list__add-education-btn{
+  display: none;
+}
+
+
+/* ============================================================================
+                                 EDIT MODE
+  ============================================================================= */
+.edit-mode .education-card-list__add-education-btn{
+  display: inline-block;
+  padding: 15px 5px;
+  border-radius: 3px;
+}
+
+.edit-mode .education-card__delete-btn{
+  background: none;
+  top: -14px;
+  right: -5px;
+  font-size: 1.6rem;
+  border: none;
+  position: absolute;
+}
+
+.edit-mode .education-card__top-area{
+  flex-direction: column;
+  gap: 7px;
+}
+
+.edit-mode .education-card__title{
+  width: fit-content;
+  margin-bottom: 7px;
+}
+
+.edit-mode .education-card__program{
+  padding: 7px 10px;
+  width: fit-content;
+  line-height: 2.8em;
+}
+
+.edit-mode .education-card__date-range{
+  width: fit-content;
+}
+
+
+@media(width >= 600px){
+  .edit-mode .education-card__top-area{
+    flex-direction: row;
+  }
 }

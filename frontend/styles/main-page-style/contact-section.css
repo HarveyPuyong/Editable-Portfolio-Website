@@ -1,6 +1,5 @@
 .contact-section-content{
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 30px;
 }
 
@@ -91,11 +90,42 @@ textarea{
   font-weight: 500;
 }
 
+.view-mode .email-form-required-data-container{
+  display: none;
+}
+
+
+/* ============================================================================
+                                 EDIT MODE
+  ============================================================================= */
+
+.edit-mode .contact-card__value{
+  cursor:text;
+}
+
+.edit-mode #email-form{
+  display: none;
+}
+
+.edit-mode .email-form-required-data-container{
+  width: 100%;
+}
+
+.email-form-required-data-container__instruction{
+  margin-bottom: 20px;
+  line-height: 1.5em;
+  font-weight: 600;
+}
+
+.email-form-required-data-container__instruction--video-link{
+  color: var(--accent-color);
+  text-decoration: underline;
+
+}
+
 @media(width >= 810px){
   .contact-section-content{
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
+    grid-template-columns: 1fr 1fr;
   }
 
   .profile-card__name{

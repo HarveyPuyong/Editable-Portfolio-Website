@@ -6,11 +6,24 @@
 
 .tool-card{
   display: flex;
+  align-items: center;
   gap: 13px;
   background-color: var(--box-bg);
   border: 1px solid rgb(39, 39, 39);
   border-radius: 12px;
   padding: 13px 14px;
+}
+
+.view-mode .tool-card__delete-btn{
+  display: none;
+}
+
+.tool-card__icon-container{
+  position: relative;
+}
+
+.view-mode .tool-card__img-input-icon{
+  display: none;
 }
 
 .tool-card__icon{
@@ -36,6 +49,47 @@
   color: var(--text-color-2);
 }
 
+.view-mode .tools-card-list__add-tool-btn{
+  display: none;
+}
+
+/* ============================================================================
+                                 EDIT MODE
+  ============================================================================= */
+.edit-mode .tool-card__delete-btn{
+  background: none;
+  top: -14px;
+  right: -5px;
+  font-size: 1.4rem;
+  border: none;
+  position: absolute;
+}
+
+.edit-mode .tool-card{
+  gap: 16px;
+}
+
+.edit-mode .tool-card__img-input-icon{
+  position: absolute;
+  top: -7px;
+  right: -3px;
+  font-size: 0.8rem;
+}
+
+.edit-mode .tool-card__name{
+  margin-bottom: 7px;
+  width: fit-content;
+}
+
+.edit-mode .tool-card__about{
+  padding: 4px 6px;
+  width: fit-content;
+}
+
+.edit-mode .tools-card-list__add-tool-btn{
+  border-radius: 12px;
+  padding: 15px 0;
+}
 
 
 @media(width >= 650px){

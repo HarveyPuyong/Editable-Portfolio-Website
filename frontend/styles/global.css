@@ -173,6 +173,12 @@ section{
   word-break: break-word;
 }
 
+.edit-mode .editable-text:hover,
+.edit-mode .editable-text:focus{
+  color: var(--accent-color);
+  transition: 0.1s;
+}
+
 .edit-mode .editable-text{
   border: 1px solid var(--box-border-clr);
   border-radius: 7px;
@@ -187,6 +193,13 @@ section{
 .delete-button{
   cursor: pointer;
   color: rgba(255, 0, 0, 0.702);
+}
+
+.view-mode .delete-button{
+  display: none;
+}
+.edit-mode .delete-button{
+  display: inline-block;
 }
 
 .add-content-btn{

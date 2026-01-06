@@ -27,11 +27,20 @@
   gap: 16px;
 }
 
-.experience-card__icon{
-  --size: 24px;
+.experience-card__img-container{
+  position: relative;
+  height: fit-content;
+}
+
+.experience-card__img-container img{
+  --size: 26px;
 
   width: var(--size);
   height: var(--size);
+}
+
+.view-mode .experience-card__img--input-icon{
+  display: none;
 }
 
 .experience-card__title{
@@ -53,6 +62,8 @@
   border-radius: 4px;
   border: 1px solid var(--box-border-clr);
   width: fit-content;
+  min-width: -webkit-fill-available; 
+  min-width: fit-content;
   padding: 6px 12px;
   flex-wrap: nowrap;
   font-weight: 500;
@@ -74,7 +85,54 @@
   color: var(--text-color-2);
 }
 
+.view-mode .experience-cards-list__add-btn{
+  display: none;
+}
 
+/* ============================================================================
+                                 EDIT MODE
+  ============================================================================= */
+.edit-mode .experience-card__delete-btn{
+  font-size: 1.3rem;
+  position: absolute;
+  z-index: 10;
+  top: 0%;
+  right: -13px;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  border: none;
+}
+
+.edit-mode .experience-card__img--input-icon{
+  display: inline-block;
+  position: absolute;
+  font-size: 0.8rem;
+  right: -5px;
+  top: -10px;
+  cursor: pointer;
+}
+
+.edit-mode .experience-card__title{
+  margin-bottom: 6px;
+}
+
+.edit-mode .experience-card__company{
+  width: fit-content;
+}
+
+.edit-mode .experience-card__date-range{
+  background-color: transparent;
+}
+
+.edit-mode .experience-cards-list__add-btn{
+  display: inline-block;
+  border-radius: 5px;
+  padding: 15px 8px;
+}
+
+/* ================================================
+                WIDTH >= 500px
+  ================================================= */
 @media(width >= 500px){
   .experince-card__top-area{
     flex-direction: row;

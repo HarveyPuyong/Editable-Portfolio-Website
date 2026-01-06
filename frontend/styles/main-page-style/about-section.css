@@ -103,6 +103,10 @@
 /* ============================================================================
                                  EDIT MODE
   ============================================================================= */
+.edit-mode .about-section__greetings{
+  margin-bottom: 25px;
+}
+
 .edit-mode .about-section__skills{
   display: none;
 }
@@ -143,7 +147,7 @@
 }
 
 .edit-mode .about-section__adress-input{
-  line-height: 1.5em;
+  line-height: 1.6em;
 }
 
 .edit-mode .achievements-list{
@@ -171,6 +175,7 @@
   white-space: normal;
   overflow-wrap: break-word;
   word-break: break-word;
+  padding: 7px 8px;
 }
 
 .edit-mode .achievements-list__add-btn{
