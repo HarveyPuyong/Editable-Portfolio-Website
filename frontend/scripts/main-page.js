@@ -204,35 +204,6 @@ document.addEventListener('edit-mode', () => {
 });
 
 
-
-const autoResizeInput = (input) => {
-  const span = document.createElement("span");
-
-  // Copy text styles
-  const styles = getComputedStyle(input);
-  span.style.font = styles.font;
-  span.style.letterSpacing = styles.letterSpacing;
-  span.style.border = styles.border;
-  span.style.whiteSpace = "pre";
-  span.style.visibility = "hidden";
-  span.style.position = "absolute";
-
-  document.body.appendChild(span);
-
-  function resize() {
-    span.textContent = input.value || input.placeholder || "";
-    input.style.width = span.offsetWidth + 0 + "px";
-  }
-
-  resize();
-  input.addEventListener("input", resize);
-
-  // Clean up if needed later
-  input._autoResizeCleanup = () => span.remove();
-}
-
-
-
 // ================================
 // MAIN PAGE FUNCTION
 // ================================
@@ -245,8 +216,6 @@ function MainPageFunction() {
   otpAutoNextPrevInput();
   AnimationMainFunction();
   switchToEditMode();
-
-  document.querySelectorAll(".auto-width-input").forEach(autoResizeInput);
 } 
 
 MainPageFunction();

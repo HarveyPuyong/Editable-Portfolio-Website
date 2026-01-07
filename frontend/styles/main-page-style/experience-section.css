@@ -9,6 +9,7 @@
 }
 
 .experience-card{
+  position: relative;
   background-color: var(--box-bg);
   border: 1px solid var(--box-border-clr);
   border-radius: 12px;

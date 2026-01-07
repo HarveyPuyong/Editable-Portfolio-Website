@@ -17,25 +17,47 @@ const TARGET_SELECTORS = [
 ];
 
 const scrollElementsFadeIn = () => {
-  const elements = Array.from(document.querySelectorAll(TARGET_SELECTORS.join(',')))
-    .filter(el => !el.closest('.profile-card') && !el.closest('.edit-button') && !el.dataset.gsapAnimated);
+  const mainWrapper = document.querySelector('.main-wrapper');
 
-  elements.forEach(el => {
-    gsap.from(el, {
-      y: 70,
-      scrollTrigger: {
-        trigger: el,
-        start: "top 92.6%",
-        toggleActions: "play none none reset",
-      },
-      opacity: 0,
-      duration: 0.95,
-      ease: "power2.out"
+  if(mainWrapper.classList.contains('view-mode')){
+
+    const elements = Array.from(document.querySelectorAll(TARGET_SELECTORS.join(',')))
+        .filter(el => !el.closest('.profile-card') && !el.closest('.edit-button') && !el.dataset.gsapAnimated);
+
+    elements.forEach(el => {
+      gsap.from(el, {
+        y: 70,
+        scrollTrigger: {
+          trigger: el,
+          start: "top 92.6%",
+          toggleActions: "play none none reset",
+        },
+        opacity: 0,
+        duration: 0.95,
+        ease: "power2.out"
+      });
+      // mark element as initialized so we don't attach another animation later
+      el.dataset.gsapAnimated = 'true';
     });
-    // mark element as initialized so we don't attach another animation later
-    el.dataset.gsapAnimated = 'true';
-  });
+  }
+  else{
+    console.log(mainWrapper.classList)
+    return
+  }
 }
+
+
+document.addEventListener('edit-mode', () => {
+  // Kill all scroll triggers
+  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+
+  // Clear GSAP styles
+  gsap.set(TARGET_SELECTORS.join(','), {
+    clearProps: 'all'
+  });
+
+});
+
 
 export default function AnimationMainFunction(){
   scrollElementsFadeIn();

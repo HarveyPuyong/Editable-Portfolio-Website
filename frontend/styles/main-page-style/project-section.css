@@ -55,7 +55,7 @@
 
 }
 
-.project-card__about{
+.project-card__type{
   font-size: var(--project-details-txt);
   color: var(--text-color-2);
   font-weight: 500;
@@ -183,7 +183,7 @@
   width: 100%;
 }
 
-.edit-mode .project-card__about{
+.edit-mode .project-card__type{
   padding: 10px ;
 }
 

@@ -5,6 +5,7 @@
 }
 
 .tool-card{
+  position: relative;
   display: flex;
   align-items: center;
   gap: 13px;
@@ -42,7 +43,7 @@
   line-height: 1.6em;
 }
 
-.tool-card__about{
+.tool-card__details{
   font-size: var(--tools-about-txt);
   font-weight: 500;
   line-height: 1.5em;
@@ -81,7 +82,7 @@
   width: fit-content;
 }
 
-.edit-mode .tool-card__about{
+.edit-mode .tool-card__details{
   padding: 4px 6px;
   width: fit-content;
 }
