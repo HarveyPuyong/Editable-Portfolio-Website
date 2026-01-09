@@ -24,7 +24,6 @@ const projectSchema = new mongoose.Schema(
     link: {
       type: String, 
       default: "",
-      required: true,
     },
   },
   {
