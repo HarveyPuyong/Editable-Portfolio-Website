@@ -42,27 +42,28 @@ const mainInfoSchema = new mongoose.Schema(
       select: false, // 🔒 hide by default (security)
     },
 
-    socialLinks: {
-      instagram: {
-        type: String,
-        required: false,
-      },
-      tiktok: {
-        type: String,
-        required: false,
-      },
-      youtube: {
-        type: String,
-        required: false,
-      },
-      facebook: {
-        type: String,
-        required: false,
-      },
+    instagramLink: {
+      type: String,
+      required: false,
+    },
+
+    tiktokLink: {
+      type: String,
+      required: false,
+    },
+
+    youtubeLink: {
+      type: String,
+      required: false,
+    },
+    
+    facebookLink: {
+      type: String,
+      required: false,
     },
   },
   {
-    timestamps: true, // adds createdAt & updatedAt
+    timestamps: true, 
   }
 );
 

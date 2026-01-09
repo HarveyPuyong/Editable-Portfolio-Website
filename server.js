@@ -34,6 +34,9 @@ app.get('/', (req, res) => {
   return res.redirect('main-page.html');
 });
 
+app.use('/auth', require('./routes/auth-route'));
+app.use('/main-info', require('./routes/main-info-route'));
+
 app.use(errorHandler);
 
 mongoose.connection.once('open', () => {
