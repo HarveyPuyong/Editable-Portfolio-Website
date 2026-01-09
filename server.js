@@ -40,6 +40,7 @@ app.use('/achievement', require('./routes/achievement-route'));
 app.use('/experience', require('./routes/experience-route'));
 app.use('/project', require('./routes/project-route'));
 app.use('/education', require('./routes/education-route'));
+app.use('/tool', require('./routes/tool-route'));
 
 app.use(errorHandler);
 
