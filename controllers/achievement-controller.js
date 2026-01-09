@@ -20,6 +20,16 @@ const getAchievements = async (req, res) => {
 // =======================
 const addAchievement = async (req, res) => {
   try {
+    // Check current number of experiences
+    const count = await AchievementDB.countDocuments();
+    const maxNum = 8;
+    
+    if (count >= maxNum) {
+      return res.status(400).json({
+        message: `Cannot add more than ${maxNum} achievements.`,
+      });
+    }
+
     const number = req.body.number || undefined; 
     const name = req.body.name || undefined; 
 
