@@ -36,6 +36,7 @@ app.get('/', (req, res) => {
 
 app.use('/auth', require('./routes/auth-route'));
 app.use('/main-info', require('./routes/main-info-route'));
+app.use('/achievement', require('./routes/achievement-route'));
 
 app.use(errorHandler);
 

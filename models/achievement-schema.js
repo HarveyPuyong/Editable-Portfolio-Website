@@ -3,14 +3,14 @@ const mongoose = require("mongoose");
 const achievementSchema = new mongoose.Schema(
   {
     number: {
-      type: Number, // image URL or file path
-      default: "Achivement Number",
+      type: String, // image URL or file path
+      default: "Number",
       required: false,
     },
 
     name: {
       type: String,
-      default: "Achivement Name",
+      default: "Name",
       required: true,
       trim: true,
     },
