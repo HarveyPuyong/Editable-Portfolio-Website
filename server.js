@@ -28,7 +28,7 @@ app.use(cookieParser());
 
 app.use(Express.static(path.join(__dirname, 'frontend')));
 
-// app.use('/uploads', Express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', Express.static(path.join(__dirname, 'uploads')));
 
 app.get('/', (req, res) => {
   return res.redirect('main-page.html');

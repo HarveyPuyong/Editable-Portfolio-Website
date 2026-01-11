@@ -60,7 +60,7 @@
   border-radius: 10px;
 }
 
-.work-availability__dot-status {
+.work-availability.unavailable .work-availability__dot-status {
   --dot-size: 8px;
 
   width: var(--dot-size);
@@ -70,7 +70,7 @@
   animation: not-active-pulse-vibrate 1.5s infinite ease-in-out;
 }
 
-.work-availability__dot-status.active {
+.work-availability.available .work-availability__dot-status {
   background-color: rgb(2, 255, 39);
   animation: active-pulse-vibrate 1.5s infinite ease-in-out;
 }

@@ -8,6 +8,13 @@ const mainInfoSchema = new mongoose.Schema(
       required: false,
     },
 
+    workAvailability: {
+      type: String,
+      enum: ["available", "unavailable"], // limit lang sa valid values
+      default: "unavailable",             // default kung walang pinili
+      required: true,
+    },
+
     name: {
       type: String,
       required: true,

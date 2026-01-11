@@ -5,7 +5,7 @@ import api from "./../utils/axios-config.js";
 ========================================================================== */
 export const getMainInfoAPI = async () => {
   try {
-    const response = await api.get("/main-info");
+    const response = await api.get("/main-info/get-info");
     if (response.status === 200) return response.data;
   } catch (err) {
     console.error("Failed to get main info:", err);

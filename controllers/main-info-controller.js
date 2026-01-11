@@ -3,7 +3,6 @@ const path = require('path');
 const mainInfoDB = require("../models/main-info-schema");
 const UserDB = require('../models/user-schema');
 
-
 // =======================
 // CHANGE INFO
 // =======================
@@ -19,6 +18,7 @@ const changeInfo = async (req, res) => {
       tiktokLink,
       youtubeLink,
       facebookLink,
+      workAvailability, 
     } = req.body;
 
     const existingInfo = await mainInfoDB.findOne();
@@ -27,10 +27,8 @@ const changeInfo = async (req, res) => {
     let profileImage = existingInfo?.profileImage;
 
     if (req.files?.profileImage) {
-      // Set new profile image path
       profileImage = `/uploads/${req.files.profileImage[0].filename}`;
 
-      // Delete old profile image only if it exists and is not default
       if (
         existingInfo?.profileImage &&
         !existingInfo.profileImage.includes("default-profile-img.png")
@@ -39,7 +37,6 @@ const changeInfo = async (req, res) => {
         if (fs.existsSync(oldImagePath)) fs.unlinkSync(oldImagePath);
       }
     }
-
 
     // ============= HANDLE CV FILE ============= //
     let cvFile = existingInfo?.cvFile;
@@ -52,7 +49,6 @@ const changeInfo = async (req, res) => {
         if (fs.existsSync(oldCvPath)) fs.unlinkSync(oldCvPath);
       }
     }
-
 
     // ================  UPDATE DATABASE ================ //
     const updatedInfo = await mainInfoDB.findOneAndUpdate(
@@ -68,7 +64,8 @@ const changeInfo = async (req, res) => {
         instagramLink,
         tiktokLink,
         youtubeLink,
-        facebookLink
+        facebookLink,
+        workAvailability, 
       },
       { new: true, upsert: true }
     );
@@ -84,14 +81,12 @@ const changeInfo = async (req, res) => {
   }
 };
 
-
 // =======================
 // GET INFO
 // =======================
 const getInfo = async (req, res) => {
   try {
     const info = await mainInfoDB.findOne(); 
-
     const user = await UserDB.findOne().select("email -_id"); 
 
     res.status(200).json({
@@ -104,7 +99,6 @@ const getInfo = async (req, res) => {
     res.status(500).json({ message: "Internal Server Error: Cannot get info" });
   }
 };
-
 
 // =======================
 // CHANGE EMAIL
@@ -130,7 +124,4 @@ const changeEmail = async (req, res) => {
   }
 };
 
-
-
-
-module.exports = { changeInfo, getInfo, changeEmail}
+module.exports = { changeInfo, getInfo, changeEmail };
