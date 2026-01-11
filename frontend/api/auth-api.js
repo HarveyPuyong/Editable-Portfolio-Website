@@ -4,7 +4,7 @@ import api from "./../utils/axios-config.js";
 /* ==========================================================================
    LOGIN API
    ========================================================================== */
-const loginUser = async (credentials) => {
+const loginUserAPI = async (credentials) => {
   try{
     const response = await api.post("/auth/login", credentials);
     if(response.status === 200) return response.data;
@@ -17,7 +17,7 @@ const loginUser = async (credentials) => {
 /* ==========================================================================
    OTP SEND API
    ========================================================================== */
-const sendOTP = async () => {
+const sendOtpAPI = async () => {
   try {
     const response = await api.post("/auth/sendOTP");
 
@@ -33,7 +33,7 @@ const sendOTP = async () => {
 /* ==========================================================================
    VERIFY OTP API
    ========================================================================== */
-const verifyOTP = async (otp) => {
+const verifyOtpAPI = async (otp) => {
   try {
     const response = await api.post("/auth/verifyOTP", otp);
     if(response.status === 200) return response
@@ -46,7 +46,7 @@ const verifyOTP = async (otp) => {
 /* ==========================================================================
    CHANGE PASSWORD API
    ========================================================================== */
-const changePassword = async (data) => {
+const changePasswordAPI = async (data) => {
    try {
     const response = await api.patch("/auth/changePassword", data);
     if(response.status === 200) return response
@@ -57,4 +57,4 @@ const changePassword = async (data) => {
 }
 
 
-export {loginUser, sendOTP, verifyOTP, changePassword}
+export {loginUserAPI, sendOtpAPI, verifyOtpAPI, changePasswordAPI}

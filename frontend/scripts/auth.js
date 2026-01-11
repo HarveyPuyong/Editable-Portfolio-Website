@@ -1,6 +1,6 @@
 
 import attachInputSanitizers from "./../utils/sanitize-input.js"
-import {loginUser, sendOTP, verifyOTP, changePassword} from "./../api/auth-api.js";
+import {loginUserAPI, sendOtpAPI, verifyOtpAPI, changePasswordAPI} from "./../api/auth-api.js";
 import  {popupSuccess, popupError, closePopupAlert} from "./../utils/popup-alert.js";
 import switchToEditMode from "./../utils/switch-to-edit-mode.js"
 
@@ -22,7 +22,7 @@ const handleLogin = () => {
     if (loader) loader.classList.remove('hide');
 
     try {
-      const data = await loginUser({ email, password });
+      const data = await loginUserAPI({ email, password });
 
       if (data?.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
@@ -66,7 +66,7 @@ const handleSendOTP = () => {
       if (loader) loader.classList.remove('hide');
 
       try {
-        const response = await sendOTP();
+        const response = await sendOtpAPI();
         if (response?.status === 200) popupSuccess(response.data.message);
 
       } catch (err) {
@@ -100,7 +100,7 @@ const handleVerifyOTP = () => {
     }
 
     try {
-      const response = await verifyOTP({ otp });
+      const response = await  verifyOtpAPI({ otp });
 
       if (response.status === 200) {
         changePasswordForm.classList.remove('hide');
@@ -131,10 +131,8 @@ const handleChangePassword = () => {
     const password = document.querySelector('#new-password-input').value.trim();
     const confirmPassword = document.querySelector('#re-enter-password').value.trim();
 
-    const data = {password, confirmPassword};
-
     try{
-      const response = await changePassword(data);
+      const response = await changePasswordAPI({password, confirmPassword});
        if(response.status === 200) {
           const responseMessage = response.data.message
           popupSuccess(responseMessage);
