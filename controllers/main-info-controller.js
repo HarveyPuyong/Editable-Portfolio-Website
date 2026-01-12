@@ -18,12 +18,12 @@ const changeInfo = async (req, res) => {
       tiktokLink,
       youtubeLink,
       facebookLink,
-      workAvailability, 
+      workAvailability,
     } = req.body;
 
     const existingInfo = await mainInfoDB.findOne();
 
-    // =========== HANDLE PROFILE IMAGE ===========//
+    // =========== HANDLE PROFILE IMAGE =========== //
     let profileImage = existingInfo?.profileImage;
 
     if (req.files?.profileImage) {
@@ -50,7 +50,7 @@ const changeInfo = async (req, res) => {
       }
     }
 
-    // ================  UPDATE DATABASE ================ //
+    // ================ UPDATE DATABASE ================ //
     const updatedInfo = await mainInfoDB.findOneAndUpdate(
       {},
       {
@@ -65,7 +65,7 @@ const changeInfo = async (req, res) => {
         tiktokLink,
         youtubeLink,
         facebookLink,
-        workAvailability, 
+        workAvailability,
       },
       { new: true, upsert: true }
     );
@@ -80,6 +80,7 @@ const changeInfo = async (req, res) => {
     res.status(500).json({ message: "Failed to update main info." });
   }
 };
+
 
 // =======================
 // GET INFO

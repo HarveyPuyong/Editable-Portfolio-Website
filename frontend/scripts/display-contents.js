@@ -1,4 +1,5 @@
 import {getMainInfoAPI} from "./../api/main-info-api.js"
+import {getSkillsAPI} from "./../api/skill-api.js"
 import {getAchievementsAPI} from "./../api/achievement-api.js"
 import {getExperiencesAPI} from "./../api/experience-api.js"
 import {getProjectsAPI} from "./../api/project-api.js"
@@ -6,10 +7,12 @@ import {getEducationsAPI} from "./../api/education-api.js"
 import {getToolsAPI} from "./../api/tool-api.js"
 
 
+/* ==========================================================================
+  DISPLAY PROFILE CARD
+========================================================================== */
 const displayProfileCard = async () => {
   try{
     const data = await getMainInfoAPI();
-    console.log(data);
 
     const profileCardHTML = `
       <div class="profile-card__img-container">
@@ -82,11 +85,15 @@ const displayProfileCard = async () => {
     document.dispatchEvent(new Event("displayedContent"));
 
   }catch(err){
-
+    console.log(err);
   }
 
 }
 
+
+/* ==========================================================================
+   UPDATE WORK AVAILABILITY
+========================================================================== */
 const updateWorkAvailability = () => {
   document.addEventListener('displayedContent', () => {
     const workAvailabilityContainer = document.querySelector('.work-availability');
@@ -100,8 +107,160 @@ const updateWorkAvailability = () => {
 }
 
 
+/* ==========================================================================
+  DISPLAY ABOUT SECTION
+========================================================================== */
+const displayAboutSection = async () => {
+  try {
+    const skillsData = await getSkillsAPI();
+    const mainInfoData = await getMainInfoAPI();
+    const achievementsData = await getAchievementsAPI();
+
+    // Get the skills array
+    const skills = skillsData.skills; 
+
+    // Generate HTML for each skill input dynamically
+    const skillInputsHTML = skills.map(skill => `
+      <div class="about-section__skill-input">
+        <input type="text" value="${skill.skillName}" placeholder="Enter your skill">
+        <button class="about-section__skill-input--delete-btn delete-button" type="button" aria-label="Delete">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    `).join('');
+
+    console.log(skills);
+
+
+    // Full About Section HTML
+    const aboutSectionHTML = `
+      <h2 class="about-section__greetings">I'm ${mainInfoData.info.name},</h2>
+      <h3 class="about-section__skills"></h3>
+      
+      <div class="about-section__skills-inputs-list">
+        ${skillInputsHTML}
+        <button class="about-section__add-skill-btn add-content-btn" type="button">Add Skill</button>
+      </div>
+
+      <!-- address input -->
+      <p class="about-section__adress">
+        From ${mainInfoData.info.address}
+      </p>
+
+      <!-- about me input -->
+      <div class="editable-text about-section__about-me" data-target="about-input">${mainInfoData.info.aboutMe || ''}</div>
+      <input type="hidden" name="about-input" id="about-input">
+
+      <!-- achievement list -->
+      <div class="achievements-list">
+        ${achievementsData.achievements.map(ach => `
+          <div class="achievements-list__achievement">
+            <button class="achievements-list__achievement--delete-btn delete-button" type="button" aria-label="Delete">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">${ach.number}<span>+</span></div>
+            <input type="hidden" name="achievement-number-input" id="achievement-number-input">
+
+            <div class="editable-text achivements-list__achivement--label" data-target="achievement-label-input">${ach.name}</div>
+            <input type="hidden" name="achievement-label-input" id="achievement-label-input">
+          </div>
+        `).join('')}
+
+        <button class="achievements-list__add-btn add-content-btn" type="button">Add Achievement</button>
+      </div>
+    `;
+
+    // Inject into the DOM
+    const aboutSectionContainer = document.getElementById('about-section');
+    if (aboutSectionContainer) {
+      aboutSectionContainer.innerHTML = aboutSectionHTML;
+      document.dispatchEvent(new Event("displayedContent"));
+    }
+
+  } catch(err) {
+    console.error(err);
+  }
+};
+
+
+// ================================
+// CHANGE SKILLS TEXT CONTENT
+// ================================
+const changeSkillsContent = () => {
+  document.addEventListener('displayedContent', async () => {
+    try {
+      const skillsData = await getSkillsAPI();
+      const mySkills = skillsData.skills; 
+
+      console.log(mySkills)
+
+      const displaySkills = document.querySelector('.about-section__skills');
+      if (!displaySkills) return;
+
+      // no skills → hide text
+      if (!Array.isArray(mySkills) || mySkills.length === 0) {
+        displaySkills.style.display = 'none';
+        return;
+      } else {
+        displaySkills.style.display = 'inline-block';
+      }
+
+      const typeSpeed = 80;        // ms per char when typing
+      const deleteSpeed = 60;      // ms per char when deleting
+      const pauseAfterType = 2000; // ms to wait after a full word is typed
+      const pauseAfterDelete = 500;// ms to wait after delete completes
+
+      const delay = ms => new Promise(res => setTimeout(res, ms));
+
+      // ============================
+      // Loop forever over skills
+      // ============================
+      (async function runTypingLoop() {
+        let index = 0;
+
+        while (true) {
+          const skillObj = mySkills[index];
+          if (!skillObj || !skillObj.skillName) {
+            index = (index + 1) % mySkills.length;
+            continue;
+          }
+
+          const skill = skillObj.skillName;
+
+          // Type
+          for (let i = 1; i <= skill.length; i++) {
+            displaySkills.textContent = skill.slice(0, i);
+            await delay(typeSpeed);
+          }
+
+          await delay(pauseAfterType);
+
+          // Delete
+          for (let i = skill.length; i >= 0; i--) {
+            displaySkills.textContent = skill.slice(0, i);
+            await delay(deleteSpeed);
+          }
+
+          await delay(pauseAfterDelete);
+
+          // Move to next skill (even if there's only 1, it loops correctly)
+          index = (index + 1) % mySkills.length;
+        }
+      })();
+
+    } catch (err) {
+      console.error(err);
+    }
+  });
+};
+
+
+
 
 export default function DisplayContentMain () {
   displayProfileCard();
   updateWorkAvailability();
+  displayAboutSection();
+  changeSkillsContent();
 }

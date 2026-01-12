@@ -18,11 +18,9 @@ export const getMainInfoAPI = async () => {
 ========================================================================== */
 export const editMainInfoAPI = async (formData) => {
   try {
-    const response = await api.put("/main-info/change-info", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
+    const response = await api.put("/main-info/change-info", formData);
 
-    if (response.status === 200) return response.data;
+    if (response.status === 200) return response.datsa;
   } catch (err) {
     console.error("Failed to edit main info:", err);
     throw err;
@@ -34,7 +32,7 @@ export const editMainInfoAPI = async (formData) => {
 ========================================================================== */
 export const editMainEmailAPI = async (data) => {
   try {
-    const response = await api.patch("/main-info/change-email", data); 
+    const response = await api.patch("/main-info/change-email", data);
     if (response.status === 200) return response.data;
   } catch (err) {
     console.error("Failed to edit email:", err);
