@@ -82,7 +82,7 @@ const displayProfileCard = async () => {
     `;
 
     document.getElementById('profile-card').innerHTML = profileCardHTML;
-    document.dispatchEvent(new Event("displayedContent"));
+    document.dispatchEvent(new Event("displayedProfileCard"));
 
   }catch(err){
     console.log(err);
@@ -91,15 +91,13 @@ const displayProfileCard = async () => {
 }
 
 
-/* ==========================================================================
-   UPDATE WORK AVAILABILITY
-========================================================================== */
+// ================================
+// UPDATE WORK AVAILABILITY
+// ================================
 const updateWorkAvailability = () => {
-  document.addEventListener('displayedContent', () => {
+  document.addEventListener('displayedProfileCard', () => {
     const workAvailabilityContainer = document.querySelector('.work-availability');
     const workAvailabilityLabel = document.querySelector('.work-availability__label');
-
-    console.log(workAvailabilityContainer.classList)
 
     if(workAvailabilityContainer.classList.contains('available')) workAvailabilityLabel.innerText = 'Available For Work';
     else workAvailabilityLabel.innerText = 'Unavailable For Work';
@@ -128,9 +126,6 @@ const displayAboutSection = async () => {
         </button>
       </div>
     `).join('');
-
-    console.log(skills);
-
 
     // Full About Section HTML
     const aboutSectionHTML = `
@@ -175,7 +170,7 @@ const displayAboutSection = async () => {
     const aboutSectionContainer = document.getElementById('about-section');
     if (aboutSectionContainer) {
       aboutSectionContainer.innerHTML = aboutSectionHTML;
-      document.dispatchEvent(new Event("displayedContent"));
+      document.dispatchEvent(new Event("displayedAboutSection"));
     }
 
   } catch(err) {
@@ -188,12 +183,10 @@ const displayAboutSection = async () => {
 // CHANGE SKILLS TEXT CONTENT
 // ================================
 const changeSkillsContent = () => {
-  document.addEventListener('displayedContent', async () => {
+  document.addEventListener('displayedAboutSection', async () => {
     try {
       const skillsData = await getSkillsAPI();
       const mySkills = skillsData.skills; 
-
-      console.log(mySkills)
 
       const displaySkills = document.querySelector('.about-section__skills');
       if (!displaySkills) return;
@@ -256,6 +249,313 @@ const changeSkillsContent = () => {
 };
 
 
+/* ==========================================================================
+  DISPLAY EXPERIENCE SECTION
+========================================================================== */
+const displayExperienceSection = async () => {
+  try{
+    const experienceData = await getExperiencesAPI();
+    const expriences = experienceData.experiences;
+
+    let experienceCardHTML = '';
+
+    expriences.forEach(experience => {
+      experienceCardHTML += `
+        <div class="experience-card">
+          <button class="experience-card__delete-btn delete-button" type="button" aria-label="Delete">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <div class="experince-card__top-area">
+            <div class="experince-card__img-title-container">
+              <div class="experience-card__img-container">
+                <input type="file" id="experience-card__img-input" accept="image/*" hidden>
+                <label for="experience-card__img-input" class="experience-card__img--input-icon" title="Upload-Image">
+                  <i class="fa-solid fa-camera"></i>
+                </label>
+                
+                <img src="${experience.img}" alt="experience-icon">
+              </div>
+              
+              <div class="experience-card__title-and-company">
+                <p class="editable-text experience-card__title" data-target="experience-card__title-input">${experience.title}</p>
+                <input type="hidden" name="experience-card__title-input" id="experience-card__title-input">
+
+                <p class="editable-text experience-card__company" data-target="experience-card__company-input">${experience.company}</p>
+                <input type="hidden" name="experience-card__company-input" id="experience-card__company-input">
+              </div>
+            </div>
+            
+            <p class="editable-text experience-card__date-range" data-target="experience-card__date-range-input">${experience.dateRange}</p>
+            <input type="hidden" name="experience-card__date-range-input" id="experience-card__date-range-input">
+          </div>
+
+          <div class="experience-card__line"></div>
+
+          <p class="editable-text experience-card__details" data-target="experience-card__details-input">${experience.details}</p>
+          <input type="hidden" name="experience-card__details-input" id="experience-card__details-input">
+        </div>
+      `
+    });
+
+    // Insert the add button in the card-list
+    experienceCardHTML += `
+      <button class="add-content-btn experience-cards-list__add-btn" type="button">
+        Add Experience
+      </button>
+    `;
+
+    const experienceSectionContainer = document.querySelector('.experience-cards-list') 
+
+    // Inject into the DOM
+    if (experienceSectionContainer) {
+      experienceSectionContainer.innerHTML = experienceCardHTML;
+      document.dispatchEvent(new Event("displayedExperienceSection"));
+    }
+
+  } catch(err){
+    console.log(err);
+  }
+}
+
+
+/* ==========================================================================
+  DISPLAY PROJECTS SECTION
+========================================================================== */
+const displayProjectsSection = async () => {
+  try {
+    const projectsData = await getProjectsAPI();
+    const projects = projectsData.projects;
+
+    const projectList = document.querySelector('.project-list');
+    const moreProjectsList = document.querySelector('.more-projects-list');
+
+    if (!projectList || !moreProjectsList) return;
+
+    let projectListHTML = '';
+    let moreProjectsHTML = '';
+
+    projects.forEach((project, index) => {
+      const projectCardHTML = `
+        <div class="project-card">
+          <button class="project-card__delete-btn delete-button" type="button">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <div class="project-card__img-container">
+            <input type="file" accept="image/*" hidden>
+            <label class="project-card__img-container--input-icon">
+              <i class="fa-solid fa-camera"></i>
+            </label>
+
+            <img class="project-card__img" src="${project.img}" alt="project-image">
+          </div>
+
+          <div class="project-card__details">
+            <div class="project-card__details--name-and-about">
+              <p class="editable-text project-card__title">${project.title}</p>
+              <p class="editable-text project-card__type">${project.type}</p>
+            </div>
+
+            <div class="project-card__arrow">
+              <i class="project-card__arrow--icon one bi bi-arrow-up-right"></i>
+              <i class="project-card__arrow--icon two bi bi-arrow-up-right"></i>
+            </div>
+
+            <input
+              class="profile-card__input-link"
+              type="text"
+              value="${project.link || ''}"
+              placeholder="Enter your project link"
+            >
+          </div>
+        </div>
+      `;
+
+      if (index < 4) {
+        projectListHTML += projectCardHTML;
+      } else {
+        moreProjectsHTML += projectCardHTML;
+      }
+    });
+
+    projectList.innerHTML = projectListHTML;
+
+    // keep Add Project button at the bottom
+    moreProjectsList.innerHTML =
+      moreProjectsHTML +
+      `
+        <button class="add-content-btn projects-card-container__add-project-btn" type="button">
+          Add Project
+        </button>
+      `;
+
+    document.dispatchEvent(new Event("displayedProjectSection"));
+
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+
+/* ==========================================================================
+  DISPLAY EDUCATION SECTION
+========================================================================== */
+const displayEducationSection = async () => {
+  try{
+    const educationData = await getEducationsAPI();
+    const educations = educationData.educations;
+    
+    let educationCardHTML = '';
+
+    educations.forEach(education => {
+      educationCardHTML += `
+        <div class="education-card">
+          <button class="education-card__delete-btn delete-button" type="button" aria-label="Delete">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <div class="education-card__top-area">
+            <div class="education-card__title-and-institution">
+              <h3 class="editable-text education-card__title" data-target="education-card__title-input">${education.title}</h3>
+              <input type="hidden" name="education-card__title-input" id="education-card__title-input">
+
+              <p class="education-card__institution">
+                <span class="editable-text education-card__program" data-target="education-card__program-input">${education.institution}</span>
+                <input type="hidden" name="education-card__program-input" id="education-card__program-input">
+              </p>
+            </div>
+
+            <p class="editable-text education-card__date-range" data-target="education-card__date-range-input">${education.dateRange}</p>
+            <input type="hidden" name="education-card__date-range-input" id="education-card__date-range-input">
+          </div>
+
+          <div class="education-card__line"></div>
+
+          <p class="editable-text education-card__details" data-target="education-card__details-input">${education.details}</p>
+          <input type="hidden" name="education-card__details-input" id="education-card__details-input">
+        </div>`
+    });
+
+    // Insert the add button in the of education-list
+    educationCardHTML += `<button class="add-content-btn education-card-list__add-education-btn" type="button">Add Education</button>`;
+
+    const educationCardContainer = document.querySelector('.education-card-list');
+
+    if(educationCardContainer){
+      educationCardContainer.innerHTML = educationCardHTML;
+      document.dispatchEvent(new Event("displayedEducationSection"));
+    }
+
+  }catch(err) {
+    console.log(err);
+  }
+}
+
+
+/* ==========================================================================
+  DISPLAY TOOLS SECTION
+========================================================================== */
+const displayToolsSection = async () => {
+  try{
+    const toolsData = await getToolsAPI();
+    const tools = toolsData.tools;
+
+    console.log(tools);
+
+    let toolCardHTML = '';
+
+    tools.forEach(tool => {
+      toolCardHTML += `
+        <div class="tool-card">
+          <button class="tool-card__delete-btn delete-button" type="button" aria-label="Delete">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <div class="tool-card__icon-container">
+            <input type="file" id="tool-img-input" accept="image/*" hidden>
+            <label for="tool-img-input" class="tool-card__img-input-icon" title="Upload-Image">
+              <i class="fa-solid fa-camera"></i>
+            </label>
+
+            <img class="tool-card__icon" src="${tool.img}" alt="tool-icon">
+          </div>
+
+          <div class="tool-card__details">
+            <p class="editable-text tool-card__name" data-target="tool-card__name-input">${tool.name}</p>
+            <input type="hidden" name="tool-card__name-input" id="tool-card__name-input">
+
+            <p class="editable-text tool-card__details" data-target="tool-card__details-input">${tool.details}</p>
+            <input type="hidden" name="tool-card__details-input" id="tool-card__details-input">
+          </div>
+        </div>
+      `
+    });
+
+    toolCardHTML += `<button class="add-content-btn tools-card-list__add-tool-btn" type="button">Add Tool</button>`;
+
+    const toolCardContainer = document.querySelector('.tools-card-list');
+
+    if(toolCardContainer){
+      toolCardContainer.innerHTML = toolCardHTML;
+      document.dispatchEvent(new Event("displayedToolsSection"));
+    }
+
+  }catch(err) {
+    console.log(err);
+  }
+}
+
+
+/* ==========================================================================
+  DISPLAY CONTACT CARDS 
+========================================================================== */
+const displayContactCards = async () => {
+  try{
+    const mainInfoData = await getMainInfoAPI();
+    console.log(mainInfoData);
+
+    const contactCardHTML = `
+      <div class="contact-card">
+        <i class="contact-card-icon bi bi-telephone"></i>
+        <div class="contact-card__details">
+          <p class="contact-card__label">Contact No.</p>
+          <p class="editable-text contact-card__value" data-target="contact-number-input">${mainInfoData.info.contactNumber}</p>
+          <input type="hidden" name="contact-number-input" id="contact-number-input">
+        </div>
+      </div>
+      <div class="contact-card">
+        <i class="contact-card-icon bi bi-telephone"></i>
+        <div class="contact-card__details">
+          <p class="contact-card__label">Email</p>
+          <p class="editable-text contact-card__value" data-target="contact-email-input">${mainInfoData.email}</p>
+          <input type="hidden" name="contact-email-input" id="contact-email-input">
+        </div>
+
+      </div>
+      <div class="contact-card">
+        <i class="contact-card-icon bi bi-telephone"></i>
+        <div class="contact-card__details">
+          <p class="contact-card__label">Address</p>
+          <p class="editable-text contact-card__value" data-target="contact-adress-input">${mainInfoData.info.address}</p>
+          <input type="hidden" name="contact-adress-input" id="contact-adress-input">
+        </div>
+      </div>
+    `;
+
+    const contactCardContainer = document.querySelector('.contact-card-list');
+
+    if(contactCardContainer){
+      contactCardContainer.innerHTML = contactCardHTML;
+      document.dispatchEvent(new Event("displayedContactCards"));
+    }
+
+  }catch(err) {
+    console.log(err);
+  }
+}
+
+
 
 
 export default function DisplayContentMain () {
@@ -263,4 +563,9 @@ export default function DisplayContentMain () {
   updateWorkAvailability();
   displayAboutSection();
   changeSkillsContent();
+  displayExperienceSection();
+  displayProjectsSection();
+  displayEducationSection();
+  displayToolsSection();
+  displayContactCards();
 }

@@ -195,3 +195,9 @@
     gap: 16px
   }
 }
+
+@media(width >= 1200px){
+  .project-card__img{
+    max-height: 330.11px;
+  }
+}

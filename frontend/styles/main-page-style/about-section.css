@@ -85,6 +85,7 @@
 }
 
 .achivements-list__achievement--number{
+  font-weight: 600;
   font-size: var(--achivement-number-txt);
   margin-bottom: 12px;
 }

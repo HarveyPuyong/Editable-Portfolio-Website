@@ -114,63 +114,7 @@
         <!-- ================================ -->
         <!-- ABOUT SECTION -->
         <!-- ================================ -->
-        <section id="about-section">
-          <h2 class="about-section__greetings">I'm John Harvey,</h2>
-          <h3 class="about-section__skills"></h3>
-          
-          <!-- skill input list -->
-          <div class="about-section__skills-inputs-list">
-            <div class="about-section__skill-input">
-              <input type="text" value="Enter your skill" placeholder="Enter your skill">
-              <button class="about-section__skill-input--delete-btn delete-button" type="button" aria-label="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-            <div class="about-section__skill-input">
-              <input type="text" value="Enter your skill" placeholder="Enter your skill">
-              <button class="about-section__skill-input--delete-btn delete-button" type="button" aria-label="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-            <div class="about-section__skill-input">
-              <input type="text" value="Enter your skill" placeholder="Enter your skill">
-              <button class="about-section__skill-input--delete-btn delete-button" type="button" aria-label="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-
-            <button class="about-section__add-skill-btn add-content-btn" type="button">Add Skill</button>
-          </div>
-
-          <!-- adress input -->
-          <p class="about-section__adress">
-            From Philippines, Marinduque
-          </p>
-
-          <!-- about me input -->
-          <div class="editable-text about-section__about-me" data-target="about-input">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae nesciunt iure consectetur odit ut, necessitatibus exercitationem sint unde nostrum beatae eos voluptates mollitia cum eum voluptatum earum ducimus laudantium aut.
-          </div>
-
-          <input type="hidden" name="about-input" id="about-input">
-
-          <!-- achievement list -->
-          <div class="achievements-list">
-            <div class="achievements-list__achievement">
-              <button class="achievements-list__achievement--delete-btn delete-button" type="button" aria-label="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-
-              <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">30<span>+</span></div>
-              <input type="hidden" name="achievement-number-input" id="achievement-number-input">
-
-              <div class="editable-text achivements-list__achivement--label" data-target="achievement-label-input">Completed Projects</div>
-              <input type="hidden" name="achievement-label-input" id="achievement-label-input">
-            </div>
-            
-            <button class="achievements-list__add-btn add-content-btn" type="button">Add Achievement</button>
-          </div>
-        </section>
+        <section id="about-section"> </section>
 
         <!-- ================================ -->
         <!-- EXPERIENCE SECTION -->
@@ -181,43 +125,7 @@
             <p class="section-label--txt">Experience</p>
           </div>
 
-          <div class="experience-cards-list">
-            <div class="experience-card">
-              <button class="experience-card__delete-btn delete-button" type="button" aria-label="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-              <div class="experince-card__top-area">
-                <div class="experince-card__img-title-container">
-                  <div class="experience-card__img-container">
-                    <input type="file" id="experience-card__img-input" accept="image/*" hidden>
-                    <label for="experience-card__img-input" class="experience-card__img--input-icon" title="Upload-Image">
-                      <i class="fa-solid fa-camera"></i>
-                    </label>
-                    
-                    <img src="images-and-icons/content-creation-icon.png" alt="experience-icon">
-                  </div>
-                  
-                  <div class="experience-card__title-and-company">
-                    <p class="editable-text experience-card__title" data-target="experience-card__title-input">Content Creator</p>
-                    <input type="hidden" name="experience-card__title-input" id="experience-card__title-input">
-
-                    <p class="editable-text experience-card__company" data-target="experience-card__company-input">Tiktok and Youtube</p>
-                    <input type="hidden" name="experience-card__company-input" id="experience-card__company-input">
-                  </div>
-                </div>
-                
-                <p class="editable-text experience-card__date-range" data-target="experience-card__date-range-input">2023 - Present</p>
-                <input type="hidden" name="experience-card__date-range-input" id="experience-card__date-range-input">
-              </div>
-
-              <div class="experience-card__line"></div>
-
-              <p class="editable-text experience-card__details" data-target="experience-card__details-input">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero distinctio sapiente illum minus ut ullam tempore assumenda dolor deserunt..</p>
-              <input type="hidden" name="experience-card__details-input" id="experience-card__details-input">
-            </div>
-
-            <button class="add-content-btn experience-cards-list__add-btn" type="button">Add Experience</button>
-          </div>
+          <div class="experience-cards-list"> </div>
         </section>
 
         <!-- ================================ -->
@@ -232,47 +140,12 @@
           <!-- Projects list container -->
           <div class="projects-card-container">
             <!-- projects list -->
-            <div class="project-list">
-              <div class="project-card">
-                <button class="project-card__delete-btn delete-button" type="button" aria-label="Delete">
-                  <i class="fa-solid fa-xmark"></i>
-                </button>
+            <div class="project-list"><!-- Contents Display in display-content.js --></div> 
 
-                <div class="project-card__img-container">
-                  <input type="file" id="project-img-input" accept="image/*" hidden>
-                  <label for="project-img-input" class="project-card__img-container--input-icon" title="Upload-Image">
-                    <i class="fa-solid fa-camera"></i>
-                  </label>
-
-                  <img class="project-card__img" src="images-and-icons/Setup Codebased Wallpaper Tutorial.png" alt="project-image" >
-                </div>
-
-                <div class="project-card__details">
-                  <div class="project-card__details--name-and-about">
-                    <p class="editable-text project-card__title" data-target="project-card__title-input">Project Title 1</p>
-                    <input type="hidden" name="project-card__title-input" id="project-card__title-input">
-
-                    <p class="editable-text project-card__type" data-target="project-card__type-input">Portfolio & Profile</p>
-                    <input type="hidden" name="project-card__type-input" id="project-card__type-input">
-                  </div>
-
-                  <div class="project-card__arrow">
-                    <i class="project-card__arrow--icon one bi bi-arrow-up-right"></i>
-                    <i class="project-card__arrow--icon two bi bi-arrow-up-right"></i>
-                  </div>
-
-                  <input class="profile-card__input-link" type="text" placeholder="Enter your project link">
-                </div>
-              </div>
-            </div>
-
-            <button class="projects-card-container__load-more-btn">Load More</button>
+            <button class="projects-card-container__load-more-btn" type="button">Load More</button>
 
              <!-- more projects list -->
-            <div class="more-projects-list hide">
-
-              <button class="add-content-btn projects-card-container__add-project-btn" type="button">Add Project</button>
-            </div>
+            <div class="more-projects-list hide"><!-- Contents Display in display-content.js --></div>
           </div>
         </section>
 
@@ -285,37 +158,7 @@
             <p class="section-label--txt">Education</p>
           </div>
 
-          <div class="education-card-list">
-            <div class="education-card">
-              <button class="education-card__delete-btn delete-button" type="button" aria-label="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-
-              <div class="education-card__top-area">
-                <div class="education-card__title-and-institution">
-                  <h3 class="editable-text education-card__title" data-target="education-card__title-input">UI/UX Design Certification</h3>
-                  <input type="hidden" name="education-card__title-input" id="education-card__title-input">
-
-                  <p class="education-card__institution">
-                    <span class="editable-text education-card__program" data-target="education-card__program-input">National University of Philippines, Philippines</span>
-                    <input type="hidden" name="education-card__program-input" id="education-card__program-input">
-                  </p>
-                </div>
-
-                <p class="editable-text education-card__date-range" data-target="education-card__date-range-input">2018-2019</p>
-                <input type="hidden" name="education-card__date-range-input" id="education-card__date-range-input">
-              </div>
-
-              <div class="education-card__line"></div>
-
-              <p class="editable-text education-card__details" data-target="education-card__details-input">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis possimus esse tempora itaque porro. Delectus inventore quis suscipit repellat.
-              </p>
-              <input type="hidden" name="education-card__details-input" id="education-card__details-input">
-            </div>
-
-            <button class="add-content-btn education-card-list__add-education-btn" type="button">Add Education</button>
-          </div>
+          <div class="education-card-list"></div>
         </section>
 
         <!-- ================================ -->
@@ -327,32 +170,7 @@
             <p class="section-label--txt">Tools</p>
           </div>
 
-          <div class="tools-card-list">
-            <div class="tool-card">
-              <button class="tool-card__delete-btn delete-button" type="button" aria-label="Delete">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
-
-              <div class="tool-card__icon-container">
-                <input type="file" id="tool-img-input" accept="image/*" hidden>
-                <label for="tool-img-input" class="tool-card__img-input-icon" title="Upload-Image">
-                  <i class="fa-solid fa-camera"></i>
-                </label>
-
-                <img class="tool-card__icon" src="images-and-icons/html.png" alt="tool-icon">
-              </div>
-
-              <div class="tool-card__details">
-                <p class="editable-text tool-card__name" data-target="tool-card__name-input">HTML</p>
-                <input type="hidden" name="tool-card__name-input" id="tool-card__name-input">
-
-                <p class="editable-text tool-card__details" data-target="tool-card__details-input">Website Structure Language</p>
-                <input type="hidden" name="tool-card__details-input" id="tool-card__details-input">
-              </div>
-            </div>
-
-            <button class="add-content-btn tools-card-list__add-tool-btn" type="button">Add Tool</button>
-          </div>
+          <div class="tools-card-list"><!-- Contents is render in display-contents.js --></div>
         </section>
 
         <!-- ================================ -->
@@ -366,34 +184,7 @@
 
           <div class="contact-section-content">
             <!-- contact card list -->
-            <div class="contact-card-list">
-              <div class="contact-card">
-                <i class="contact-card-icon bi bi-telephone"></i>
-                <div class="contact-card__details">
-                  <p class="contact-card__label">Contact No.</p>
-                  <p class="editable-text contact-card__value" data-target="contact-number-input">09852558351</p>
-                  <input type="hidden" name="contact-number-input" id="contact-number-input">
-                </div>
-              </div>
-              <div class="contact-card">
-                <i class="contact-card-icon bi bi-telephone"></i>
-                <div class="contact-card__details">
-                  <p class="contact-card__label">Email</p>
-                  <p class="editable-text contact-card__value" data-target="contact-email-input">meowish@gmail.com</p>
-                  <input type="hidden" name="contact-email-input" id="contact-email-input">
-                </div>
-
-              </div>
-              <div class="contact-card">
-                <i class="contact-card-icon bi bi-telephone"></i>
-                <div class="contact-card__details">
-                  <p class="contact-card__label">Address</p>
-                  <p class="editable-text contact-card__value" data-target="contact-adress-input">Maligaya Boac Marinduque</p>
-                  <input type="hidden" name="contact-adress-input" id="contact-adress-input">
-                </div>
-
-              </div>
-            </div>
+            <div class="contact-card-list"><!-- Contact Cards is render in display-contents.js --></div>
 
             <!-- email form -->
             <form id="email-form">
