@@ -41,6 +41,7 @@
   font-size: var(--tools-name-txt);
   font-weight: 500;
   line-height: 1.6em;
+  color: var(--text-color);
 }
 
 .tool-card__details{
