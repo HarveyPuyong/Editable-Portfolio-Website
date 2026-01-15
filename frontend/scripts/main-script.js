@@ -1,6 +1,7 @@
 import AnimationMainFunction from "./animation.js";
 import AuthMain from "./auth.js";
-import DisplayContentMain from "./display-contents.js"
+import {DisplayContentMain} from "./display-contents.js";
+import AddContentMain from "./add-content.js"
 
 
 // ================================
@@ -77,6 +78,7 @@ document.addEventListener('edit-mode', () => {
 // ================================
 function MainScriptFunction() {
   DisplayContentMain();
+  AddContentMain();
   AuthMain();
   AnimationMainFunction();
 

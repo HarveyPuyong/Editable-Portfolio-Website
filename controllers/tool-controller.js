@@ -24,6 +24,15 @@ const getTools = async (req, res) => {
 // =======================
 const addTool = async (req, res) => {
   try {
+    const maxTool = 20;
+    
+    const count = await ToolDB.countDocuments();
+    if (count >= maxTool) {
+      return res.status(400).json({
+        message: `Cannot add more than ${maxTool} tools.`,
+      });
+    }
+
     const name = req.body.name || undefined;
     const details = req.body.details || undefined;
 

@@ -23,11 +23,12 @@ const getExperiences = async (req, res) => {
 // =======================
 const addExperience = async (req, res) => {
   try {
-    // Check current number of experiences
+    const maxExperience = 15;
+
     const count = await ExperienceDB.countDocuments();
-    if (count >= 6) {
+    if (count >= maxExperience) {
       return res.status(400).json({
-        message: "Cannot add more than 6 experiences.",
+        message: `Cannot add more than ${maxExperience} experiences.`,
       });
     }
 

@@ -20,7 +20,7 @@ export const getAchievementsAPI = async () => {
 ========================================================================== */
 export const addAchievementAPI = async (data) => {
   try {
-    const response = await api.post("/achievement", data);
+    const response = await api.post("/achievement/add", data);
     if (response.status === 201) return response.data;
   } catch (err) {
     console.error("Failed to add achievement:", err);

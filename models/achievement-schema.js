@@ -10,7 +10,7 @@ const achievementSchema = new mongoose.Schema(
 
     name: {
       type: String,
-      default: "Name",
+      default: "Achievement Name",
       required: true,
       trim: true,
     },

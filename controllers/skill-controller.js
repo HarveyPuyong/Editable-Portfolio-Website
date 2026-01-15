@@ -5,7 +5,7 @@ const SkillDB = require('../models/skill-schema');
 // =======================
 const getSkills = async (req, res) => {
   try {
-    const skills = await SkillDB.find().sort({ skillName: 1 }); // sort alphabetically
+    const skills = await SkillDB.find().sort({ createdAt: 1 });
     res.status(200).json({ skills });
   } catch (error) {
     console.error(error);
@@ -13,14 +13,19 @@ const getSkills = async (req, res) => {
   }
 };
 
+
 // =======================
 // ADD NEW SKILL
 // =======================
 const addSkill = async (req, res) => {
   try {
-    // Check current number of skills
-    const count = await SkillDB.countDocuments();
     const maxSkills = 6;
+
+    // Get skillName from request body
+    const skillName = req.body.skillName || undefined;
+
+    // 2️⃣ Check max skills
+    const count = await SkillDB.countDocuments();
 
     if (count >= maxSkills) {
       return res.status(400).json({
@@ -28,34 +33,19 @@ const addSkill = async (req, res) => {
       });
     }
 
-    // Get skill from request
-    let { skillName } = req.body;
-
-    if (!skillName) {
-      return res.status(400).json({ message: "Skill name is required." });
-    }
-
-    // Trim whitespace
-    skillName = skillName.trim();
-
-    // Check duplicate
-    const exists = await SkillDB.findOne({ skillName });
-    if (exists) {
-      return res.status(400).json({ message: "Skill already exists." });
-    }
-
-    const newSkill = await SkillDB.create({ skillName });
+    const newSkill = await SkillDB.create({skillName});
 
     res.status(201).json({
       message: "Skill added successfully.",
-      skill: newSkill,
+      skill: newSkill
     });
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Failed to add skill." });
+    return res.status(500).json({ message: "Failed to add skill." });
   }
 };
+
 
 // =======================
 // EDIT SKILL

@@ -8,7 +8,7 @@ const ProjectDB = require("../models/project-schema");
 // =======================
 const getProjects = async (req, res) => {
   try {
-    const projects = await ProjectDB.find().sort({ createdAt: -1 });
+    const projects = await ProjectDB.find().sort({ createdAt: 1 });
     res.status(200).json({ projects });
 
   } catch (error) {
@@ -23,6 +23,15 @@ const getProjects = async (req, res) => {
 // =======================
 const addProject = async (req, res) => {
   try {
+    const maxProjects = 15;
+
+    const count = await ProjectDB.countDocuments();
+    if (count >= maxProjects) {
+      return res.status(400).json({
+        message: `Cannot add more than ${maxProjects} projects.`,
+      });
+    }
+
     const title = req.body.title || undefined;
     const type = req.body.type || undefined;
     const link = req.body.link || undefined;

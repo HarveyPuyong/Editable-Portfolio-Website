@@ -22,6 +22,15 @@ const getEducations = async (req, res) => {
 // =======================
 const addEducation = async (req, res) => {
   try {
+    const maxEducation = 15;
+
+    const count = await EducationDB.countDocuments();
+    if (count >= maxEducation) {
+      return res.status(400).json({
+        message: `Cannot add more than ${maxEducation} education.`,
+      });
+    }
+
     const title = req.body.title || undefined;
     const institution = req.body.institution || undefined;
     const details = req.body.details || undefined;

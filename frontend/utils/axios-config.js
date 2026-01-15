@@ -31,7 +31,7 @@ api.interceptors.response.use(
       } catch (refreshErr) {
         console.error("Token refresh failed", refreshErr);
         localStorage.removeItem('accessToken');
-        window.location.href = '/landing-page.html';
+        window.location.href = '/main-page.html';
       }
     }
 

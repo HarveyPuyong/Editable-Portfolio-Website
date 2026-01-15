@@ -119,7 +119,7 @@ const displayAboutSection = async () => {
 
     // Generate HTML for each skill input dynamically
     const skillInputsHTML = skills.map(skill => `
-      <div class="about-section__skill-input">
+      <div class="about-section__skill-input" data-id="${skill._id}">
         <input type="text" value="${skill.skillName}" placeholder="Enter your skill">
         <button class="about-section__skill-input--delete-btn delete-button" type="button" aria-label="Delete">
           <i class="fa-solid fa-xmark"></i>
@@ -557,8 +557,7 @@ const displayContactCards = async () => {
 
 
 
-
-export default function DisplayContentMain () {
+function DisplayContentMain () {
   displayProfileCard();
   updateWorkAvailability();
   displayAboutSection();
@@ -569,3 +568,13 @@ export default function DisplayContentMain () {
   displayToolsSection();
   displayContactCards();
 }
+
+
+export { DisplayContentMain,
+         displayAboutSection,
+         displayExperienceSection,
+         displayProjectsSection,
+         displayEducationSection,
+         displayToolsSection,
+         displayContactCards};
+
