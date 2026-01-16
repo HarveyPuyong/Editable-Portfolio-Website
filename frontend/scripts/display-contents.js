@@ -121,7 +121,7 @@ const displayAboutSection = async () => {
     const skillInputsHTML = skills.map(skill => `
       <div class="about-section__skill-input" data-id="${skill._id}">
         <input type="text" value="${skill.skillName}" placeholder="Enter your skill">
-        <button class="about-section__skill-input--delete-btn delete-button" type="button" aria-label="Delete">
+        <button class="about-section__skill-input--delete-btn delete-button" data-id="${skill._id}" type="button" aria-label="Delete">
           <i class="fa-solid fa-xmark"></i>
         </button>
       </div>
@@ -150,7 +150,7 @@ const displayAboutSection = async () => {
       <div class="achievements-list">
         ${achievementsData.achievements.map(ach => `
           <div class="achievements-list__achievement">
-            <button class="achievements-list__achievement--delete-btn delete-button" type="button" aria-label="Delete">
+            <button class="achievements-list__achievement--delete-btn delete-button" data-id="${ach._id}" type="button" aria-label="Delete">
               <i class="fa-solid fa-xmark"></i>
             </button>
 
@@ -262,7 +262,7 @@ const displayExperienceSection = async () => {
     expriences.forEach(experience => {
       experienceCardHTML += `
         <div class="experience-card">
-          <button class="experience-card__delete-btn delete-button" type="button" aria-label="Delete">
+          <button class="experience-card__delete-btn delete-button" data-id=${experience._id} type="button" aria-label="Delete">
             <i class="fa-solid fa-xmark"></i>
           </button>
 
@@ -274,7 +274,7 @@ const displayExperienceSection = async () => {
                   <i class="fa-solid fa-camera"></i>
                 </label>
                 
-                <img src="${experience.img}" alt="experience-icon">
+                <img src="${experience.img}" alt="icon">
               </div>
               
               <div class="experience-card__title-and-company">
@@ -338,7 +338,7 @@ const displayProjectsSection = async () => {
     projects.forEach((project, index) => {
       const projectCardHTML = `
         <div class="project-card">
-          <button class="project-card__delete-btn delete-button" type="button">
+          <button class="project-card__delete-btn delete-button" data-id=${project._id} type="button">
             <i class="fa-solid fa-xmark"></i>
           </button>
 
@@ -411,7 +411,7 @@ const displayEducationSection = async () => {
     educations.forEach(education => {
       educationCardHTML += `
         <div class="education-card">
-          <button class="education-card__delete-btn delete-button" type="button" aria-label="Delete">
+          <button class="education-card__delete-btn delete-button" data-id=${education._id} type="button" aria-label="Delete">
             <i class="fa-solid fa-xmark"></i>
           </button>
 
@@ -468,7 +468,7 @@ const displayToolsSection = async () => {
     tools.forEach(tool => {
       toolCardHTML += `
         <div class="tool-card">
-          <button class="tool-card__delete-btn delete-button" type="button" aria-label="Delete">
+          <button class="tool-card__delete-btn delete-button" data-id=${tool._id} type="button" aria-label="Delete">
             <i class="fa-solid fa-xmark"></i>
           </button>
 
@@ -478,7 +478,7 @@ const displayToolsSection = async () => {
               <i class="fa-solid fa-camera"></i>
             </label>
 
-            <img class="tool-card__icon" src="${tool.img}" alt="tool-icon">
+            <img class="tool-card__icon" src="${tool.img}" alt="icon">
           </div>
 
           <div class="tool-card__details">

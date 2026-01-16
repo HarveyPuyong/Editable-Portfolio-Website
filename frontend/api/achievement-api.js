@@ -50,7 +50,7 @@ export const editAchievementAPI = async (id, data) => {
 ========================================================================== */
 export const deleteAchievementAPI = async (id) => {
   try {
-    const response = await api.delete(`/achievement/${id}`);
+    const response = await api.delete(`/achievement/delete/${id}`);
     if (response.status === 200) return response.data;
   } catch (err) {
     console.error("Failed to delete achievement:", err);

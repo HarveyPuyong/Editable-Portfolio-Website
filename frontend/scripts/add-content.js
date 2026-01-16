@@ -32,7 +32,7 @@ const addSkill = () => {
       popupError(errMessage);
 
     }finally {
-      addSkillBtn.disabled = false; // ✅ guaranteed
+      addSkillBtn.disabled = false;
     }
   });
 }
