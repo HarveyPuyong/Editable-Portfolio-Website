@@ -4,7 +4,7 @@ const projectSchema = new mongoose.Schema(
   {
     img: {
       type: String, // image URL or file path
-      default: "uploads/project-default-img.png",
+      default: "uploads/default-image.png",
     },
 
     title: {

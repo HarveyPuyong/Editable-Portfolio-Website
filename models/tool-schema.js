@@ -4,7 +4,7 @@ const toolSchema = new mongoose.Schema(
   {
     img: {
       type: String, // image URL or file path
-      default: "tool-default-img",
+      default: "uploads/default-image.png",
     },
 
     name: {

@@ -111,6 +111,7 @@
   right: -5px;
   top: -10px;
   cursor: pointer;
+  color: rgb(206, 206, 206);
 }
 
 .edit-mode .experience-card__title{

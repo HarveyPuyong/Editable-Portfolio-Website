@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const mainInfoSchema = new mongoose.Schema(
   {
     profileImage: {
-      type: String, // image URL or file path
-      default: "uploads/default-profile-img.png",
+      type: String,
+      default: "uploads/profile-default-img.jpg",
       required: false,
     },
 
     workAvailability: {
       type: String,
-      enum: ["available", "unavailable"], // limit lang sa valid values
-      default: "unavailable",             // default kung walang pinili
+      enum: ["available", "unavailable"],
+      default: "unavailable",             
       required: true,
     },
 
@@ -46,7 +46,7 @@ const mainInfoSchema = new mongoose.Schema(
     sendgridApiKey: {
       type: String,
       required: false,
-      select: false, // 🔒 hide by default (security)
+      select: false,
     },
 
     instagramLink: {
