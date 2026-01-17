@@ -41,7 +41,6 @@ const toggleLoginForm = () => {
     });
 }
 
-
 /* ==========================================================================
    TOGGLE OTP FORM
    ========================================================================== */
@@ -62,16 +61,23 @@ const toggleOTPForm = () => {
     });
 }
 
+/* ==========================================================================
+   Hide project "More" buttons when the more content container is empty
+   ========================================================================== */
+const hideProjectMoreButton = () => {
+  document.addEventListener('displayedProjectSection', () => {
+    const button = document.querySelector('.projects-card-container__load-more-btn');
+    const moreProjectContainer = document.querySelector('.more-projects-list');
 
-document.addEventListener('edit-mode', () => {
-  const editForm = document.querySelector('#edit-content-form');
+    if (!button || !moreProjectContainer) return;
 
-  editForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+    // Check if container is empty (even whitespace)
+    if (moreProjectContainer.innerHTML.trim() === '') {
+      button.classList.add('hide');
+    }
+  });
+};
 
-    window.location.reload();
-  })
-});
 
 
 // ================================
@@ -85,6 +91,7 @@ function MainScriptFunction() {
   AnimationMainFunction();
 
   showMoreProjects();
+  hideProjectMoreButton();
   toggleLoginForm();
   toggleOTPForm();
 } 

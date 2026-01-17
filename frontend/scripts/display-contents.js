@@ -390,6 +390,15 @@ const displayProjectsSection = async () => {
         </button>
       `;
 
+    // Hide More Button
+    const loadMoreBtn = document.querySelector('.projects-card-container__load-more-btn');
+
+    if (projects.length <= 4) {
+      loadMoreBtn.classList.add('hide');
+    } else {
+      loadMoreBtn.classList.remove('hide');
+    }
+
     document.dispatchEvent(new Event("displayedProjectSection"));
 
   } catch (err) {
