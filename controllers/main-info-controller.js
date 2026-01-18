@@ -10,6 +10,7 @@ const changeInfo = async (req, res) => {
   try {
     const {
       name,
+      workAvailability,
       aboutMe,
       contactNumber,
       address,
@@ -18,7 +19,6 @@ const changeInfo = async (req, res) => {
       tiktokLink,
       youtubeLink,
       facebookLink,
-      workAvailability,
     } = req.body;
 
     const existingInfo = await mainInfoDB.findOne();

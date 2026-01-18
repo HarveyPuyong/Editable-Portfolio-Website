@@ -16,12 +16,12 @@ const displayProfileCard = async () => {
 
     const profileCardHTML = `
       <div class="profile-card__img-container">
-        <input type="file" id="profileImageInput" accept="image/*" hidden>
+        <input type="file" id="profileImageInput" class="image-input" accept="image/*" hidden>
         <label for="profileImageInput" class="profile-card__img-container--input-icon" title="Upload-Image">
           <i class="fa-solid fa-camera"></i>
         </label>
 
-        <img class="profile-card__image" src="${data.info.profileImage}" alt="profile-image">
+        <img class="profile-card__image image-preview" src="${data.info.profileImage}" alt="profile-image">
       </div>
       
       <div class="profile-card__details">
@@ -36,8 +36,7 @@ const displayProfileCard = async () => {
           <p class="work-availability__label">Available for work</p>
         </div>
 
-        <div class="profile-card__name editable-text" data-target="name-input"> ${data.info.name} </div>
-        <input type="hidden" name="name-input" id="name-input">
+        <div class="profile-card__name editable-text"> ${data.info.name} </div>
 
         <div class="social-list-inputs">
           <input class="instagram-input-link" type="text" placeholder="Enter instagram link">
@@ -137,14 +136,12 @@ const displayAboutSection = async () => {
         <button class="about-section__add-skill-btn add-content-btn" type="button">Add Skill</button>
       </div>
 
-      <!-- address input -->
       <p class="about-section__adress">
         From ${mainInfoData.info.address}
       </p>
 
       <!-- about me input -->
-      <div class="editable-text about-section__about-me" data-target="about-input">${mainInfoData.info.aboutMe || ''}</div>
-      <input type="hidden" name="about-input" id="about-input">
+      <div class="editable-text about-section__about-me">${mainInfoData.info.aboutMe || ''}</div>
 
       <!-- achievement list -->
       <div class="achievements-list">
@@ -155,10 +152,7 @@ const displayAboutSection = async () => {
             </button>
 
             <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">${ach.number}<span>+</span></div>
-            <input type="hidden" name="achievement-number-input" id="achievement-number-input">
-
             <div class="editable-text achivements-list__achivement--label" data-target="achievement-label-input">${ach.name}</div>
-            <input type="hidden" name="achievement-label-input" id="achievement-label-input">
           </div>
         `).join('')}
 
@@ -261,7 +255,7 @@ const displayExperienceSection = async () => {
 
     expriences.forEach(experience => {
       experienceCardHTML += `
-        <div class="experience-card">
+        <div class="experience-card with-image-content">
           <button class="experience-card__delete-btn delete-button" data-id=${experience._id} type="button" aria-label="Delete">
             <i class="fa-solid fa-xmark"></i>
           </button>
@@ -269,31 +263,26 @@ const displayExperienceSection = async () => {
           <div class="experince-card__top-area">
             <div class="experince-card__img-title-container">
               <div class="experience-card__img-container">
-                <input type="file" id="experience-card__img-input" accept="image/*" hidden>
-                <label for="experience-card__img-input" class="experience-card__img--input-icon" title="Upload-Image">
+                <input type="file" id="experience-card__img-input-${experience._id}" class="image-input" accept="image/*" hidden>
+                <label for="experience-card__img-input-${experience._id}" class="experience-card__img--input-icon" title="Upload-Image">
                   <i class="fa-solid fa-camera"></i>
                 </label>
                 
-                <img src="${experience.img}" alt="icon">
+                <img src="${experience.img}" class="image-preview" alt="icon">
               </div>
               
               <div class="experience-card__title-and-company">
                 <p class="editable-text experience-card__title" data-target="experience-card__title-input">${experience.title}</p>
-                <input type="hidden" name="experience-card__title-input" id="experience-card__title-input">
-
                 <p class="editable-text experience-card__company" data-target="experience-card__company-input">${experience.company}</p>
-                <input type="hidden" name="experience-card__company-input" id="experience-card__company-input">
               </div>
             </div>
             
             <p class="editable-text experience-card__date-range" data-target="experience-card__date-range-input">${experience.dateRange}</p>
-            <input type="hidden" name="experience-card__date-range-input" id="experience-card__date-range-input">
           </div>
 
           <div class="experience-card__line"></div>
 
           <p class="editable-text experience-card__details" data-target="experience-card__details-input">${experience.details}</p>
-          <input type="hidden" name="experience-card__details-input" id="experience-card__details-input">
         </div>
       `
     });
@@ -337,18 +326,18 @@ const displayProjectsSection = async () => {
 
     projects.forEach((project, index) => {
       const projectCardHTML = `
-        <div class="project-card">
+        <div class="project-card with-image-content">
           <button class="project-card__delete-btn delete-button" data-id=${project._id} type="button">
             <i class="fa-solid fa-xmark"></i>
           </button>
 
           <div class="project-card__img-container">
-            <input type="file" accept="image/*" hidden>
-            <label class="project-card__img-container--input-icon">
+            <input type="file" id="project-card__img-input-${project._id}" class="image-input" accept="image/*" hidden>
+            <label for="project-card__img-input-${project._id}" class="project-card__img-container--input-icon">
               <i class="fa-solid fa-camera"></i>
             </label>
 
-            <img class="project-card__img" src="${project.img}" alt="project-image">
+            <img class="project-card__img image-preview" src="${project.img}" alt="project-image">
           </div>
 
           <div class="project-card__details">
@@ -427,22 +416,18 @@ const displayEducationSection = async () => {
           <div class="education-card__top-area">
             <div class="education-card__title-and-institution">
               <h3 class="editable-text education-card__title" data-target="education-card__title-input">${education.title}</h3>
-              <input type="hidden" name="education-card__title-input" id="education-card__title-input">
 
               <p class="education-card__institution">
                 <span class="editable-text education-card__program" data-target="education-card__program-input">${education.institution}</span>
-                <input type="hidden" name="education-card__program-input" id="education-card__program-input">
               </p>
             </div>
 
             <p class="editable-text education-card__date-range" data-target="education-card__date-range-input">${education.dateRange}</p>
-            <input type="hidden" name="education-card__date-range-input" id="education-card__date-range-input">
           </div>
 
           <div class="education-card__line"></div>
 
           <p class="editable-text education-card__details" data-target="education-card__details-input">${education.details}</p>
-          <input type="hidden" name="education-card__details-input" id="education-card__details-input">
         </div>`
     });
 
@@ -476,26 +461,23 @@ const displayToolsSection = async () => {
 
     tools.forEach(tool => {
       toolCardHTML += `
-        <div class="tool-card">
+        <div class="tool-card with-image-content">
           <button class="tool-card__delete-btn delete-button" data-id=${tool._id} type="button" aria-label="Delete">
             <i class="fa-solid fa-xmark"></i>
           </button>
 
           <div class="tool-card__icon-container">
-            <input type="file" id="tool-img-input" accept="image/*" hidden>
-            <label for="tool-img-input" class="tool-card__img-input-icon" title="Upload-Image">
+            <input type="file" class="image-input" id="tool-img-input-${tool._id}" accept="image/*" hidden>
+            <label for="tool-img-input-${tool._id}" class="tool-card__img-input-icon" title="Upload-Image">
               <i class="fa-solid fa-camera"></i>
             </label>
 
-            <img class="tool-card__icon" src="${tool.img}" alt="icon">
+            <img class="tool-card__icon image-preview" src="${tool.img}" alt="icon">
           </div>
 
           <div class="tool-card__details">
             <p class="editable-text tool-card__name" data-target="tool-card__name-input">${tool.name}</p>
-            <input type="hidden" name="tool-card__name-input" id="tool-card__name-input">
-
             <p class="editable-text tool-card__details" data-target="tool-card__details-input">${tool.details}</p>
-            <input type="hidden" name="tool-card__details-input" id="tool-card__details-input">
           </div>
         </div>
       `
@@ -529,15 +511,14 @@ const displayContactCards = async () => {
         <i class="contact-card-icon bi bi-telephone"></i>
         <div class="contact-card__details">
           <p class="contact-card__label">Contact No.</p>
-          <p class="editable-text contact-card__value" data-target="contact-number-input">${mainInfoData.info.contactNumber}</p>
-          <input type="hidden" name="contact-number-input" id="contact-number-input">
+          <p class="editable-text contact-card__value" id="contact-number">${mainInfoData.info.contactNumber}</p>
         </div>
       </div>
       <div class="contact-card">
         <i class="contact-card-icon bi bi-telephone"></i>
         <div class="contact-card__details">
           <p class="contact-card__label">Email</p>
-          <p class="editable-text contact-card__value" data-target="contact-email-input">${mainInfoData.email}</p>
+          <p class="editable-text contact-card__value" id="email">${mainInfoData.email}</p>
           <input type="hidden" name="contact-email-input" id="contact-email-input">
         </div>
 
@@ -546,7 +527,7 @@ const displayContactCards = async () => {
         <i class="contact-card-icon bi bi-telephone"></i>
         <div class="contact-card__details">
           <p class="contact-card__label">Address</p>
-          <p class="editable-text contact-card__value" data-target="contact-adress-input">${mainInfoData.info.address}</p>
+          <p class="editable-text contact-card__value"id="address">${mainInfoData.info.address}</p>
           <input type="hidden" name="contact-adress-input" id="contact-adress-input">
         </div>
       </div>
