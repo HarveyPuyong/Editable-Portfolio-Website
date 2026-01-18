@@ -16,7 +16,7 @@ const displayProfileCard = async () => {
 
     const profileCardHTML = `
       <div class="profile-card__img-container">
-        <input type="file" id="profileImageInput" class="image-input" accept="image/*" hidden>
+        <input type="file" id="profileImageInput" class="profile-image-input image-input" accept="image/*" hidden>
         <label for="profileImageInput" class="profile-card__img-container--input-icon" title="Upload-Image">
           <i class="fa-solid fa-camera"></i>
         </label>
@@ -26,7 +26,6 @@ const displayProfileCard = async () => {
       
       <div class="profile-card__details">
         <select name="select-work-availability" id="select-work-availability">
-          <option value="">Select Work Availabilty</option>
           <option value="available">Available for work</option>
           <option value="unavailable">Unavailable for work</option>
         </select>

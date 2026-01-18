@@ -100,7 +100,11 @@ body{
 }
 
 .sections-container{
-  max-width: fit-content;
+  width: 100%;
+}
+
+section{
+  width: 100%;
 }
 
 .button-enable-edit,
@@ -216,9 +220,19 @@ section{
   border: none;
 }
 
+@media(width >= 700px){
+  .sections-container{
+    max-width: 800px;
+  }
+}
+
 @media(width >= 1200px){
+  .sections-container{
+    max-width: 100%;
+  }
   .main-wrapper{
-    display: flex;
+    display: grid;
+    grid-template-columns: 0.3fr 1fr;
     gap: 70px;
     padding-top: 50px;
   }

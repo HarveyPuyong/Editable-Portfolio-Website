@@ -60,6 +60,14 @@
   border-radius: 10px;
 }
 
+.work-availability .work-availability__dot-status {
+  --dot-size: 8px;
+
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border-radius: 30px;
+}
+
 .work-availability.unavailable .work-availability__dot-status {
   --dot-size: 8px;
 
