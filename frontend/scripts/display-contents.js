@@ -252,7 +252,7 @@ const displayExperienceSection = async () => {
 
     expriences.forEach(experience => {
       experienceCardHTML += `
-        <div class="experience-card with-image-content">
+        <div class="experience-card with-image-content" data-id=${experience._id}>
           <button class="experience-card__delete-btn delete-button" data-id=${experience._id} type="button" aria-label="Delete">
             <i class="fa-solid fa-xmark"></i>
           </button>

@@ -13,7 +13,7 @@ import {displayAboutSection,
         displayEducationSection,
         displayToolsSection} from './display-contents.js'
 
-import {editSkill} from './edit-content.js'
+import {editSkill, editAchievement} from './edit-content.js'
 
 
 
@@ -26,9 +26,9 @@ const addSkill = async (e) => {
     addBtn.disabled = true;
 
     try {
+      editSkill();
       await addSkillAPI({ skillName: undefined });
       displayAboutSection();
-      editSkill();
 
     } catch (err) {
       console.log(err);
@@ -48,7 +48,7 @@ const addAchievement = async (e) => {
     addBtn.disabled = true;
 
     try {
-      // editAchievement();
+      editAchievement();
       await addAchievementAPI({ number: undefined, name: undefined });
       displayAboutSection();
 
@@ -74,7 +74,8 @@ const addExperience  = async (e) => {
         title: undefined,
         company: undefined,
         dateRange: undefined,
-        details: undefined
+        details: undefined,
+        img: undefined
       });
       displayExperienceSection();
 

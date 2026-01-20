@@ -1,14 +1,3 @@
-export function addContentEditableTag() {
-  ['displayedProfileCard', 'displayedAboutSection', 'displayedExperienceSection', 'displayedProjectSection', 'displayedEducationSection', 'displayedToolsSection'].
-  forEach(event => {
-    document.addEventListener(event, () => {
-      document.querySelectorAll('.editable-text').forEach(el => el.setAttribute('contenteditable', 'true'));
-    });
-  });
-
-}
-
-
 export function switchToEditMode() {
   const saveBtn = document.querySelector(".save-btn");
   const editBtn = document.querySelector(".button-enable-edit");
@@ -38,7 +27,12 @@ export function switchToEditMode() {
     text.setAttribute("contenteditable", "true");
   });
 
-  addContentEditableTag();
+  ['displayedProfileCard', 'displayedAboutSection', 'displayedExperienceSection', 'displayedProjectSection', 'displayedEducationSection', 'displayedToolsSection'].
+  forEach(event => {
+    document.addEventListener(event, () => {
+      document.querySelectorAll('.editable-text').forEach(el => el.setAttribute('contenteditable', 'true'));
+    });
+  });
 
   editBtn.classList.add('hide');
   saveBtn.classList.remove('hide');

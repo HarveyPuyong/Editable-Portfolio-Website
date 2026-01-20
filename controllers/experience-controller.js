@@ -8,7 +8,7 @@ const ExperienceDB = require('../models/experience-schema');
 // =======================
 const getExperiences = async (req, res) => {
   try {
-    const experiences = await ExperienceDB.find().sort({ createdAt: -1 }); // newest first
+    const experiences = await ExperienceDB.find().sort({ createdAt: 1 }); // newest first
     res.status(200).json({ experiences });
 
   } catch (error) {
@@ -23,9 +23,9 @@ const getExperiences = async (req, res) => {
 // =======================
 const addExperience = async (req, res) => {
   try {
+    const count = await ExperienceDB.countDocuments();
     const maxExperience = 15;
 
-    const count = await ExperienceDB.countDocuments();
     if (count >= maxExperience) {
       return res.status(400).json({
         message: `Cannot add more than ${maxExperience} experiences.`,
@@ -67,10 +67,7 @@ const addExperience = async (req, res) => {
 const editExperience = async (req, res) => {
   try {
     const { id } = req.params;
-    const title = req.body.title;
-    const company = req.body.company;
-    const dateRange = req.body.dateRange;
-    const details = req.body.details;
+    const { title, company, dateRange, details } = req.body;
 
     const existingExperience = await ExperienceDB.findById(id);
     if (!existingExperience)
@@ -81,17 +78,20 @@ const editExperience = async (req, res) => {
     if (req.file) {
       img = `/uploads/${req.file.filename}`;
 
-      // delete old image if not default
-      if (!existingExperience.img.includes("experience-default-img.png")) {
+      if (
+        existingExperience.img &&
+        !existingExperience.img.includes("experience-default-img.png")
+      ) {
         const oldPath = path.join(__dirname, "..", existingExperience.img);
         if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
       }
     }
 
-    existingExperience.title = title || existingExperience.title;
-    existingExperience.company = company || existingExperience.company;
-    existingExperience.dateRange = dateRange || existingExperience.dateRange;
-    existingExperience.details = details || existingExperience.details;
+    if (title !== undefined) existingExperience.title = title;
+    if (company !== undefined) existingExperience.company = company;
+    if (dateRange !== undefined) existingExperience.dateRange = dateRange;
+    if (details !== undefined) existingExperience.details = details;
+
     existingExperience.img = img;
 
     const updatedExperience = await existingExperience.save();
@@ -106,6 +106,7 @@ const editExperience = async (req, res) => {
     res.status(500).json({ message: "Failed to update experience." });
   }
 };
+
 
 
 // =======================

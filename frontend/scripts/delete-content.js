@@ -7,13 +7,12 @@ import { deleteProjectAPI } from "../api/project-api.js";
 import { deleteEducationAPI } from "../api/education-api.js";
 import { deleteToolAPI } from "../api/tool-api.js";
 
-import {
-  displayAboutSection,
-  displayExperienceSection,
-  displayProjectsSection,
-  displayEducationSection,
-  displayToolsSection
+import { displayAboutSection, displayExperienceSection,
+        displayProjectsSection, displayEducationSection,
+        displayToolsSection
 } from './display-contents.js';
+
+import {editSkill, editAchievement} from './edit-content.js'
 
 
 /* ======================
@@ -26,6 +25,8 @@ const deleteSkill = async (e) => {
     try {
       await deleteSkillAPI(btn.dataset.id);
       displayAboutSection();
+      editSkill();
+
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);
@@ -45,6 +46,8 @@ const deleteAchievement = async (e) => {
     try {
       await deleteAchievementAPI(btn.dataset.id);
       displayAboutSection();
+      editAchievement();
+      
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);
@@ -64,6 +67,7 @@ const deleteExperience = async (e) => {
     try {
       await deleteExperiencesAPI(btn.dataset.id);
       displayExperienceSection();
+
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);

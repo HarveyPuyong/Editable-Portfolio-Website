@@ -52,21 +52,25 @@ const mainInfoSchema = new mongoose.Schema(
     instagramLink: {
       type: String,
       required: false,
+      default: "#"
     },
 
     tiktokLink: {
       type: String,
       required: false,
+      default: "#"
     },
 
     youtubeLink: {
       type: String,
       required: false,
+      default: "#"
     },
     
     facebookLink: {
       type: String,
       required: false,
+      default: "#"
     },
   },
   {

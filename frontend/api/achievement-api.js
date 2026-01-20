@@ -35,7 +35,7 @@ export const addAchievementAPI = async (data) => {
 ========================================================================== */
 export const editAchievementAPI = async (id, data) => {
   try {
-    const response = await api.put(`/achievement/${id}`, data);
+    const response = await api.put(`/achievement/edit/${id}`, data);
     if (response.status === 200) return response.data;
   } catch (err) {
     console.error("Failed to edit achievement:", err);

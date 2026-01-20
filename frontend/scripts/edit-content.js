@@ -37,10 +37,10 @@ const editMainInfo = async() => {
   const address = document.querySelector('#address').innerText;
   const email = document.querySelector('#email').innerText;
   const sendgridApiKey = document.querySelector('#sendgrid-api-key').value;
-  const instagramLink = document.querySelector('.instagram-input-link');
-  const tiktokLink = document.querySelector('.tiktok-input-link');
-  const youtubeLink = document.querySelector('.youtube-input-link');
-  const facebookLink = document.querySelector('.facebook-input-link');
+  const instagramLink = document.querySelector('.instagram-input-link').value;
+  const tiktokLink = document.querySelector('.tiktok-input-link').value;
+  const youtubeLink = document.querySelector('.youtube-input-link').value;
+  const facebookLink = document.querySelector('.facebook-input-link').value;
   const profileImageInput = document.querySelector('.profile-image-input');
   const cvInput = document.querySelector('#CV-upload');
 
@@ -77,45 +77,87 @@ const editMainInfo = async() => {
 // ==========================================
 // EDIT SKILL
 // ==========================================
-export const editSkill = () => {
+export const editSkill = async () => {
   const allSkills = document.querySelectorAll('.about-section__skill-input input');
 
-  allSkills.forEach(async (skill) => {
+  for (const skill of allSkills) {
     const skillId = skill.dataset.id;
     const skillValue = skill.value;
-    
-    try{
-      await editSkillAPI(skillId,  {"skillName": skillValue});
 
-    } catch(err) {
-      console.log(err)
+    if (!skillId) continue; // safety guard
+
+    try {
+      await editSkillAPI(skillId, { skillName: skillValue });
+    } catch (err) {
+      console.log(err);
     }
-  });
-}
+  }
+};
 
 // ==========================================
 // EDIT ACHIEVEMENT
 // ==========================================
-export const editAchievement = () => {
+export const editAchievement = async () => {
   const allAchievements = document.querySelectorAll('.achievements-list__achievement');
 
-  allAchievements.forEach(async (achievement) => {
+  for (const achievement of allAchievements) {
     const achievementId = achievement.dataset.id;
-    const achievementNumber = achievement.querySelector('.achivements-list__achievement--number').innerText;
-    const achievementName = achievement.querySelector('.achivements-list__achivement--label').innerText;
-    
-    // console.log(achievementId)
-    // console.log(achievementNumber)
-    // console.log(achievementName)
-    
-    try{
-      await editAchievementAPI(achievementId,  {"number": achievementNumber, "name": achievementName});
 
-    } catch(err) {
-      console.log(err)
+    if (!achievementId) continue; // safety guard
+
+    const achievementNumber =
+      achievement.querySelector('.achivements-list__achievement--number')?.innerText;
+
+    const achievementName =
+      achievement.querySelector('.achivements-list__achivement--label')?.innerText;
+
+    try {
+      await editAchievementAPI(achievementId, {
+        number: achievementNumber,
+        name: achievementName,
+      });
+    } catch (err) {
+      console.log(err);
     }
-  });
-}
+  }
+};
+
+
+// ==========================================
+// EDIT EXPERIENCE
+// ==========================================
+// export const editExperience = async () => {
+//   const allExperience = document.querySelectorAll('.experience-card');
+
+//   for (const experience of allExperience) {
+//     const experienceId = experience.dataset.id;
+
+//     const title = experience.querySelector('.experience-card__title').innerText;
+//     const company = experience.querySelector('.experience-card__company').innerText;
+//     const dateRange = experience.querySelector('.experience-card__date-range').innerText;
+//     const details = experience.querySelector('.experience-card__details').innerText;
+//     const imageInput = experience.querySelector('.image-input');
+
+//     try {
+//       const formData = new FormData();
+//       formData.append("title", title);
+//       formData.append("company", company);
+//       formData.append("dateRange", dateRange);
+//       formData.append("details", details);
+
+//       if (imageInput.files[0]) {
+//         formData.append("img", imageInput.files[0]);
+//       }
+
+//       await editExperiencesAPI(experienceId, formData);
+
+//     } catch (err) {
+//       console.log(err);
+//     }
+
+//   }
+// };
+
 
 
 // ==========================================
@@ -135,9 +177,10 @@ export function EditContentMain () {
     editForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
+      editMainInfo();
       editSkill();
       editAchievement();
-      editMainInfo();
+      editExperience();
     });
   });
 }
