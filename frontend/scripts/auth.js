@@ -2,7 +2,7 @@
 import attachInputSanitizers from "./../utils/sanitize-input.js"
 import {loginUserAPI, sendOtpAPI, verifyOtpAPI, changePasswordAPI} from "./../api/auth-api.js";
 import  {popupSuccess, popupError, closePopupAlert} from "./../utils/popup-alert.js";
-import switchToEditMode from "./../utils/switch-to-edit-mode.js"
+import {switchToEditMode} from "./../utils/switch-to-edit-mode.js"
 
 
 /* ==========================================================================

@@ -1,4 +1,4 @@
-import {popupError} from "./../utils/popup-alert.js"
+import {popupError} from "./../utils/popup-alert.js";
 
 import {addSkillAPI} from "./../api/skill-api.js";
 import { addAchievementAPI } from "../api/achievement-api.js";
@@ -26,9 +26,10 @@ const addSkill = async (e) => {
     addBtn.disabled = true;
 
     try {
-      editSkill();
       await addSkillAPI({ skillName: undefined });
       displayAboutSection();
+      editSkill();
+
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);
@@ -50,6 +51,7 @@ const addAchievement = async (e) => {
       // editAchievement();
       await addAchievementAPI({ number: undefined, name: undefined });
       displayAboutSection();
+
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);
@@ -75,6 +77,7 @@ const addExperience  = async (e) => {
         details: undefined
       });
       displayExperienceSection();
+
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);
@@ -100,6 +103,7 @@ const addProject = async (e) => {
         img: undefined
       });
       displayProjectsSection();
+
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);
@@ -125,6 +129,7 @@ const addEducation = async (e) => {
         dateRange: undefined
       });
       displayEducationSection();
+
     } catch (err) {
       popupError(err?.response?.data?.message);
     } finally {
@@ -148,6 +153,7 @@ const addTool = async (e) => {
         img: undefined
       });
       displayToolsSection();
+
     } catch (err) {
       popupError(err?.response?.data?.message);
     } finally {
@@ -174,5 +180,4 @@ export default function AddContentMain () {
     
     if (e.target.closest('.tools-card-list__add-tool-btn')) return addTool(e);
   });
-
 }
