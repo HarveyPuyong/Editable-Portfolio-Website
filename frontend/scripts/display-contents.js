@@ -145,12 +145,15 @@ const displayAboutSection = async () => {
       <!-- achievement list -->
       <div class="achievements-list">
         ${achievementsData.achievements.map(ach => `
-          <div class="achievements-list__achievement">
+          <div class="achievements-list__achievement" data-id="${ach._id}">
             <button class="achievements-list__achievement--delete-btn delete-button" data-id="${ach._id}" type="button" aria-label="Delete">
               <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">${ach.number}+</div>
+            <div class="achivements-list__achievement--number-container">
+              <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">${ach.number}</div>
+              <span class="plus-txt">+</span>
+            </div>
             <div class="editable-text achivements-list__achivement--label" data-target="achievement-label-input">${ach.name}</div>
           </div>
         `).join('')}

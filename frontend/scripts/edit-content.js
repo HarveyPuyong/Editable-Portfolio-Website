@@ -80,18 +80,17 @@ const editMainInfo = async() => {
 export const editSkill = async () => {
   const allSkills = document.querySelectorAll('.about-section__skill-input input');
 
-  for (const skill of allSkills) {
+  allSkills.forEach(async (skill) => {
     const skillId = skill.dataset.id;
     const skillValue = skill.value;
-
-    if (!skillId) continue; // safety guard
 
     try {
       await editSkillAPI(skillId, { skillName: skillValue });
     } catch (err) {
       console.log(err);
     }
-  }
+  })
+
 };
 
 // ==========================================
@@ -100,11 +99,8 @@ export const editSkill = async () => {
 export const editAchievement = async () => {
   const allAchievements = document.querySelectorAll('.achievements-list__achievement');
 
-  for (const achievement of allAchievements) {
+  allAchievements.forEach(async (achievement) => {
     const achievementId = achievement.dataset.id;
-
-    if (!achievementId) continue; // safety guard
-
     const achievementNumber =
       achievement.querySelector('.achivements-list__achievement--number')?.innerText;
 
@@ -119,44 +115,43 @@ export const editAchievement = async () => {
     } catch (err) {
       console.log(err);
     }
-  }
+  });
+
 };
 
 
 // ==========================================
 // EDIT EXPERIENCE
 // ==========================================
-// export const editExperience = async () => {
-//   const allExperience = document.querySelectorAll('.experience-card');
+export const editExperience = async () => {
+  const allExperience = document.querySelectorAll('.experience-card');
 
-//   for (const experience of allExperience) {
-//     const experienceId = experience.dataset.id;
+  allExperience.forEach(async(experience) => {
+    const experienceId = experience.dataset.id;
 
-//     const title = experience.querySelector('.experience-card__title').innerText;
-//     const company = experience.querySelector('.experience-card__company').innerText;
-//     const dateRange = experience.querySelector('.experience-card__date-range').innerText;
-//     const details = experience.querySelector('.experience-card__details').innerText;
-//     const imageInput = experience.querySelector('.image-input');
+    const title = experience.querySelector('.experience-card__title').innerText;
+    const company = experience.querySelector('.experience-card__company').innerText;
+    const dateRange = experience.querySelector('.experience-card__date-range').innerText;
+    const details = experience.querySelector('.experience-card__details').innerText;
+    const imageInput = experience.querySelector('.image-input');
 
-//     try {
-//       const formData = new FormData();
-//       formData.append("title", title);
-//       formData.append("company", company);
-//       formData.append("dateRange", dateRange);
-//       formData.append("details", details);
+    try {
+          const formData = new FormData();
+        formData.append("title", title);
+        formData.append("company", company);
+        formData.append("dateRange", dateRange);
+        formData.append("details", details);
 
-//       if (imageInput.files[0]) {
-//         formData.append("img", imageInput.files[0]);
-//       }
+        if (imageInput.files[0]) {
+          formData.append("img", imageInput.files[0]);
+        }
 
-//       await editExperiencesAPI(experienceId, formData);
-
-//     } catch (err) {
-//       console.log(err);
-//     }
-
-//   }
-// };
+        await editExperiencesAPI(experienceId, formData);
+    } catch (err) {
+      console.log(err);
+    }
+  })
+};
 
 
 

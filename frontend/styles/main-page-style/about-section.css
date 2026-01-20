@@ -84,10 +84,18 @@
   display: none;
 }
 
-.achivements-list__achievement--number{
+.achivements-list__achievement--number-container{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
   font-weight: 600;
   font-size: var(--achivement-number-txt);
   margin-bottom: 12px;
+}
+
+.achivements-list__achievement--number-container .plus-txt{
+  width: fit-content;
 }
 
 .achivements-list__achivement--label{

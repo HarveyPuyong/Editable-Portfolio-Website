@@ -23,9 +23,9 @@ const deleteSkill = async (e) => {
     const btn = e.target.closest('.about-section__skill-input--delete-btn');
     btn.disabled = true;
     try {
+      editSkill();
       await deleteSkillAPI(btn.dataset.id);
       displayAboutSection();
-      editSkill();
 
     } catch (err) {
       console.log(err);
@@ -44,9 +44,9 @@ const deleteAchievement = async (e) => {
     const btn = e.target.closest('.achievements-list__achievement--delete-btn');
     btn.disabled = true;
     try {
+      editAchievement();
       await deleteAchievementAPI(btn.dataset.id);
       displayAboutSection();
-      editAchievement();
       
     } catch (err) {
       console.log(err);
@@ -65,6 +65,7 @@ const deleteExperience = async (e) => {
     const btn = e.target.closest('.experience-card__delete-btn');
     btn.disabled = true;
     try {
+      editExperience();
       await deleteExperiencesAPI(btn.dataset.id);
       displayExperienceSection();
 
