@@ -29,6 +29,5 @@ export default function switchToEditMode() {
 
   editBtn.classList.add('hide');
   saveBtn.classList.remove('hide');
-
   document.dispatchEvent(new Event("edit-mode"));
 }

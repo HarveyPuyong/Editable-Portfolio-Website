@@ -118,7 +118,7 @@ const displayAboutSection = async () => {
     // Generate HTML for each skill input dynamically
     const skillInputsHTML = skills.map(skill => `
       <div class="about-section__skill-input" data-id="${skill._id}">
-        <input type="text" value="${skill.skillName}" placeholder="Enter your skill">
+        <input type="text" data-id="${skill._id}" class="about-section__skill-value" value="${skill.skillName}" placeholder="Enter your skill">
         <button class="about-section__skill-input--delete-btn delete-button" data-id="${skill._id}" type="button" aria-label="Delete">
           <i class="fa-solid fa-xmark"></i>
         </button>
@@ -150,7 +150,7 @@ const displayAboutSection = async () => {
               <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">${ach.number}<span>+</span></div>
+            <div class="editable-text achivements-list__achievement--number" data-target="achievement-number-input">${ach.number}+</div>
             <div class="editable-text achivements-list__achivement--label" data-target="achievement-label-input">${ach.name}</div>
           </div>
         `).join('')}
@@ -161,11 +161,9 @@ const displayAboutSection = async () => {
 
     // Inject into the DOM
     const aboutSectionContainer = document.getElementById('about-section');
-    if (aboutSectionContainer) {
-      aboutSectionContainer.innerHTML = aboutSectionHTML;
-      document.dispatchEvent(new Event("displayedAboutSection"));
-    }
-
+    aboutSectionContainer.innerHTML = aboutSectionHTML;
+    document.dispatchEvent(new Event("displayedAboutSection"));
+    
   } catch(err) {
     console.error(err);
   }

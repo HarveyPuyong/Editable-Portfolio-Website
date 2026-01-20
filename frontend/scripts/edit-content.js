@@ -26,8 +26,9 @@ const imagePreview = () => {
   });
 }
 
-
-
+// ==========================================
+// EDIT MAIN INFO 
+// ==========================================
 const editMainInfo = async() => {
   const name = document.querySelector('.profile-card__name').innerText;
   const workAvailability = document.querySelector('#select-work-availability').value;
@@ -65,27 +66,77 @@ const editMainInfo = async() => {
   }
 
   try{
-    console.log(formData)
-    console.log(email);
     await editMainInfoAPI(formData);
-    await editMainEmailAPI(email)
+    await editMainEmailAPI({email});
+
   } catch (err){
     console.log(err);
   }
 }
 
+// ==========================================
+// EDIT SKILL
+// ==========================================
+export const editSkill = () => {
+  const allSkills = document.querySelectorAll('.about-section__skill-input input');
 
-export default function EditContentMain () {
+  allSkills.forEach(async (skill) => {
+    const skillId = skill.dataset.id;
+    const skillValue = skill.value;
+    
+    try{
+      await editSkillAPI(skillId,  {"skillName": skillValue});
+
+    } catch(err) {
+      console.log(err)
+    }
+  });
+}
+
+// ==========================================
+// EDIT ACHIEVEMENT
+// ==========================================
+export const editAchievement = () => {
+  const allAchievements = document.querySelectorAll('.achievements-list__achievement');
+
+  allAchievements.forEach(async (achievement) => {
+    const achievementId = achievement.dataset.id;
+    const achievementNumber = achievement.querySelector('.achivements-list__achievement--number').innerText;
+    const achievementName = achievement.querySelector('.achivements-list__achivement--label').innerText;
+    
+    // console.log(achievementId)
+    // console.log(achievementNumber)
+    // console.log(achievementName)
+    
+    try{
+      await editAchievementAPI(achievementId,  {"number": achievementNumber, "name": achievementName});
+
+    } catch(err) {
+      console.log(err)
+    }
+  });
+}
+
+
+// ==========================================
+// MAIN FUNCTION
+// ==========================================
+export function EditContentMain () {
   ['displayedToolsSection', 'displayedProjectSection', 'displayedProfileCard']
   .forEach(eventName => {
-    document.addEventListener(eventName, imagePreview);
+    document.addEventListener(eventName, () => imagePreview());
   });
-
 
   document.addEventListener('edit-mode', () => {
     const editForm = document.querySelector('#edit-content-form');
 
+    
+
     editForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      editSkill();
+      editAchievement();
       editMainInfo();
     });
   });

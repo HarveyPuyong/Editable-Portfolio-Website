@@ -13,166 +13,166 @@ import {displayAboutSection,
         displayEducationSection,
         displayToolsSection} from './display-contents.js'
 
+import {editSkill} from './edit-content.js'
 
-/* ==========================================================================
-   ADD SKILL
-   ========================================================================== */
-const addSkill = () => {
-  const addSkillBtn = document.querySelector('.about-section__add-skill-btn');
 
-  addSkillBtn.addEventListener('click', async() => {
-    try{
-      addSkillBtn.disabled = true;
-      await addSkillAPI({skillName: undefined});
+
+/*======================
+  ADD SKILL
+  ====================== */
+const addSkill = async (e) => {
+  if (e.target.closest('.about-section__add-skill-btn')) {
+    const addBtn = e.target.closest('.about-section__add-skill-btn');
+    addBtn.disabled = true;
+
+    try {
+      editSkill();
+      await addSkillAPI({ skillName: undefined });
       displayAboutSection();
-      addSkillBtn.disabled = false;
-
-    }catch(err) {
-      const errMessage = err?.response?.data?.message;
-      popupError(errMessage);
-
-    }finally {
-      addSkillBtn.disabled = false;
+    } catch (err) {
+      console.log(err);
+      popupError(err?.response?.data?.message);
+    } finally {
+      addBtn.disabled = false;
     }
-  });
+  }
 }
 
-/* ==========================================================================
-    ADD ACHIEVEMENT
-   ========================================================================== */
-const addAchievement = () => {
-  const addAchievementBtn = document.querySelector('.achievements-list__add-btn');
+/* ======================
+  ADD ACHIEVEMENT
+  ====================== */
+const addAchievement = async (e) => {
+  if (e.target.closest('.achievements-list__add-btn')) {
+    const addBtn = e.target.closest('.achievements-list__add-btn');
+    addBtn.disabled = true;
 
-  addAchievementBtn.addEventListener('click', async() => {
-    try{
-      addAchievementBtn.disabled = true;
-
-      await addAchievementAPI({number:undefined, name:undefined});
+    try {
+      // editAchievement();
+      await addAchievementAPI({ number: undefined, name: undefined });
       displayAboutSection();
-      addAchievementBtn.disabled = false;
-
-    }catch(err) {
-      const errMessage = err?.response?.data?.message;
-      popupError(errMessage);
-
-    }finally {
-      addAchievementBtn.disabled = false;
+    } catch (err) {
+      console.log(err);
+      popupError(err?.response?.data?.message);
+    } finally {
+      addBtn.disabled = false;
     }
-  });
+  }
 }
 
-/* ==========================================================================
-    ADD EXPERIENCE
-   ========================================================================== */
-const addExperience = () => {
-  const addExperienceBtn = document.querySelector('.experience-cards-list__add-btn');
+/* ======================
+  ADD EXPERIENCE
+  ====================== */
+const addExperience  = async (e) => {
+  if (e.target.closest('.experience-cards-list__add-btn')) {
+    const addBtn = e.target.closest('.experience-cards-list__add-btn');
+    addBtn.disabled = true;
 
-  addExperienceBtn.addEventListener('click', async() => {
-    try{
-      addExperienceBtn.disabled = true;
-
-      const data = {title:undefined, company:undefined, dateRange:undefined, details:undefined}
-
-      await addExperiencesAPI(data);
+    try {
+      await addExperiencesAPI({
+        title: undefined,
+        company: undefined,
+        dateRange: undefined,
+        details: undefined
+      });
       displayExperienceSection();
-      addExperienceBtn.disabled = false;
-
-    }catch(err) {
-      const errMessage = err?.response?.data?.message;
-      popupError(errMessage);
-
-    }finally {
-      addExperienceBtn.disabled = false;
+    } catch (err) {
+      console.log(err);
+      popupError(err?.response?.data?.message);
+    } finally {
+      addBtn.disabled = false;
     }
-  });
+  }
 }
 
-/* ==========================================================================
+/* ======================
     ADD PROJECT
-   ========================================================================== */
-const addProject = () => {
-  const addProjectBtn = document.querySelector('.projects-card-container__add-project-btn');
+  ====================== */
+const addProject = async (e) => {
+  if (e.target.closest('.projects-card-container__add-project-btn')) {
+    const addBtn = e.target.closest('.projects-card-container__add-project-btn');
+    addBtn.disabled = true;
 
-  addProjectBtn.addEventListener('click', async() => {
-    try{
-      addProjectBtn.disabled = true;
-
-      const data = {title:undefined, type:undefined, link:undefined, img:undefined}
-
-      await addProjectAPI(data);
+    try {
+      await addProjectAPI({
+        title: undefined,
+        type: undefined,
+        link: undefined,
+        img: undefined
+      });
       displayProjectsSection();
-      addProjectBtn.disabled = false;
-
-    }catch(err) {
-      const errMessage = err?.response?.data?.message;
-      popupError(errMessage);
-
-    }finally {
-      addProjectBtn.disabled = false;
+    } catch (err) {
+      console.log(err);
+      popupError(err?.response?.data?.message);
+    } finally {
+      addBtn.disabled = false;
     }
-  });
+  }
 }
 
-/* ==========================================================================
+/* ======================
     ADD EDUCATION
-   ========================================================================== */
-const addEducation = () => {
-  const addEducationBtn = document.querySelector('.education-card-list__add-education-btn');
+  ====================== */
+const addEducation = async (e) => {
+  if (e.target.closest('.education-card-list__add-education-btn')) {
+    const addBtn = e.target.closest('.education-card-list__add-education-btn');
+    addBtn.disabled = true;
 
-  addEducationBtn.addEventListener('click', async() => {
-    try{
-      addEducationBtn.disabled = true;
-
-      const data = {title:undefined, institution:undefined, details:undefined, dateRange:undefined}
-
-      await addEducationAPI(data);
+    try {
+      await addEducationAPI({
+        title: undefined,
+        institution: undefined,
+        details: undefined,
+        dateRange: undefined
+      });
       displayEducationSection();
-      addEducationBtn.disabled = false;
-
-    }catch(err) {
-      const errMessage = err?.response?.data?.message;
-      popupError(errMessage);
-
-    }finally {
-      addEducationBtn.disabled = false;
+    } catch (err) {
+      popupError(err?.response?.data?.message);
+    } finally {
+      addBtn.disabled = false;
     }
-  });
+  }
 }
 
-/* ==========================================================================
-    ADD EDUCATION
-   ========================================================================== */
-const addTool = () => {
-  const addToolBtn = document.querySelector('.tools-card-list__add-tool-btn');
+/* ======================
+   ADD TOOL
+  ====================== */
+const addTool = async (e) => {
+  if (e.target.closest('.tools-card-list__add-tool-btn')) {
+    const addBtn = e.target.closest('.tools-card-list__add-tool-btn');
+    addBtn.disabled = true;
 
-  addToolBtn.addEventListener('click', async() => {
-    try{
-      addToolBtn.disabled = true;
-
-      const data = {name:undefined, details:undefined, img:undefined}
-
-      await addToolAPI(data);
+    try {
+      await addToolAPI({
+        name: undefined,
+        details: undefined,
+        img: undefined
+      });
       displayToolsSection();
-      addToolBtn.disabled = false;
-
-    }catch(err) {
-      const errMessage = err?.response?.data?.message;
-      popupError(errMessage);
-
-    }finally {
-      addToolBtn.disabled = false;
+    } catch (err) {
+      popupError(err?.response?.data?.message);
+    } finally {
+      addBtn.disabled = false;
     }
-  });
+  }
 }
 
 
-/* ==========================================================================
-    MAIN FUNCTION
-   ========================================================================== */
+/* ===================================
+   MAIN FUNCTION
+  =================================== */  
 export default function AddContentMain () {
-  document.addEventListener('displayedAboutSection', () => { addSkill(); addAchievement();});
-  document.addEventListener('displayedExperienceSection', () => addExperience());
-  document.addEventListener('displayedProjectSection', () => addProject());
-  document.addEventListener('displayedEducationSection', () => addEducation());
-  document.addEventListener('displayedToolsSection', () => addTool());
+  document.addEventListener('click', async (e) => {
+    if (e.target.closest('.about-section__add-skill-btn')) return addSkill(e);
+    
+    if (e.target.closest('.achievements-list__add-btn')) return addAchievement(e);
+    
+    if (e.target.closest('.experience-cards-list__add-btn')) return addExperience(e);
+    
+    if (e.target.closest('.projects-card-container__add-project-btn')) return addProject(e);
+    
+    if (e.target.closest('.education-card-list__add-education-btn')) return addEducation(e);
+    
+    if (e.target.closest('.tools-card-list__add-tool-btn')) return addTool(e);
+  });
+
 }

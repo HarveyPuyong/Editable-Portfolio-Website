@@ -59,14 +59,6 @@ const editSkill = async (req, res) => {
       return res.status(400).json({ message: "Skill name is required." });
     }
 
-    skillName = skillName.trim();
-
-    // Check duplicate
-    const exists = await SkillDB.findOne({ skillName, _id: { $ne: id } });
-    if (exists) {
-      return res.status(400).json({ message: "Another skill with this name already exists." });
-    }
-
     const updatedSkill = await SkillDB.findByIdAndUpdate(
       id,
       { skillName },

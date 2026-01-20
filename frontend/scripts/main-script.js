@@ -3,7 +3,7 @@ import AuthMain from "./auth.js"
 import {DisplayContentMain} from "./display-contents.js"
 import AddContentMain from "./add-content.js"
 import DeleteContentMain from "./delete-content.js"
-import EditContentMain from "./edit-content.js"
+import {EditContentMain} from "./edit-content.js"
 
 
 // ================================

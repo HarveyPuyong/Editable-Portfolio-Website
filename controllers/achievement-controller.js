@@ -6,7 +6,7 @@ const AchievementDB = require('../models/achievement-schema');
 // =======================
 const getAchievements = async (req, res) => {
   try {
-    const achievements = await AchievementDB.find().sort({ number: 1 }); // sort by number ascending
+    const achievements = await AchievementDB.find().sort({ createdAt: 1 }); // sort by number ascending
     res.status(200).json({ achievements });
   } catch (error) {
     console.error(error);
@@ -22,7 +22,7 @@ const addAchievement = async (req, res) => {
   try {
     // Check current number of experiences
     const count = await AchievementDB.countDocuments();
-    const maxNum = 8;
+    const maxNum = 4;
     
     if (count >= maxNum) {
       return res.status(400).json({
