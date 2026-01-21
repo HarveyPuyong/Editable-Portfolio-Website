@@ -3,6 +3,7 @@ import {editAchievementAPI} from "./../api/achievement-api.js"
 import {editSkillAPI} from "./../api/skill-api.js"
 import {editExperiencesAPI} from "./../api/experience-api.js"
 import {editProjectAPI} from "./../api/project-api.js"
+import {editEducationAPI} from "./../api/education-api.js"
 import {editToolAPI} from "./../api/tool-api.js";
 
 
@@ -119,7 +120,6 @@ export const editAchievement = async () => {
 
 };
 
-
 // ==========================================
 // EDIT EXPERIENCE
 // ==========================================
@@ -153,6 +153,89 @@ export const editExperience = async () => {
   })
 };
 
+// ==========================================
+// EDIT PROJECT
+// ==========================================
+export const editProject = async () => {
+  const allProject = document.querySelectorAll('.project-card');
+
+  allProject.forEach(async(project) => {
+    const projectId = project.dataset.id;
+    const title = project.querySelector('.project-card__title').innerText;
+    const type = project.querySelector('.project-card__type').innerText;
+    const link = project.querySelector('.profile-card__input-link').value;
+    const imageInput = project.querySelector('.image-input');
+
+    try {
+        const formData = new FormData();
+        formData.append("title", title);
+        formData.append("type", type);
+        formData.append("link", link);
+
+        if (imageInput.files[0]) {
+          formData.append("img", imageInput.files[0]);
+        }
+
+        await editProjectAPI(projectId, formData);
+
+    } catch (err) {
+      console.log(err);
+    }
+  })
+};
+
+// ==========================================
+// EDIT EDUCATION
+// ==========================================
+export const editEducation = async () => {
+  const allEducation = document.querySelectorAll('.education-card');
+
+  allEducation.forEach(async (education) => {
+    const educationId = education.dataset.id;
+    const title = education.querySelector('.education-card__title').innerText;
+    const institution = education.querySelector('.education-card__program').innerText;
+    const details = education.querySelector('.education-card__details').innerText;
+    const dateRange = education.querySelector('.education-card__date-range').innerText;
+
+    const data = {title, institution, details, dateRange}
+
+    try {
+        await editEducationAPI(educationId, data);
+
+    } catch (err) {
+      console.log(err);
+    }
+  })
+};
+
+// ==========================================
+// EDIT TOOL
+// ==========================================
+export const editTool = async () => {
+  const allTool = document.querySelectorAll('.tool-card');
+
+  allTool.forEach(async(tool) => {
+    const toolId = tool.dataset.id;
+    const name = tool.querySelector('.tool-card__name').innerText;
+    const details = tool.querySelector('.tool-card__details').innerText;
+    const imageInput = tool.querySelector('.image-input');
+
+    try {
+        const formData = new FormData();
+        formData.append("name", name);
+        formData.append("details", details);
+
+        if (imageInput.files[0]) {
+          formData.append("img", imageInput.files[0]);
+        }
+
+        await editToolAPI(toolId, formData);
+
+    } catch (err) {
+      console.log(err);
+    }
+  })
+};
 
 
 // ==========================================
@@ -167,8 +250,6 @@ export function EditContentMain () {
   document.addEventListener('edit-mode', () => {
     const editForm = document.querySelector('#edit-content-form');
 
-    
-
     editForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
@@ -176,6 +257,9 @@ export function EditContentMain () {
       editSkill();
       editAchievement();
       editExperience();
+      editProject();
+      editEducation();
+      editTool();
     });
   });
 }

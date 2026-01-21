@@ -12,7 +12,9 @@ import { displayAboutSection, displayExperienceSection,
         displayToolsSection
 } from './display-contents.js';
 
-import {editSkill, editAchievement} from './edit-content.js'
+import {editSkill, editAchievement,
+        editExperience, editProject,
+        editEducation, editTool} from './edit-content.js'
 
 
 /* ======================
@@ -86,8 +88,10 @@ const deleteProject = async (e) => {
     const btn = e.target.closest('.project-card__delete-btn');
     btn.disabled = true;
     try {
+      editProject();
       await deleteProjectAPI(btn.dataset.id);
       displayProjectsSection();
+
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);
@@ -105,8 +109,10 @@ const deleteEducation = async (e) => {
     const btn = e.target.closest('.education-card__delete-btn');
     btn.disabled = true;
     try {
+      editEducation();
       await deleteEducationAPI(btn.dataset.id);
       displayEducationSection();
+
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);
@@ -124,8 +130,10 @@ const deleteTool = async (e) => {
     const btn = e.target.closest('.tool-card__delete-btn');
     btn.disabled = true;
     try {
+      editTool();
       await deleteToolAPI(btn.dataset.id);
       displayToolsSection();
+
     } catch (err) {
       console.log(err);
       popupError(err?.response?.data?.message);

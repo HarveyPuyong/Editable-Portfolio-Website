@@ -8,7 +8,7 @@ const ToolDB = require("../models/tool-schema");
 // =======================
 const getTools = async (req, res) => {
   try {
-    const tools = await ToolDB.find().sort({ createdAt: -1 });
+    const tools = await ToolDB.find().sort({ createdAt: 1 });
 
     res.status(200).json({ tools });
 
@@ -65,9 +65,7 @@ const addTool = async (req, res) => {
 const editTool = async (req, res) => {
   try {
     const { id } = req.params;
-
-    const name = req.body.name;
-    const details = req.body.details;
+    const { name, details } = req.body;
 
     const existingTool = await ToolDB.findById(id);
     if (!existingTool)
@@ -78,7 +76,6 @@ const editTool = async (req, res) => {
     if (req.file) {
       img = `/uploads/${req.file.filename}`;
 
-      // delete old image if not default
       if (
         existingTool.img &&
         !existingTool.img.includes("tool-default-img")
@@ -88,8 +85,10 @@ const editTool = async (req, res) => {
       }
     }
 
-    existingTool.name = name || existingTool.name;
-    existingTool.details = details || existingTool.details;
+    // Update fields only if provided
+    if (name !== undefined) existingTool.name = name;
+    if (details !== undefined) existingTool.details = details;
+
     existingTool.img = img;
 
     const updatedTool = await existingTool.save();
@@ -104,6 +103,7 @@ const editTool = async (req, res) => {
     res.status(500).json({ message: "Failed to update tool." });
   }
 };
+
 
 
 // =======================

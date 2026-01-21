@@ -326,7 +326,7 @@ const displayProjectsSection = async () => {
 
     projects.forEach((project, index) => {
       const projectCardHTML = `
-        <div class="project-card with-image-content">
+        <div class="project-card with-image-content" data-id=${project._id}>
           <button class="project-card__delete-btn delete-button" data-id=${project._id} type="button">
             <i class="fa-solid fa-xmark"></i>
           </button>
@@ -351,12 +351,7 @@ const displayProjectsSection = async () => {
               <i class="project-card__arrow--icon two bi bi-arrow-up-right"></i>
             </div>
 
-            <input
-              class="profile-card__input-link"
-              type="text"
-              value="${project.link || ''}"
-              placeholder="Enter your project link"
-            >
+            <input class="profile-card__input-link" type="text" value="${project.link || ''}" placeholder="Enter your project link">
           </div>
         </div>
       `;
@@ -408,26 +403,26 @@ const displayEducationSection = async () => {
 
     educations.forEach(education => {
       educationCardHTML += `
-        <div class="education-card">
+        <div class="education-card" data-id=${education._id}>
           <button class="education-card__delete-btn delete-button" data-id=${education._id} type="button" aria-label="Delete">
             <i class="fa-solid fa-xmark"></i>
           </button>
 
           <div class="education-card__top-area">
             <div class="education-card__title-and-institution">
-              <h3 class="editable-text education-card__title" data-target="education-card__title-input">${education.title}</h3>
+              <h3 class="editable-text education-card__title">${education.title}</h3>
 
               <p class="education-card__institution">
-                <span class="editable-text education-card__program" data-target="education-card__program-input">${education.institution}</span>
+                <span class="editable-text education-card__program">${education.institution}</span>
               </p>
             </div>
 
-            <p class="editable-text education-card__date-range" data-target="education-card__date-range-input">${education.dateRange}</p>
+            <p class="editable-text education-card__date-range">${education.dateRange}</p>
           </div>
 
           <div class="education-card__line"></div>
 
-          <p class="editable-text education-card__details" data-target="education-card__details-input">${education.details}</p>
+          <p class="editable-text education-card__details">${education.details}</p>
         </div>`
     });
 
@@ -461,7 +456,7 @@ const displayToolsSection = async () => {
 
     tools.forEach(tool => {
       toolCardHTML += `
-        <div class="tool-card with-image-content">
+        <div class="tool-card with-image-content" data-id=${tool._id}>
           <button class="tool-card__delete-btn delete-button" data-id=${tool._id} type="button" aria-label="Delete">
             <i class="fa-solid fa-xmark"></i>
           </button>
@@ -475,9 +470,9 @@ const displayToolsSection = async () => {
             <img class="tool-card__icon image-preview" src="${tool.img}" alt="icon">
           </div>
 
-          <div class="tool-card__details">
-            <p class="editable-text tool-card__name" data-target="tool-card__name-input">${tool.name}</p>
-            <p class="editable-text tool-card__details" data-target="tool-card__details-input">${tool.details}</p>
+          <div class="tool-card__details-container">
+            <p class="editable-text tool-card__name">${tool.name}</p>
+            <p class="editable-text tool-card__details">${tool.details}</p>
           </div>
         </div>
       `

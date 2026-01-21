@@ -13,8 +13,9 @@ import {displayAboutSection,
         displayEducationSection,
         displayToolsSection} from './display-contents.js'
 
-import {editSkill, editAchievement, editExperience} from './edit-content.js'
-
+import {editSkill, editAchievement,
+        editExperience, editProject,
+        editEducation, editTool} from './edit-content.js'
 
 
 /*======================
@@ -100,12 +101,15 @@ const addProject = async (e) => {
     addBtn.disabled = true;
 
     try {
+      editProject();
+
       await addProjectAPI({
         title: undefined,
         type: undefined,
         link: undefined,
         img: undefined
       });
+
       displayProjectsSection();
 
     } catch (err) {
@@ -126,12 +130,15 @@ const addEducation = async (e) => {
     addBtn.disabled = true;
 
     try {
+      editEducation();
+
       await addEducationAPI({
         title: undefined,
         institution: undefined,
         details: undefined,
         dateRange: undefined
       });
+
       displayEducationSection();
 
     } catch (err) {
@@ -151,11 +158,14 @@ const addTool = async (e) => {
     addBtn.disabled = true;
 
     try {
+      editTool();
+
       await addToolAPI({
         name: undefined,
         details: undefined,
         img: undefined
       });
+      
       displayToolsSection();
 
     } catch (err) {

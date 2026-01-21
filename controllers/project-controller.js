@@ -66,9 +66,7 @@ const addProject = async (req, res) => {
 const editProject = async (req, res) => {
   try {
     const { id } = req.params;
-    const title = req.body.title;
-    const type = req.body.type;
-    const link = req.body.link;
+    const { title, type, link } = req.body;
 
     const existingProject = await ProjectDB.findById(id);
     if (!existingProject)
@@ -79,16 +77,20 @@ const editProject = async (req, res) => {
     if (req.file) {
       img = `/uploads/${req.file.filename}`;
 
-      // delete old image if not default
-      if (!existingProject.img.includes("project-default-img.png")) {
+      if (
+        existingProject.img &&
+        !existingProject.img.includes("project-default-img.png")
+      ) {
         const oldPath = path.join(__dirname, "..", existingProject.img);
         if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
       }
     }
 
-    existingProject.title = title || existingProject.title;
-    existingProject.type = type || existingProject.type;
-    existingProject.link = link || existingProject.link;
+    // Update fields only if provided
+    if (title !== undefined) existingProject.title = title;
+    if (type !== undefined) existingProject.type = type;
+    if (link !== undefined) existingProject.link = link;
+
     existingProject.img = img;
 
     const updatedProject = await existingProject.save();

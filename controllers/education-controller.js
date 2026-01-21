@@ -6,7 +6,7 @@ const EducationDB = require("../models/education-schema");
 // =======================
 const getEducations = async (req, res) => {
   try {
-    const educations = await EducationDB.find().sort({ createdAt: -1 });
+    const educations = await EducationDB.find().sort({ createdAt: 1 });
 
     res.status(200).json({ educations });
 
@@ -61,22 +61,19 @@ const addEducation = async (req, res) => {
 const editEducation = async (req, res) => {
   try {
     const { id } = req.params;
-
-    const title = req.body.title;
-    const institution = req.body.institution;
-    const details = req.body.details;
-    const dateRange = req.body.dateRange;
+    const { title, institution, details, dateRange } = req.body;
 
     const existingEducation = await EducationDB.findById(id);
     if (!existingEducation)
       return res.status(404).json({ message: "Education not found." });
 
-    existingEducation.title = title || existingEducation.title;
-    existingEducation.institution =
-      institution || existingEducation.institution;
-    existingEducation.details = details || existingEducation.details;
-    existingEducation.dateRange =
-      dateRange || existingEducation.dateRange;
+    // Update fields only if provided
+    if (title !== undefined) existingEducation.title = title;
+    if (institution !== undefined)
+      existingEducation.institution = institution;
+    if (details !== undefined) existingEducation.details = details;
+    if (dateRange !== undefined)
+      existingEducation.dateRange = dateRange;
 
     const updatedEducation = await existingEducation.save();
 
@@ -90,6 +87,7 @@ const editEducation = async (req, res) => {
     res.status(500).json({ message: "Failed to update education." });
   }
 };
+
 
 
 // =======================
