@@ -107,7 +107,7 @@
 
 .view-mode .achievements-list__add-btn{
   display: none;
-}
+} 
 
 /* ============================================================================
                                  EDIT MODE
@@ -192,6 +192,8 @@
   border-radius: 7px;
   cursor: pointer;
   padding: 25px 50px;
+  padding: 25px 20px;
+  text-align: center;
 }
 
 
@@ -204,6 +206,10 @@
     gap: 40px;
     grid-template-columns: repeat(4, 1fr);
     justify-content: center;
+  }
+
+  .edit-mode .achievements-list__add-btn{
+    padding: 25px 50px;
   }
 }
 

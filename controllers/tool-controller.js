@@ -58,7 +58,6 @@ const addTool = async (req, res) => {
   }
 };
 
-
 // =======================
 // EDIT TOOL
 // =======================
@@ -78,7 +77,7 @@ const editTool = async (req, res) => {
 
       if (
         existingTool.img &&
-        !existingTool.img.includes("tool-default-img")
+        !existingTool.img.includes("uploads/default/default-image.png")
       ) {
         const oldPath = path.join(__dirname, "..", existingTool.img);
         if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
@@ -105,7 +104,6 @@ const editTool = async (req, res) => {
 };
 
 
-
 // =======================
 // DELETE TOOL
 // =======================
@@ -120,7 +118,7 @@ const deleteTool = async (req, res) => {
     // delete image if not default
     if (
       tool.img &&
-      !tool.img.includes("tool-default-img")
+      !tool.img.includes("uploads/default/default-image.png")
     ) {
       const oldPath = path.join(__dirname, "..", tool.img);
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);

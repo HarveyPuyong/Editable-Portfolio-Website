@@ -80,7 +80,7 @@ const editExperience = async (req, res) => {
 
       if (
         existingExperience.img &&
-        !existingExperience.img.includes("experience-default-img.png")
+        !existingExperience.img.includes("uploads/default/default-image.png")
       ) {
         const oldPath = path.join(__dirname, "..", existingExperience.img);
         if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
@@ -121,7 +121,7 @@ const deleteExperience = async (req, res) => {
       return res.status(404).json({ message: "Experience not found." });
 
     // delete image if not default
-    if (!experience.img.includes("experience-default-img.png")) {
+    if (!experience.img.includes("uploads/default/default-image.png")) {
       const oldPath = path.join(__dirname, "..", experience.img);
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
     }

@@ -4,7 +4,7 @@ const experienceSchema = new mongoose.Schema(
   {
     img: {
       type: String, // image URL or file path
-      default: "uploads/default-image.png",
+      default: "uploads/default/default-image.png",
     },
 
     title: {

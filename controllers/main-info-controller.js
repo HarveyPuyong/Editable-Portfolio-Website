@@ -31,7 +31,7 @@ const changeInfo = async (req, res) => {
 
       if (
         existingInfo?.profileImage &&
-        !existingInfo.profileImage.includes("default-profile-img.png")
+        !existingInfo.profileImage.includes("uploads/default/default-profile-img.png")
       ) {
         const oldImagePath = path.join(__dirname, "..", existingInfo.profileImage);
         if (fs.existsSync(oldImagePath)) fs.unlinkSync(oldImagePath);

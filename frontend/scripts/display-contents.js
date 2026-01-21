@@ -450,8 +450,6 @@ const displayToolsSection = async () => {
     const toolsData = await getToolsAPI();
     const tools = toolsData.tools;
 
-    console.log(tools);
-
     let toolCardHTML = '';
 
     tools.forEach(tool => {
@@ -499,7 +497,6 @@ const displayToolsSection = async () => {
 const displayContactCards = async () => {
   try{
     const mainInfoData = await getMainInfoAPI();
-    console.log(mainInfoData);
 
     const contactCardHTML = `
       <div class="contact-card">

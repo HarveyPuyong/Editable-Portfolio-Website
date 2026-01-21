@@ -79,7 +79,7 @@ const editProject = async (req, res) => {
 
       if (
         existingProject.img &&
-        !existingProject.img.includes("project-default-img.png")
+        !existingProject.img.includes("uploads/default/default-image.png")
       ) {
         const oldPath = path.join(__dirname, "..", existingProject.img);
         if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
@@ -119,7 +119,7 @@ const deleteProject = async (req, res) => {
       return res.status(404).json({ message: "Project not found." });
 
     // delete image if not default
-    if (!project.img.includes("project-default-img.png")) {
+    if (!project.img.includes("uploads/default/default-image.png")) {
       const oldPath = path.join(__dirname, "..", project.img);
       if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
     }
