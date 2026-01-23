@@ -327,6 +327,8 @@ const displayProjectsSection = async () => {
     projects.forEach((project, index) => {
       const projectCardHTML = `
         <div class="project-card with-image-content" data-id=${project._id}>
+          <a class="profile-card__link" href="${project.link}" target="_blank">Link</a>
+          
           <button class="project-card__delete-btn delete-button" data-id=${project._id} type="button">
             <i class="fa-solid fa-xmark"></i>
           </button>
