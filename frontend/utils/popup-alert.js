@@ -1,7 +1,9 @@
+import {switchToEditMode} from "./switch-to-edit-mode.js"
+
 /* ==========================================================================
    CLOSE POPUP ALERT
    ========================================================================== */
-const closePopupAlert = () => {
+const closePopupAlert = (detail) => {
   const popupContainers = document.querySelectorAll('.popup-alert');
 
   popupContainers.forEach(popup => {
@@ -9,6 +11,14 @@ const closePopupAlert = () => {
     
     popupButton.addEventListener('click', () => {
       popup.classList.add('hide');
+
+      if(!detail) return
+
+      if(detail === "Session expired. Please log in again.") window.location.reload();
+
+      if(detail === 'Logged In Successfully'){
+        switchToEditMode();
+      }
     })
   });
 }
@@ -22,7 +32,7 @@ function popupSuccess(detail) {
   popupContainer.classList.remove('hide');
   
   popupContainer.querySelector('.popup-alert__details').innerText = detail;
-  closePopupAlert();
+  closePopupAlert(detail);
 }
 
 
@@ -34,7 +44,7 @@ function popupError(detail) {
   popupContainer.classList.remove('hide');
   
   popupContainer.querySelector('.popup-alert__details').innerText = detail;
-  closePopupAlert();
+  closePopupAlert(detail);
 }
 
 

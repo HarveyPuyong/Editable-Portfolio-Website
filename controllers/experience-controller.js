@@ -24,7 +24,7 @@ const getExperiences = async (req, res) => {
 const addExperience = async (req, res) => {
   try {
     const count = await ExperienceDB.countDocuments();
-    const maxExperience = 15;
+    const maxExperience = 10;
 
     if (count >= maxExperience) {
       return res.status(400).json({

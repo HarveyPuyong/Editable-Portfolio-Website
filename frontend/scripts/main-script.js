@@ -79,7 +79,6 @@ const hideProjectMoreButton = () => {
   });
 };
 
-
 // ================================
 // MAIN PAGE FUNCTION
 // ================================

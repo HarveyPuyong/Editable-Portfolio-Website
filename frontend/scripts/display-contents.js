@@ -45,16 +45,16 @@ const displayProfileCard = async () => {
         </div>
 
         <div class="profile-card__social-list">
-          <a href="${data.info.instagramLink}" class="profile-card__social-list--img">
+          <a href="${data.info.instagramLink}" class="profile-card__social-list--img" target="_blank">
             <img class="profile-card__social-list--img-icon" src="images-and-icons/instagram.png" alt="instagram-img">
           </a>
-          <a href="${data.info.tiktokLink}" class="profile-card__social-list--img">
+          <a href="${data.info.tiktokLink}" class="profile-card__social-list--img" target="_blank">
             <img class="profile-card__social-list--img-icon" src="images-and-icons/tiktok.png" alt="tiktok-icon">
           </a>
-          <a href="${data.info.youtubeLink}" class="profile-card__social-list--img">
+          <a href="${data.info.youtubeLink}" class="profile-card__social-list--img" target="_blank">
             <img class="profile-card__social-list--img-icon" src="images-and-icons/youtube.png" alt="youtube-icon">
           </a>
-          <a href="${data.info.facebookLink}" class="profile-card__social-list--img"> 
+          <a href="${data.info.facebookLink}" class="profile-card__social-list--img" target="_blank"> 
             <img class="profile-card__social-list--img-icon" src="images-and-icons/facebook.png" alt="facebook-icon">
           </a>
         </div>

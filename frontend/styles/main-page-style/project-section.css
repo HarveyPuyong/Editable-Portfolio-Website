@@ -36,6 +36,8 @@
 .project-card__img{
   margin-bottom: 10px;
   border-radius: 12px;
+
+  height: clamp(200px, 60vw, 350.11px);
 }
 
 .project-card__details{
@@ -198,6 +200,7 @@
 
 @media(width >= 1200px){
   .project-card__img{
+    height: 330.11px;
     max-height: 330.11px;
   }
 }

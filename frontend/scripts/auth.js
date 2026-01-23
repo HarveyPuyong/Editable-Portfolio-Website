@@ -6,6 +6,35 @@ import {switchToEditMode} from "./../utils/switch-to-edit-mode.js"
 
 
 /* ==========================================================================
+   ENFORCE EDIT MODE ACCESS
+   Ensures only authorized users can enter edit mode
+   ========================================================================== */
+const validateEditPermissions = () => {
+  const mainWrapper = document.querySelector('.main-wrapper');
+  const accessToken = localStorage.getItem('accessToken');
+
+  // If no token, force view-mode initially
+  if (!accessToken) {
+    mainWrapper.classList.remove('edit-mode');
+    mainWrapper.classList.add('view-mode');
+  }
+
+  // Only observe if no token (to avoid unnecessary observer for authorized users)
+  if (!accessToken) {
+    const observer = new MutationObserver(() => {
+      if (mainWrapper.classList.contains('edit-mode')) {
+        mainWrapper.classList.remove('edit-mode');
+        mainWrapper.classList.add('view-mode');
+        console.warn('Edit mode access denied.');
+      }
+    });
+
+    observer.observe(mainWrapper, { attributes: true, attributeFilter: ['class'] });
+  }
+};
+
+
+/* ==========================================================================
    HANDLE LOGIN
    ========================================================================== */
 const handleLogin = () => {
@@ -26,15 +55,7 @@ const handleLogin = () => {
 
       if (data?.accessToken) {
         localStorage.setItem("accessToken", data.accessToken);
-        switchToEditMode();
-        popupSuccess('Logged In Successfully');
-
-        setTimeout(() => {
-          document.querySelector('.popup-success')?.classList.add('hide');
-          document.querySelector('.blur-bg')?.classList.add('hide');
-          document.querySelectorAll('.auth-form')
-            .forEach(form => form.classList.add('hide'));
-        }, 1000);
+        popupSuccess('Logged In Successfully'); //nasa closePopupAlert function ang pag call ng switchToEditMode
       }
 
     } catch (err) {
@@ -80,7 +101,6 @@ const handleSendOTP = () => {
   });
 }
 
-
 // ===============================
 // HANDLE VERIFY OTP
 // ===============================
@@ -117,7 +137,6 @@ const handleVerifyOTP = () => {
   });
 }
 
-
 // ===============================
 // HANDLE CHANGE PASSWORD
 // ===============================
@@ -152,7 +171,6 @@ const handleChangePassword = () => {
     }
   });
 }
-
 
 /* ==========================================================================
    TOGGLE PASSWORD VISIBILITY
@@ -210,6 +228,7 @@ const otpAutoNextPrevInput = () => {
 
 
 export default function AuthMain(){
+  validateEditPermissions();
   togglePasswordVisibility();
   otpAutoNextPrevInput();
   attachInputSanitizers();

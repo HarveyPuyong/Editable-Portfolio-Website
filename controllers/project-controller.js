@@ -23,7 +23,7 @@ const getProjects = async (req, res) => {
 // =======================
 const addProject = async (req, res) => {
   try {
-    const maxProjects = 15;
+    const maxProjects = 10;
 
     const count = await ProjectDB.countDocuments();
     if (count >= maxProjects) {

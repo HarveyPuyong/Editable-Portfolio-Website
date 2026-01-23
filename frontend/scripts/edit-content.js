@@ -253,13 +253,22 @@ export function EditContentMain () {
     editForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      editMainInfo();
-      editSkill();
-      editAchievement();
-      editExperience();
-      editProject();
-      editEducation();
-      editTool();
+      try {
+        await editMainInfo();
+        await editSkill();
+        await editAchievement();
+        await editExperience();
+        await editProject();
+        await editEducation();
+        await editTool();
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+
+      } catch (err) {
+        console.error("Error saving edits:", err);
+      }
     });
   });
 }

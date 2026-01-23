@@ -37,5 +37,9 @@ export function switchToEditMode() {
   editBtn.classList.add('hide');
   saveBtn.classList.remove('hide');
 
+  document.querySelector('.popup-success')?.classList.add('hide');
+  document.querySelector('.blur-bg')?.classList.add('hide');
+  document.querySelectorAll('.auth-form').forEach(form => form.classList.add('hide'));
+
   document.dispatchEvent(new Event("edit-mode"));
 }
