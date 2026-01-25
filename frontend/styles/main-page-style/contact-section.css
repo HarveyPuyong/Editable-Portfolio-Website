@@ -90,9 +90,9 @@ textarea{
   font-weight: 500;
 }
 
-.view-mode .email-form-required-data-container{
+/* .view-mode .email-form-required-data-container{
   display: none;
-}
+} */
 
 
 /* ============================================================================
@@ -107,7 +107,7 @@ textarea{
   display: none;
 }
 
-.edit-mode .email-form-required-data-container{
+/* .edit-mode .email-form-required-data-container{
   width: 100%;
 }
 
@@ -120,8 +120,7 @@ textarea{
 .email-form-required-data-container__instruction--video-link{
   color: var(--accent-color);
   text-decoration: underline;
-
-}
+} */
 
 @media(width >= 810px){
   .contact-section-content{

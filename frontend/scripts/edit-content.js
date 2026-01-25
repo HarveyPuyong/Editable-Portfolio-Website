@@ -37,7 +37,6 @@ const editMainInfo = async() => {
   const contactNumber = document.querySelector('#contact-number').innerText;
   const address = document.querySelector('#address').innerText;
   const email = document.querySelector('#email').innerText;
-  const sendgridApiKey = document.querySelector('#sendgrid-api-key').value;
   const instagramLink = document.querySelector('.instagram-input-link').value;
   const tiktokLink = document.querySelector('.tiktok-input-link').value;
   const youtubeLink = document.querySelector('.youtube-input-link').value;
@@ -53,7 +52,6 @@ const editMainInfo = async() => {
   formData.append("aboutMe", aboutMe);
   formData.append("contactNumber", contactNumber);
   formData.append("address", address);
-  formData.append("sendgridApiKey", sendgridApiKey);
   formData.append("instagramLink", instagramLink);
   formData.append("tiktokLink", tiktokLink);
   formData.append("youtubeLink", youtubeLink);
