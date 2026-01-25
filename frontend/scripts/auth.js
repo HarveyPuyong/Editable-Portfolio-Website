@@ -3,6 +3,7 @@ import attachInputSanitizers from "./../utils/sanitize-input.js"
 import {loginUserAPI, sendOtpAPI, verifyOtpAPI, changePasswordAPI} from "./../api/auth-api.js";
 import  {popupSuccess, popupError, closePopupAlert} from "./../utils/popup-alert.js";
 import {switchToEditMode} from "./../utils/switch-to-edit-mode.js"
+import otpCooldown from "./../utils/otp-cooldown.js"
 
 
 /* ==========================================================================
@@ -88,6 +89,10 @@ const handleSendOTP = () => {
 
       try {
         const response = await sendOtpAPI();
+        const cooldown = response.data.cooldown || 60;
+
+        otpCooldown(cooldown)
+
         if (response?.status === 200) popupSuccess(response.data.message);
 
       } catch (err) {

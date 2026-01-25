@@ -9,7 +9,10 @@ async function otpEmailer(to, subject, text) {
   try {
     await sgMail.send({
       to,
-      from: process.env.SENDER_EMAIL,
+      from: {
+        email: process.env.SENDER_EMAIL, 
+        name: 'OTP CODE FROM YOUR PORTFOLIO'
+      },
       subject,
       text,
     });

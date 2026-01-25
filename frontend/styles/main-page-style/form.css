@@ -163,6 +163,11 @@
   z-index: 10;
 }
 
+.otp-form__resend-otp.cooldown{
+  opacity: 0.5;
+  cursor: default;
+}
+
 .password-wrapper{
   position: relative;
 }
