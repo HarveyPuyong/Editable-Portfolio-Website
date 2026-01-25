@@ -1,9 +1,11 @@
-// utils/emailer.js
 const sgMail = require("@sendgrid/mail");
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-async function sendEmail(to, subject, text) {
+// =======================
+// OTP EMAILER
+// =======================
+async function otpEmailer(to, subject, text) {
   try {
     await sgMail.send({
       to,
@@ -18,4 +20,29 @@ async function sendEmail(to, subject, text) {
   }
 }
 
-module.exports = sendEmail;
+// =======================
+// CONTACT FORM EMAILER
+// =======================
+async function contactFormEmailer(visitorName, visitorEmail, message, ownerEmail) {
+  try {
+    await sgMail.send({
+      to: ownerEmail, // portfolio owner inbox
+      from: {
+        email: process.env.SENDER_EMAIL, 
+        name: 'From Your Portfolio Website'
+      },
+      replyTo: visitorEmail,
+      subject: `Portfolio Contact: ${visitorName} (${visitorEmail})`,
+      text: message,
+    });
+
+    console.log("Contact form email sent to:", ownerEmail);
+
+  } catch (error) {
+    console.error("Failed to send contact form:", error.response ? error.response.body : error);
+    throw error;
+  }
+}
+
+
+module.exports = {otpEmailer, contactFormEmailer};

@@ -264,7 +264,7 @@ export function EditContentMain () {
 
         setTimeout(() => {
           window.location.reload();
-        }, 2000);
+        }, 500);
 
       } catch (err) {
         console.error("Error saving edits:", err);

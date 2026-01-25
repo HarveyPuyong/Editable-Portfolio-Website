@@ -14,7 +14,6 @@ const loginController = async(req, res) => {
 
     const matchPassword = await bcrypt.compare(password, foundUser.password);
     if(!matchPassword) return res.status(400).json({message: "Incorrect Password"});
-  
 
     // accessToken
     const accessToken = generateAccessToken(process.env.ACCESS_TOKEN_SECRET,

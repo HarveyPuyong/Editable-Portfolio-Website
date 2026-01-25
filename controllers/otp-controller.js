@@ -1,6 +1,6 @@
 const OtpDB = require("../models/otp-schema");
 const User = require("../models/user-schema");
-const sendEmail = require("../utils/emailer");
+const {otpEmailer} = require("../utils/emailer");
 
 
 // =======================
@@ -22,8 +22,8 @@ const sendOtp = async (req, res) => {
     await OtpDB.create({ otp: otpCode });
 
     // Send email
-    await sendEmail(
-      user.email,
+    await otpEmailer(
+      user.email, 
       "Your OTP Code",
       `Your OTP is ${otpCode}. It will expire in 15 minutes.`
     );

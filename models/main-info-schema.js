@@ -43,12 +43,6 @@ const mainInfoSchema = new mongoose.Schema(
       default: "No Adress",
     },
 
-    sendgridApiKey: {
-      type: String,
-      required: false,
-      select: false,
-    },
-
     instagramLink: {
       type: String,
       required: false,

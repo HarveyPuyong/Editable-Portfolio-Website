@@ -4,6 +4,7 @@ import {DisplayContentMain} from "./display-contents.js"
 import AddContentMain from "./add-content.js"
 import DeleteContentMain from "./delete-content.js"
 import {EditContentMain} from "./edit-content.js"
+import ContactFormEmailer from "./contact-emailer.js"
 
 
 // ================================
@@ -89,6 +90,7 @@ function MainScriptFunction() {
   EditContentMain();
   AuthMain();
   AnimationMainFunction();
+  ContactFormEmailer();
 
   showMoreProjects();
   hideProjectMoreButton();

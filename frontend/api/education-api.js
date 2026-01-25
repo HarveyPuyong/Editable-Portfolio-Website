@@ -7,6 +7,7 @@ export const getEducationsAPI = async () => {
   try {
     const response = await api.get("/education");
     if (response.status === 200) return response.data;
+    
   } catch (err) {
     console.error("Failed to get educations:", err);
     throw err;
