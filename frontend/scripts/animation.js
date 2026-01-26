@@ -1,7 +1,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // ----------------------------
-// SELECTORS (use Set to avoid duplicates)
+// SELECTORS
 // ----------------------------
 const TARGET_SELECTORS = new Set([
   '.section-label',
@@ -9,13 +9,12 @@ const TARGET_SELECTORS = new Set([
   '#email-form__submit-btn'
 ]);
 
-// Helper to add multiple selectors
 const addSelectors = (selectors = []) => {
-  selectors.forEach(selector => TARGET_SELECTORS.add(selector));
+  selectors.forEach(s => TARGET_SELECTORS.add(s));
 };
 
 // ----------------------------
-// EVENT-BASED SELECTOR ADDING
+// EVENT LISTENERS
 // ----------------------------
 document.addEventListener('displayedAboutSection', () => {
   addSelectors([
@@ -25,90 +24,89 @@ document.addEventListener('displayedAboutSection', () => {
     '.about-section__about-me',
     '.achievements-list__achievement'
   ]);
-
-  scrollElementsFadeIn(); // re-run animation for new elements
+  animateNewElements();
 });
 
 document.addEventListener('displayedExperienceSection', () => {
-  TARGET_SELECTORS.add('.experience-card');
-  scrollElementsFadeIn();
+  addSelectors(['.experience-card']);
+  animateNewElements();
 });
 
 document.addEventListener('displayedProjectSection', () => {
-  TARGET_SELECTORS.add('.project-card');
-  scrollElementsFadeIn();
+  addSelectors(['.project-card']);
+  animateNewElements();
 });
 
 document.addEventListener('displayedEducationSection', () => {
-  TARGET_SELECTORS.add('.education-card');
-  scrollElementsFadeIn();
+  addSelectors(['.education-card']);
+  animateNewElements();
 });
 
 document.addEventListener('displayedToolsSection', () => {
-  TARGET_SELECTORS.add('.tool-card');
-  scrollElementsFadeIn();
+  addSelectors(['.tool-card']);
+  animateNewElements();
 });
 
 document.addEventListener('displayedContactCards', () => {
-  TARGET_SELECTORS.add('.contact-card');
-  scrollElementsFadeIn();
+  addSelectors(['.contact-card']);
+  animateNewElements();
 });
 
 // ----------------------------
-// MAIN ANIMATION FUNCTION
+// CORE ANIMATION
 // ----------------------------
-const scrollElementsFadeIn = () => {
+function animateNewElements() {
   const mainWrapper = document.querySelector('.main-wrapper');
   if (!mainWrapper || !mainWrapper.classList.contains('view-mode')) return;
 
-  // Convert Set → Array → selector string
-  const selectorString = [...TARGET_SELECTORS].join(',');
+  const selector = [...TARGET_SELECTORS].join(',');
 
-  const elements = Array.from(document.querySelectorAll(selectorString))
-    .filter(el =>
-      !el.closest('.profile-card') &&
-      !el.closest('.edit-button') &&
-      !el.dataset.gsapAnimated
-    );
+  const elements = document.querySelectorAll(selector);
 
   elements.forEach(el => {
+    if (
+      el.dataset.animated ||
+      el.closest('.profile-card') ||
+      el.closest('.edit-button')
+    ) return;
+
     gsap.from(el, {
-      y: 70,
+      y: 60,
       opacity: 0,
-      duration: 0.95,
+      duration: 0.8,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: el,
-        start: 'top 92.6%',
+        start: 'top 86.5%',
         toggleActions: 'play none none reset'
       }
     });
 
-    // prevent duplicate animations
-    el.dataset.gsapAnimated = 'true';
+    el.dataset.animated = 'true';
   });
-};
+
+  // 🔥 IMPORTANT for dynamic height changes
+  ScrollTrigger.refresh();
+}
 
 // ----------------------------
 // EDIT MODE CLEANUP
 // ----------------------------
 document.addEventListener('edit-mode', () => {
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  ScrollTrigger.getAll().forEach(t => t.kill());
 
-  // Clear GSAP inline styles
   gsap.set([...TARGET_SELECTORS].join(','), {
     clearProps: 'all'
   });
 
-  // Allow animations to be re-applied later
   document
-    .querySelectorAll('[data-gsap-animated]')
-    .forEach(el => delete el.dataset.gsapAnimated);
+    .querySelectorAll('[data-animated]')
+    .forEach(el => delete el.dataset.animated);
 });
 
 // ----------------------------
-// ENTRY POINT
+// INITIAL RUN
 // ----------------------------
 export default function AnimationMainFunction() {
-  scrollElementsFadeIn();
+  animateNewElements();
 }

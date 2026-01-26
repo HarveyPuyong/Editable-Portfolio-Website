@@ -20,7 +20,7 @@ export const editMainInfoAPI = async (formData) => {
   try {
     const response = await api.put("/main-info/change-info", formData);
 
-    if (response.status === 200) return response.datsa;
+    if (response.status === 200) return response.data;
   } catch (err) {
     console.error("Failed to edit main info:", err);
     throw err;
