@@ -14,14 +14,11 @@ const validateEditPermissions = () => {
   const mainWrapper = document.querySelector('.main-wrapper');
   const accessToken = localStorage.getItem('accessToken');
 
-  // If no token, force view-mode initially
+  // Only observe if no token (to avoid unnecessary observer for authorized users)
   if (!accessToken) {
     mainWrapper.classList.remove('edit-mode');
     mainWrapper.classList.add('view-mode');
-  }
 
-  // Only observe if no token (to avoid unnecessary observer for authorized users)
-  if (!accessToken) {
     const observer = new MutationObserver(() => {
       if (mainWrapper.classList.contains('edit-mode')) {
         mainWrapper.classList.remove('edit-mode');
@@ -33,6 +30,33 @@ const validateEditPermissions = () => {
     observer.observe(mainWrapper, { attributes: true, attributeFilter: ['class'] });
   }
 };
+
+
+/* ==========================================================================
+   ENFORCE FORGOT PASSWORD FORM
+   Ensures the forgot password form is only shown if the user has a valid reset password token (after verifying OTP)
+   ========================================================================== */
+const securedForgotPasswordForm = () => {
+  const resetPasswordForm = document.querySelector('#reset-password-form');
+  const resetPasswordToken = sessionStorage.getItem("resetPasswordToken");
+  
+  // Only observe if no token (to avoid unnecessary observer for authorized users)
+  if (!resetPasswordToken) {
+    resetPasswordForm.classList.add('hide');
+
+    const observer = new MutationObserver(() => {
+      if (!resetPasswordForm.classList.contains('hide')) {
+        resetPasswordForm.classList.add('hide');
+        console.warn('Reset password form access denied.');
+      }
+    });
+
+    observer.observe(resetPasswordForm, { attributes: true, attributeFilter: ['class'] });
+  }
+
+  window.addEventListener('load', () => sessionStorage.removeItem("resetPasswordToken"));
+};
+
 
 
 /* ==========================================================================
@@ -164,7 +188,8 @@ const handleChangePassword = () => {
 
        if(response.status === 200) {
           const responseMessage = response.data.message || 'Password changed successfully'
-          popupSuccess(responseMessage);
+          popupSuccess(responseMessage); // After clicking the popup alert, the login form is shown and the change password form is reset
+          sessionStorage.removeItem("resetPasswordToken");
        }  
 
     } catch (err) {
@@ -238,6 +263,7 @@ const otpAutoNextPrevInput = () => {
 
 export default function AuthMain(){
   validateEditPermissions();
+  securedForgotPasswordForm();
   togglePasswordVisibility();
   otpAutoNextPrevInput();
   attachInputSanitizers();
