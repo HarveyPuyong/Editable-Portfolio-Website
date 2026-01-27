@@ -30,7 +30,15 @@ function ContactFormEmailer() {
       contactForm.reset();
       
     } catch (err) {
-      popupError(err.response?.data?.message || "Failed to send message.");
+      const errors = err.response?.data?.errors;
+
+      if (errors?.length) {
+        popupError(errors.map(e => e.msg).join('\n'));
+      } else {
+        popupError("Failed to send message.");
+      }
+
+      console.error('Full error:', err.response?.data);
       console.error(err);
     }
   });

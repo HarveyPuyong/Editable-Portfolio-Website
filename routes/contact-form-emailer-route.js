@@ -1,8 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const contactLimiter = require('./../middlewares/contact-limiter')
+const contactLimiter = require('./../middlewares/contact-limiter');
+const { validate } = require('./../middlewares/request-validator');
+const {contactRules} = require('./../middlewares/request-validator-rules/contact-rules')
 const { sendContactForm } = require('../controllers/contact-form-emailer-controller');
 
-router.post('/', contactLimiter, sendContactForm);
+router.post('/',
+            contactLimiter, //contact limiter middleare
+            validate(contactRules), // request validator middleare
+            sendContactForm //send contact form controller
+          );
 
 module.exports = router;

@@ -60,13 +60,14 @@ const handleLogin = () => {
       }
 
     } catch (err) {
-      console.error(err);
-      const errorMessage =
-        err?.response?.data?.message ||
-        err.message ||
-        'Login failed';
+      const data = err.response?.data;
 
-      popupError(errorMessage);
+      if (data?.errors?.length) popupError(data.errors.map(e => e.msg || e.message).join('\n'));
+      else if (data?.message) popupError(data.message);
+      else popupError("Failed to Login");
+      
+      console.error('Full error:', data);
+      console.error(err);
 
     } finally {
       // HIDE loader kapag MAY RESPONSE NA
@@ -134,7 +135,7 @@ const handleVerifyOTP = () => {
         otpInputs[0].focus();
       } 
     } catch (err) {
-      const errorMessage = err.response.data.message;
+      const errorMessage = err.response.data.message || 'An error occured';
       popupError(errorMessage);
       otpInputs.forEach(inp => (inp.value = ''));
       otpInputs[0].focus();
@@ -170,8 +171,14 @@ const handleChangePassword = () => {
        }  
 
     } catch (err) {
-      const errorMessage = err?.response?.data?.message || err.message || 'An error occurred';
-      popupError(errorMessage);
+      const data = err.response?.data;
+
+      if (data?.errors?.length) popupError(data.errors.map(e => e.msg || e.message).join('\n'));
+      else if (data?.message) popupError(data.message);
+      else popupError("Change Password");
+      
+      console.error('Full error:', data);
+      console.error(err);
       changePasswordForm.reset();
     }
   });

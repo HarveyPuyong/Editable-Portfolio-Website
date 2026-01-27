@@ -77,7 +77,7 @@ function animateNewElements() {
       ease: 'power2.out',
       scrollTrigger: {
         trigger: el,
-        start: 'top 86.5%',
+        start: 'top 91%',
         toggleActions: 'play none none reset'
       }
     });
@@ -85,7 +85,6 @@ function animateNewElements() {
     el.dataset.animated = 'true';
   });
 
-  // 🔥 IMPORTANT for dynamic height changes
   ScrollTrigger.refresh();
 }
 

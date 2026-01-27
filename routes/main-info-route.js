@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const verifyJWT = require('../middlewares/verify-jwt');
+const { validate } = require('./../middlewares/request-validator');
+const { changeEmailRules } = require('./../middlewares/request-validator-rules/auth-rules')
 const { changeInfo, getInfo, changeEmail } = require('../controllers/main-info-controller');
 const upload = require('../middlewares/upload-file');
 
@@ -25,7 +27,10 @@ router.put(
 // =======================
 // CHANGE EMAIL
 // =======================
-router.patch('/change-email', verifyJWT, changeEmail); // Change email
+router.patch('/change-email',
+             verifyJWT,
+             validate(changeEmailRules),
+             changeEmail); 
 
 
 module.exports = router;
