@@ -16,9 +16,14 @@ const closePopupAlert = (detail) => {
 
       if(detail === "Session expired. Please log in again.") window.location.reload();
 
-      if(detail === 'Logged In Successfully'){
-        switchToEditMode();
+      if(detail === 'Logged In Successfully') switchToEditMode();
+
+      if(detail === 'Password changed successfully') {
+          document.querySelector('.popup-success').classList.add('hide');
+          document.querySelector('#reset-password-form').classList.add("hide");
+          document.querySelector('#login-form').classList.remove("hide");
       }
+      
     })
   });
 }

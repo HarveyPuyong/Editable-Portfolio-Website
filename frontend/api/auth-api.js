@@ -46,9 +46,12 @@ const verifyOtpAPI = async (otp) => {
 /* ==========================================================================
    CHANGE PASSWORD API
    ========================================================================== */
-const changePasswordAPI = async (data) => {
+const changePasswordAPI = async (data, resetPasswordToken) => {
    try {
-    const response = await api.patch("/auth/changePassword", data);
+    const response = await api.patch("/auth/changePassword",
+                                     data,  
+                                    {headers: {"password-reset-token": resetPasswordToken}
+  });
     if(response.status === 200) return response
 
   } catch (err) {
