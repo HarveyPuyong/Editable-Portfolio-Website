@@ -27,18 +27,16 @@ function ContactFormEmailer() {
     try {
       const res = await contactEmailerAPI(formData);
       popupSuccess(res.message);
-      contactForm.reset();
+      // contactForm.reset();
       
     } catch (err) {
-      const errors = err.response?.data?.errors;
+      const errors = err.response?.data;
 
-      if (errors?.length) {
-        popupError(errors.map(e => e.msg).join('\n'));
-      } else {
-        popupError("Failed to send message.");
-      }
-
-      console.error('Full error:', err.response?.data);
+      if (errors?.errors?.length) popupError(errors.errors.map(e => e.msg || e.message).join('\n'));
+      else if (errors?.message) popupError(errors.message);
+      else popupError("Failed to Login");
+      
+      console.error('Full error:', errors);
       console.error(err);
     }
   });

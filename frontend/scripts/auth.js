@@ -84,13 +84,13 @@ const handleLogin = () => {
       }
 
     } catch (err) {
-      const data = err.response?.data;
+      const errors = err.response?.data;
 
-      if (data?.errors?.length) popupError(data.errors.map(e => e.msg || e.message).join('\n'));
-      else if (data?.message) popupError(data.message);
+      if (errors?.errors?.length) popupError(errors.errors.map(e => e.msg || e.message).join('\n'));
+      else if (errors?.message) popupError(errors.message);
       else popupError("Failed to Login");
       
-      console.error('Full error:', data);
+      console.error('Full error:', errors);
       console.error(err);
 
     } finally {

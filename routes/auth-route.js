@@ -3,24 +3,29 @@ const router = express.Router();
 const { validate } = require('./../middlewares/request-validator');
 const { loginRules, changePasswordRules, verifyOtpRules } = require('./../middlewares/request-validator-rules/auth-rules')
 const  verifyResetPasswordToken = require("../middlewares/verify-reset-password-token");
+const {  loginLimiter, sendOtpLimiter, verifyOtpLimiter} = require('./../middlewares/limiter');
 
 // =======================
 // LOGIN
 // =======================
 router.post('/login',
              validate(loginRules),
+             loginLimiter,
              require('../controllers/login-controller')); 
 
 // =======================
 // SEND OTP
 // =======================            
-router.post("/sendOTP", require('../controllers/otp-controller').sendOtp);
+router.post("/sendOTP",
+             sendOtpLimiter,
+             require('../controllers/otp-controller').sendOtp);
 
 // =======================
 // VERIFY OTP
 // =======================
 router.post("/verifyOTP",
              validate(verifyOtpRules),
+             verifyOtpLimiter,
              require('../controllers/otp-controller').verifyOtp); 
 
 // =======================

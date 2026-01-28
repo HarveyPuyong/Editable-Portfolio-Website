@@ -108,9 +108,11 @@ const updateWorkAvailability = () => {
 ========================================================================== */
 const displayAboutSection = async () => {
   try {
-    const skillsData = await getSkillsAPI();
-    const mainInfoData = await getMainInfoAPI();
-    const achievementsData = await getAchievementsAPI();
+    const [skillsData, mainInfoData, achievementsData] = await Promise.all([
+      getSkillsAPI(),
+      getMainInfoAPI(),
+      getAchievementsAPI()
+    ]); //parallel request
 
     // Get the skills array
     const skills = skillsData.skills; 
