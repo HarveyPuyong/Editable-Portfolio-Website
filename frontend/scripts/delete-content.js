@@ -25,13 +25,13 @@ const deleteSkill = async (e) => {
     const btn = e.target.closest('.about-section__skill-input--delete-btn');
     btn.disabled = true;
     try {
-      editSkill();
+      await editSkill();
       await deleteSkillAPI(btn.dataset.id);
-      displayAboutSection();
+      await displayAboutSection();
 
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Delete skill error:', err);
+      popupError(err?.response?.data?.message || 'Failed to delete skill');
     } finally {
       btn.disabled = false;
     }
@@ -46,13 +46,13 @@ const deleteAchievement = async (e) => {
     const btn = e.target.closest('.achievements-list__achievement--delete-btn');
     btn.disabled = true;
     try {
-      editAchievement();
+      await editAchievement();
       await deleteAchievementAPI(btn.dataset.id);
-      displayAboutSection();
+      await displayAboutSection();
       
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Delete achievement error:', err);
+      popupError(err?.response?.data?.message || 'Failed to delete achievement');
     } finally {
       btn.disabled = false;
     }
@@ -67,13 +67,13 @@ const deleteExperience = async (e) => {
     const btn = e.target.closest('.experience-card__delete-btn');
     btn.disabled = true;
     try {
-      editExperience();
+      await editExperience();
       await deleteExperiencesAPI(btn.dataset.id);
-      displayExperienceSection();
+      await displayExperienceSection();
 
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Delete experience error:', err);
+      popupError(err?.response?.data?.message || 'Failed to delete experience');
     } finally {
       btn.disabled = false;
     }
@@ -87,14 +87,15 @@ const deleteProject = async (e) => {
   if (e.target.closest('.project-card__delete-btn')) {
     const btn = e.target.closest('.project-card__delete-btn');
     btn.disabled = true;
+
     try {
-      editProject();
+      await editProject();
       await deleteProjectAPI(btn.dataset.id);
-      displayProjectsSection();
+      await displayProjectsSection();
 
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Delete project error:', err);
+      popupError(err?.response?.data?.message || 'Failed to delete project');
     } finally {
       btn.disabled = false;
     }
@@ -108,14 +109,15 @@ const deleteEducation = async (e) => {
   if (e.target.closest('.education-card__delete-btn')) {
     const btn = e.target.closest('.education-card__delete-btn');
     btn.disabled = true;
+
     try {
-      editEducation();
+      await editEducation();
       await deleteEducationAPI(btn.dataset.id);
-      displayEducationSection();
+      await displayEducationSection();
 
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Delete education error:', err);
+      popupError(err?.response?.data?.message || 'Failed to delete education');
     } finally {
       btn.disabled = false;
     }
@@ -130,13 +132,13 @@ const deleteTool = async (e) => {
     const btn = e.target.closest('.tool-card__delete-btn');
     btn.disabled = true;
     try {
-      editTool();
+      await editTool();
       await deleteToolAPI(btn.dataset.id);
-      displayToolsSection();
+      await displayToolsSection();
 
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Delete tool error:', err);
+      popupError(err?.response?.data?.message || 'Failed to delete tool');
     } finally {
       btn.disabled = false;
     }

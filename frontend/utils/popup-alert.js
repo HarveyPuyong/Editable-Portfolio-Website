@@ -22,7 +22,10 @@ const closePopupAlert = (detail) => {
           document.querySelector('.popup-success').classList.add('hide');
           document.querySelector('#reset-password-form').classList.add("hide");
           document.querySelector('#login-form').classList.remove("hide");
+          changePasswordForm.reset();
       }
+
+      if(detail === 'Changes saved successfully') window.location.reload();
       
     })
   });

@@ -27,13 +27,13 @@ const addSkill = async (e) => {
     addBtn.disabled = true;
 
     try {
-      editSkill();
+      await editSkill();
       await addSkillAPI({ skillName: undefined });
-      displayAboutSection();
+      await displayAboutSection();
 
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Add skill error:', err);
+      popupError(err?.response?.data?.message || 'Failed to add skill');
     } finally {
       addBtn.disabled = false;
     }
@@ -49,13 +49,13 @@ const addAchievement = async (e) => {
     addBtn.disabled = true;
 
     try {
-      editAchievement();
+      await editAchievement();
       await addAchievementAPI({ number: undefined, name: undefined });
-      displayAboutSection();
+      await displayAboutSection();
 
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Add achievement error:', err);
+      popupError(err?.response?.data?.message || 'Failed to add achievement');
     } finally {
       addBtn.disabled = false;
     }
@@ -71,7 +71,7 @@ const addExperience  = async (e) => {
     addBtn.disabled = true;
 
     try {
-      editExperience();
+      await editExperience();
 
       await addExperiencesAPI({
         title: undefined,
@@ -81,11 +81,11 @@ const addExperience  = async (e) => {
         img: undefined
       });
       
-      displayExperienceSection();
+      await displayExperienceSection();
 
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Add experience error:', err);
+      popupError(err?.response?.data?.message || 'Failed to add experience');
     } finally {
       addBtn.disabled = false;
     }
@@ -101,7 +101,7 @@ const addProject = async (e) => {
     addBtn.disabled = true;
 
     try {
-      editProject();
+      await editProject();
 
       await addProjectAPI({
         title: undefined,
@@ -110,11 +110,11 @@ const addProject = async (e) => {
         img: undefined
       });
 
-      displayProjectsSection();
+      await displayProjectsSection();
 
     } catch (err) {
-      console.log(err);
-      popupError(err?.response?.data?.message);
+      console.log('Add project error:', err);
+      popupError(err?.response?.data?.message || 'Failed to add project');
     } finally {
       addBtn.disabled = false;
     }
@@ -130,7 +130,7 @@ const addEducation = async (e) => {
     addBtn.disabled = true;
 
     try {
-      editEducation();
+      await editEducation();
 
       await addEducationAPI({
         title: undefined,
@@ -139,10 +139,11 @@ const addEducation = async (e) => {
         dateRange: undefined
       });
 
-      displayEducationSection();
+      await displayEducationSection();
 
     } catch (err) {
-      popupError(err?.response?.data?.message);
+      console.log('Add education error:', err);
+      popupError(err?.response?.data?.message || 'Failed to add education');
     } finally {
       addBtn.disabled = false;
     }
@@ -158,7 +159,7 @@ const addTool = async (e) => {
     addBtn.disabled = true;
 
     try {
-      editTool();
+      await editTool();
 
       await addToolAPI({
         name: undefined,
@@ -166,10 +167,11 @@ const addTool = async (e) => {
         img: undefined
       });
       
-      displayToolsSection();
+      await displayToolsSection();
 
     } catch (err) {
-      popupError(err?.response?.data?.message);
+      console.log('Add tool error:', err);
+      popupError(err?.response?.data?.message || 'Failed to add tool');
     } finally {
       addBtn.disabled = false;
     }

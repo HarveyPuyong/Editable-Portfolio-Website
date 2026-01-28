@@ -1,3 +1,5 @@
+import { popupError, popupSuccess } from "./../utils/popup-alert.js";
+
 import {editMainInfoAPI, editMainEmailAPI} from "./../api/main-info-api.js"
 import {editAchievementAPI} from "./../api/achievement-api.js"
 import {editSkillAPI} from "./../api/skill-api.js"
@@ -69,7 +71,8 @@ const editMainInfo = async() => {
     await editMainEmailAPI({email});
 
   } catch (err){
-    console.log(err);
+    console.log('Edit main info error:', err);
+    popupError(err?.response?.data?.message || 'Failed to edit main info');
   }
 }
 
@@ -86,7 +89,8 @@ export const editSkill = async () => {
     try {
       await editSkillAPI(skillId, { skillName: skillValue });
     } catch (err) {
-      console.log(err);
+      console.log('Edit skill error:', err);
+      popupError(err?.response?.data?.message || 'Failed to edit skill');
     }
   })
 
@@ -112,7 +116,8 @@ export const editAchievement = async () => {
         name: achievementName,
       });
     } catch (err) {
-      console.log(err);
+      console.log('Edit achievement error:', err);
+      popupError(err?.response?.data?.message || 'Failed to edit achievement');
     }
   });
 
@@ -134,7 +139,7 @@ export const editExperience = async () => {
     const imageInput = experience.querySelector('.image-input');
 
     try {
-          const formData = new FormData();
+        const formData = new FormData();
         formData.append("title", title);
         formData.append("company", company);
         formData.append("dateRange", dateRange);
@@ -146,7 +151,8 @@ export const editExperience = async () => {
 
         await editExperiencesAPI(experienceId, formData);
     } catch (err) {
-      console.log(err);
+      console.log('Edit experience error:', err);
+      popupError(err?.response?.data?.message || 'Failed to edit experience');
     }
   })
 };
@@ -177,7 +183,8 @@ export const editProject = async () => {
         await editProjectAPI(projectId, formData);
 
     } catch (err) {
-      console.log(err);
+      console.log('Edit project error:', err);
+      popupError(err?.response?.data?.message || 'Failed to edit project');
     }
   })
 };
@@ -201,7 +208,8 @@ export const editEducation = async () => {
         await editEducationAPI(educationId, data);
 
     } catch (err) {
-      console.log(err);
+      console.log('Edit education error:', err);
+      popupError(err?.response?.data?.message || 'Failed to edit education');
     }
   })
 };
@@ -230,7 +238,8 @@ export const editTool = async () => {
         await editToolAPI(toolId, formData);
 
     } catch (err) {
-      console.log(err);
+      console.log('Edit tool error:', err);
+      popupError(err?.response?.data?.message || 'Failed to edit tool');
     }
   })
 };
@@ -260,9 +269,11 @@ export function EditContentMain () {
         await editEducation();
         await editTool();
 
-        setTimeout(() => {
-          window.location.reload();
-        }, 500);
+        // setTimeout(() => {
+        //   window.location.reload();
+        // }, 500);
+
+        popupSuccess('Changes saved successfully');
 
       } catch (err) {
         console.error("Error saving edits:", err);
